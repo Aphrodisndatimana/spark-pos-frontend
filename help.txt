@@ -1,0 +1,239 @@
+import React, { useState, useEffect } from 'react';
+
+const SparkPosAuthLayout = () => {
+  const [isRegister, setIsRegister] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const slides = [
+    {
+      title: "Connect Your Shop to All of Kigali",
+      description: "List your inventory instantly on our unified marketplace. Let customers find your electronics effortlessly without jumping across multiple websites.",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      title: "Real-Time Multi-Shop Stock Transfers",
+      description: "Running low on stock in one branch? Seamlessly transfer serials, IMEIs, and accessories between your electronics stores with full transparency.",
+      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      title: "Smart Repairs & Warranty Tracking",
+      description: "Keep your customers happy. Track electronics repairs from diagnosis to pickup, and easily manage serial-number-linked warranties in one click.",
+      image: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=800&q=80"
+    }
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [slides.length]);
+
+  return (
+    <div className="relative min-h-screen w-full bg-white font-sans antialiased overflow-x-hidden flex flex-col md:flex-row">
+      
+      {/* ==================== LOGIN FORM SIDE (Left half on desktop) ==================== */}
+      <div 
+        className={`w-full md:w-1/2 min-h-screen flex items-center justify-center py-10 px-6 sm:px-12 md:px-16 lg:px-24 xl:px-32 transition-all duration-700 ${
+          isRegister ? 'opacity-0 pointer-events-none md:opacity-100 md:pointer-events-auto' : 'opacity-100 pointer-events-auto'
+        }`}
+      >
+        <div className="w-full max-w-md mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-2 text-gray-900">Login</h2>
+          <p className="text-sm sm:text-base text-gray-500 mb-8">Welcome back! Please enter your details</p>
+
+          <form onSubmit={(e) => e.preventDefault()} className="space-y-5">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">Email</label>
+              <div className="relative">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition text-base pr-12"
+                  required
+                />
+                <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs pointer-events-none">[Icon]</span>
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">Password</label>
+              <div className="relative">
+                <input
+                  type="password"
+                  placeholder="Enter your password"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition text-base pr-12"
+                  required
+                />
+                <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs pointer-events-none">[Icon]</span>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between text-xs sm:text-sm pt-1">
+              <label className="flex items-center space-x-2 cursor-pointer select-none">
+                <input type="checkbox" className="w-4 h-4 rounded text-black border-gray-300 focus:ring-black cursor-pointer" />
+                <span className="text-gray-600">Remember me</span>
+              </label>
+              <a href="#forgot" className="text-purple-600 font-medium hover:underline">Forgot Password</a>
+            </div>
+
+            <button type="submit" className="w-full py-3 px-4 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition shadow-sm text-base mt-2">
+              Login
+            </button>
+          </form>
+
+          <div className="relative my-8 text-center">
+            <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-gray-200"></div></div>
+            <span className="relative bg-white px-3 text-sm text-gray-400 font-medium">OR</span>
+          </div>
+
+          <button type="button" className="w-full flex items-center justify-center gap-3 py-3 px-4 border border-gray-300 rounded-lg font-medium hover:bg-gray-50 transition text-base text-gray-700">
+            <span className="text-xs text-gray-400">[G]</span>
+            <span>Login with Google</span>
+          </button>
+
+          <p className="mt-8 text-center text-sm text-gray-600">
+            Don't have an account?{' '}
+            <button 
+              type="button" 
+              onClick={() => setIsRegister(true)} 
+              className="text-blue-600 font-semibold hover:underline decoration-2"
+            >
+              Create account
+            </button>
+          </p>
+        </div>
+      </div>
+
+      {/* ==================== REGISTER FORM SIDE (Right half on desktop) ==================== */}
+      <div 
+        className={`w-full md:w-1/2 min-h-screen flex items-center justify-center py-10 px-6 sm:px-12 md:px-16 lg:px-24 xl:px-32 transition-all duration-700 bg-gray-50 md:bg-white ${
+          isRegister ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none md:opacity-100 md:pointer-events-auto'
+        } ${!isRegister ? 'hidden md:flex' : 'flex'}`}
+      >
+        <div className="w-full max-w-md mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-2 text-gray-900">Create an account</h2>
+          <p className="text-sm sm:text-base text-gray-500 mb-8">
+            Already have an account?{' '}
+            <button type="button" onClick={() => setIsRegister(false)} className="text-blue-600 font-semibold hover:underline">Login</button>
+          </p>
+
+          <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Your Name"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 transition text-base pr-12 placeholder-gray-400"
+                required
+              />
+              <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs pointer-events-none">[User Icon]</span>
+            </div>
+
+            <div className="relative">
+              <input
+                type="email"
+                placeholder="Your Email"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 transition text-base pr-12 placeholder-gray-400"
+                required
+              />
+              <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs pointer-events-none">[Mail Icon]</span>
+            </div>
+
+            <div className="relative">
+              <input
+                type="password"
+                placeholder="Create Password"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 transition text-base pr-12 placeholder-gray-400"
+                required
+              />
+              <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs pointer-events-none">[Lock Icon]</span>
+            </div>
+
+            <div className="relative">
+              <select className="w-full px-4 py-3 border border-gray-300 rounded-lg text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition text-base pr-12 appearance-none cursor-pointer" required defaultValue="">
+                <option value="" disabled hidden>Account Type</option>
+                <option value="shop_owner">Shop Owner / Retailer</option>
+                <option value="repair_technician">Repair Technician</option>
+                <option value="customer">General Customer (Buyer)</option>
+              </select>
+              <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs pointer-events-none">[▼]</span>
+            </div>
+
+            <div className="flex items-center space-x-2 pt-2 select-none">
+              <input type="checkbox" id="terms" className="w-4 h-4 rounded text-blue-500 border-gray-300 focus:ring-blue-500 cursor-pointer" required />
+              <label htmlFor="terms" className="text-xs sm:text-sm text-gray-600 cursor-pointer">
+                I agree to the <a href="#terms" className="text-blue-500 hover:underline">Terms & Conditions</a>
+              </label>
+            </div>
+
+            <button type="submit" className="w-full py-3 px-4 bg-[#0091ff] hover:bg-blue-600 text-white font-semibold rounded-lg transition shadow-sm text-base mt-4">
+              Create Account
+            </button>
+          </form>
+
+          <div className="relative my-8 text-center">
+            <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-gray-200"></div></div>
+            <span className="relative bg-white px-3 text-sm text-gray-400 font-medium">Register With</span>
+          </div>
+
+          <button type="button" className="w-full flex items-center justify-center gap-3 py-3 px-4 border border-gray-300 rounded-lg font-medium hover:bg-gray-50 transition text-base text-gray-700">
+            <span className="text-xs text-gray-400">[G]</span>
+            <span>Google</span>
+          </button>
+        </div>
+      </div>
+
+      {/* ==================== FIXED SLIDING GRAPHICS PANEL ==================== */}
+      {/* This slides smoothly horizontally across the screens */}
+      <div 
+        className={`hidden md:block w-1/2 fixed top-0 bottom-0 z-50 overflow-hidden bg-gray-950 transition-all duration-700 ease-in-out ${
+          isRegister ? 'left-0' : 'left-1/2'
+        }`}
+      >
+        {slides.map((slide, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
+            }`}
+          >
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30 z-20" />
+            <img
+              src={slide.image}
+              alt={slide.title}
+              className="w-full h-full object-cover transform scale-105 transition-transform duration-[5000ms]"
+            />
+
+            <div className="absolute top-1/4 left-8 right-8 lg:left-16 lg:right-16 z-30 text-white max-w-xl">
+              <h3 className="text-2xl lg:text-3xl xl:text-4xl font-bold leading-tight mb-4 drop-shadow-md">
+                {slide.title}
+              </h3>
+              <p className="text-gray-200 text-sm lg:text-base xl:text-lg leading-relaxed drop-shadow-sm">
+                {slide.description}
+              </p>
+            </div>
+          </div>
+        ))}
+
+        {/* Carousel Slide Indicators */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex space-x-3 w-2/3 px-4">
+          {slides.map((_, index) => (
+            <div key={index} className="h-1 flex-1 bg-white/30 rounded-full overflow-hidden">
+              <div 
+                className={`h-full bg-white transition-all duration-[5000ms] ease-linear ${
+                  index === currentSlide ? 'w-full' : 'w-0'
+                }`}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  );
+};
+
+export default SparkPosAuthLayout;
+
+//repository
+https://github.com/Aphrodisndatimana/spark-pos-project.git
