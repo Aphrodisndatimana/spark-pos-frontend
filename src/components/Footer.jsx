@@ -96,7 +96,9 @@ export default function Footer() {
             
             {/* Instagram */}
             <Link 
-              to="#" 
+              to="https://www.instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="Instagram"
               className="flex items-center gap-2.5 p-2.5 rounded-xl bg-neutral-950 border border-neutral-900 hover:border-pink-500/30 hover:bg-neutral-900/50 hover:text-white transition-all duration-200 group"
             >
@@ -112,7 +114,9 @@ export default function Footer() {
 
             {/* Twitter / X */}
             <Link 
-              to="#" 
+              to="https://www.twitter.com"
+              target="_blank"
+              rel="noopener noreferrer" 
               aria-label="Twitter / X"
               className="flex items-center gap-2.5 p-2.5 rounded-xl bg-neutral-950 border border-neutral-900 hover:border-neutral-500/30 hover:bg-neutral-900/50 hover:text-white transition-all duration-200 group"
             >
@@ -126,7 +130,9 @@ export default function Footer() {
 
             {/* Facebook */}
             <Link 
-              to="#" 
+              to="https://www.facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="Facebook"
               className="flex items-center gap-2.5 p-2.5 rounded-xl bg-neutral-950 border border-neutral-900 hover:border-blue-500/30 hover:bg-neutral-900/50 hover:text-white transition-all duration-200 group"
             >
@@ -140,7 +146,9 @@ export default function Footer() {
 
             {/* WhatsApp */}
             <Link 
-              to="#" 
+              to="https://web.whatsapp.com"
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="WhatsApp"
               className="flex items-center gap-2.5 p-2.5 rounded-xl bg-neutral-950 border border-neutral-900 hover:border-green-500/30 hover:bg-neutral-900/50 hover:text-white transition-all duration-200 group"
             >

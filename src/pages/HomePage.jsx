@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import ChatSupportWidget from '../components/ChatSupportWidget';
 import { Link } from 'react-router-dom';
 
 export default function HomePage() {
@@ -9,7 +10,7 @@ export default function HomePage() {
 
   // Structural Section Tab States
   const [activeCustomerTab, setActiveCustomerTab] = useState('smart-search');
-  const [activeBusinessTab, setActiveBusinessTab] = useState('warranty-management');
+  const [activeBusinessTab, setActiveBusinessTab] = useState('inventory-tracking');
   const [activeFaqTab, setActiveFaqTab] = useState('getting-started');
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
 
@@ -92,7 +93,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className={`min-h-screen font-sans antialiased pt-16 md:pt-20 transition-colors duration-300 selection:bg-[#e800c7] selection:text-white ${
+    <div className={`min-h-screen font-sans antialiased pt-16 md:pt-20 transition-colors duration-300 selection:bg-[#e800c7] selection:text-white relative ${
       isDarkMode ? 'bg-[#111827] text-white' : 'bg-[#f3f4f6] text-black'
     }`}>
       {/* Navbar Component */}
@@ -220,9 +221,10 @@ export default function HomePage() {
             }`}>
               {customerTabData[activeCustomerTab].desc}
             </p>
-            <a href="#" className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-extrabold text-[#2563eb] hover:underline pt-2">
-              <span>Access live market grid</span> <span>→</span>
-            </a>
+            <Link to="/" className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-extrabold text-[#2563eb] hover:underline pt-2">
+              Explore Marketplace
+              <img src="/images/arrow.png" className='w-8 h-8' alt="arrow icon"/>
+            </Link>
           </div>
         </div>
       </section>
@@ -295,7 +297,8 @@ export default function HomePage() {
               {businessTabData[activeBusinessTab].desc}
             </p>
             <Link to="/" className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-extrabold text-[#2563eb] hover:underline pt-2">
-              <span>Learn more</span> <span>→</span>
+            Learn more
+            <img src="/images/arrow.png" className='w-8 h-8' alt="arrow icon"/>
             </Link>
           </div>
 
@@ -419,6 +422,9 @@ export default function HomePage() {
           </form>
         </div>
       </section>
+
+      {/* --- REUSABLE CHAT WIDGET --- */}
+      <ChatSupportWidget isDarkMode={isDarkMode} />
 
       <Footer />
     </div>
