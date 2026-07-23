@@ -171,18 +171,6 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
                           <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Move inventory between branches with logs</p>
                         </div>
                       </Link>
-
-                      <Link to="/stock-lending" className="flex items-start gap-3.5 p-3 rounded-2xl hover:bg-gray-100/80 dark:hover:bg-neutral-800 transition-all group/item">
-                        <div className="p-2.5 rounded-xl bg-blue-50 border border-blue-100 text-blue-700 dark:bg-blue-950/60 dark:border-blue-800/50 dark:text-blue-400 shrink-0 shadow-sm transition-transform duration-200 group-hover/item:scale-105 group-hover/item:bg-[#2563eb] group-hover/item:text-white group-hover/item:border-[#2563eb]">
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                          </svg>
-                        </div>
-                        <div>
-                          <p className="text-sm font-bold group-hover/item:text-[#2563eb]">Stock Lending Desk</p>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Lend items across nearby shops with history</p>
-                        </div>
-                      </Link>
                     </div>
 
                     {/* Column 3: Repairs & Support */}
