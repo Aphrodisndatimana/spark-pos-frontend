@@ -575,10 +575,12 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
             {activeMobileMenu === 'products' && (
               <div className="pl-4 py-2 space-y-2 text-sm text-gray-500 dark:text-gray-400">
                 <Link to="/product-lookup" className="block py-1 font-bold text-[#2563eb]">🔍 Product / IMEI Lookup</Link>
-                <Link to="#" className="block py-1 hover:text-[#2563eb]">Point of Sale & Payments</Link>
-                <Link to="#" className="block py-1 hover:text-[#2563eb]">IMEI & Serial Tracking</Link>
-                <Link to="#" className="block py-1 hover:text-[#2563eb]">Inter-Shop Transfers</Link>
-                <Link to="#" className="block py-1 hover:text-[#2563eb]">Repair Tickets</Link>
+                <Link to="/pos" className="block py-1 hover:text-[#2563eb]">Point of Sale & Payments</Link>
+                <Link to="/imei-tracking" className="block py-1 hover:text-[#2563eb]">IMEI & Serial Tracking</Link>
+                 <Link to="/digital-receipts" className="block py-1 hover:text-[#2563eb]">Digital Receipts</Link>
+                <Link to="/warranty-manager" className="block py-1 hover:text-[#2563eb]">Waranty Manager</Link>
+                <Link to="/inter-shop-transfers" className="block py-1 hover:text-[#2563eb]">Inter-Shop Transfers</Link>
+                <Link to="/repair-tickets" className="block py-1 hover:text-[#2563eb]">Repair Tickets</Link>
               </div>
             )}
           </div>
