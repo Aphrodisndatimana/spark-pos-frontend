@@ -221,7 +221,7 @@ export default function HomePage() {
             }`}>
               {customerTabData[activeCustomerTab].desc}
             </p>
-            <Link to="/" className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-extrabold text-[#2563eb] hover:underline pt-2">
+            <Link to="/register" className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-extrabold text-[#2563eb] hover:underline pt-2">
               Explore Marketplace
               <img src="/images/arrow.png" className='w-8 h-8' alt="arrow icon"/>
             </Link>
@@ -296,8 +296,8 @@ export default function HomePage() {
             }`}>
               {businessTabData[activeBusinessTab].desc}
             </p>
-            <Link to="/" className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-extrabold text-[#2563eb] hover:underline pt-2">
-            Learn more
+            <Link to="/register" className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-extrabold text-[#2563eb] hover:underline pt-2">
+            Get Into Touch
             <img src="/images/arrow.png" className='w-8 h-8' alt="arrow icon"/>
             </Link>
           </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
+import ScrollToTop from '../../components/ScrollToTop';
 import { Link } from 'react-router-dom';
 
 export default function RepairsPage() {
@@ -143,7 +144,7 @@ export default function RepairsPage() {
           </div>
         </section>
       </main>
-
+    <ScrollToTop />
       <Footer />
     </div>
   );

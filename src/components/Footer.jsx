@@ -70,7 +70,6 @@ export default function Footer() {
             {[
               { title: 'About Us', path: '/about' },
               { title: 'Help Center', path: '/help' },
-              { title: 'Resources', path: '/resources' },
               { title: 'Partner Shop', path: '/partners' },
               { title: 'Sign in', path: '/login' },
               { title: 'Sign up', path: '/register' },

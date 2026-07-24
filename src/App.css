@@ -1,0 +1,44 @@
+.scroll-to-top-btn {
+    /* Fixed positioning pins it to the screen corner */
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000; /* Ensures it stays above all other content */
+
+    /* Size and Shape */
+    width: 55px;
+    height: 55px;
+    border-radius: 50%; /* Makes it a perfect circle */
+    
+    /* Colors - Matching your Header theme */
+    background-color: #1A3D6D;
+    color: #C9FAC8;
+    border: 2px solid #C9FAC8;
+    
+    /* Centering the arrow symbol */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Typography */
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+
+    /* Depth and Animation */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hover effect - Matching your Navbar orange hover */
+.scroll-to-top-btn:hover {
+    background-color: #FF9800;
+    color: white;
+    border-color: white;
+    transform: translateY(-8px); /* Moves up slightly when hovered */
+}
+
+/* Click effect */
+.scroll-to-top-btn:active {
+    transform: scale(0.9); /* Squishes slightly when clicked */
+}

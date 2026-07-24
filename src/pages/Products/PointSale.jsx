@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
+import ScrollToTop from '../../components/ScrollToTop';
 import { Link } from 'react-router-dom';
 
 export default function PointOfSalePage() {
@@ -409,6 +410,7 @@ export default function PointOfSalePage() {
           </div>
         </div>
       </section>
+      <ScrollToTop />
       <Footer />
     </div>
   );

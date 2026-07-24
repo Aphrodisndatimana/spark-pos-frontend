@@ -273,7 +273,7 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
                   </div>
 
                   <div className="grid grid-cols-3 gap-6">
-                    <Link to="#" className="p-4 rounded-2xl hover:bg-gray-100/80 dark:hover:bg-neutral-800 border border-transparent hover:border-gray-200 dark:hover:border-neutral-700 transition-all group/item flex items-start gap-3.5">
+                    <Link to="/electronics-repair" className="p-4 rounded-2xl hover:bg-gray-100/80 dark:hover:bg-neutral-800 border border-transparent hover:border-gray-200 dark:hover:border-neutral-700 transition-all group/item flex items-start gap-3.5">
                       <div className="p-2.5 rounded-xl bg-blue-50 border border-blue-100 text-blue-700 dark:bg-blue-950/60 dark:border-blue-800/50 dark:text-blue-400 shrink-0 shadow-sm transition-transform duration-200 group-hover/item:scale-105 group-hover/item:bg-[#2563eb] group-hover/item:text-white group-hover/item:border-[#2563eb]">
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -286,7 +286,7 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
                       </div>
                     </Link>
 
-                    <Link to="#" className="p-4 rounded-2xl hover:bg-gray-100/80 dark:hover:bg-neutral-800 border border-transparent hover:border-gray-200 dark:hover:border-neutral-700 transition-all group/item flex items-start gap-3.5">
+                    <Link to="/multi-branch-chain" className="p-4 rounded-2xl hover:bg-gray-100/80 dark:hover:bg-neutral-800 border border-transparent hover:border-gray-200 dark:hover:border-neutral-700 transition-all group/item flex items-start gap-3.5">
                       <div className="p-2.5 rounded-xl bg-blue-50 border border-blue-100 text-blue-700 dark:bg-blue-950/60 dark:border-blue-800/50 dark:text-blue-400 shrink-0 shadow-sm transition-transform duration-200 group-hover/item:scale-105 group-hover/item:bg-[#2563eb] group-hover/item:text-white group-hover/item:border-[#2563eb]">
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
@@ -298,19 +298,7 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
                       </div>
                     </Link>
 
-                    <Link to="#" className="p-4 rounded-2xl hover:bg-gray-100/80 dark:hover:bg-neutral-800 border border-transparent hover:border-gray-200 dark:hover:border-neutral-700 transition-all group/item flex items-start gap-3.5">
-                      <div className="p-2.5 rounded-xl bg-blue-50 border border-blue-100 text-blue-700 dark:bg-blue-950/60 dark:border-blue-800/50 dark:text-blue-400 shrink-0 shadow-sm transition-transform duration-200 group-hover/item:scale-105 group-hover/item:bg-[#2563eb] group-hover/item:text-white group-hover/item:border-[#2563eb]">
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <p className="text-base font-bold group-hover/item:text-[#2563eb]">Mobile Accessories</p>
-                        <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Fast checkout, barcode creation, serial tracking & warranty claims.</p>
-                      </div>
-                    </Link>
-
-                    <Link to="#" className="p-4 rounded-2xl hover:bg-gray-100/80 dark:hover:bg-neutral-800 border border-transparent hover:border-gray-200 dark:hover:border-neutral-700 transition-all group/item flex items-start gap-3.5">
+                    <Link to="/whole-sale" className="p-4 rounded-2xl hover:bg-gray-100/80 dark:hover:bg-neutral-800 border border-transparent hover:border-gray-200 dark:hover:border-neutral-700 transition-all group/item flex items-start gap-3.5">
                       <div className="p-2.5 rounded-xl bg-blue-50 border border-blue-100 text-blue-700 dark:bg-blue-950/60 dark:border-blue-800/50 dark:text-blue-400 shrink-0 shadow-sm transition-transform duration-200 group-hover/item:scale-105 group-hover/item:bg-[#2563eb] group-hover/item:text-white group-hover/item:border-[#2563eb]">
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-2m-4-1v8m0 0l3-3m-3 3L9 8m-5 5h2.586a1 1 0 01.707.293l2.414 2.414a1 1 0 00.707.293h3.172a1 1 0 00.707-.293l2.414-2.414a1 1 0 01.707-.293H20" />
@@ -322,7 +310,7 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
                       </div>
                     </Link>
 
-                    <Link to="#" className="p-4 rounded-2xl hover:bg-gray-100/80 dark:hover:bg-neutral-800 border border-transparent hover:border-gray-200 dark:hover:border-neutral-700 transition-all group/item flex items-start gap-3.5">
+                    <Link to="/computer-retailer" className="p-4 rounded-2xl hover:bg-gray-100/80 dark:hover:bg-neutral-800 border border-transparent hover:border-gray-200 dark:hover:border-neutral-700 transition-all group/item flex items-start gap-3.5">
                       <div className="p-2.5 rounded-xl bg-blue-50 border border-blue-100 text-blue-700 dark:bg-blue-950/60 dark:border-blue-800/50 dark:text-blue-400 shrink-0 shadow-sm transition-transform duration-200 group-hover/item:scale-105 group-hover/item:bg-[#2563eb] group-hover/item:text-white group-hover/item:border-[#2563eb]">
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -334,7 +322,7 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
                       </div>
                     </Link>
 
-                    <Link to="#" className="p-4 rounded-2xl hover:bg-gray-100/80 dark:hover:bg-neutral-800 border border-transparent hover:border-gray-200 dark:hover:border-neutral-700 transition-all group/item flex items-start gap-3.5">
+                    <Link to="/mobile-money-agents" className="p-4 rounded-2xl hover:bg-gray-100/80 dark:hover:bg-neutral-800 border border-transparent hover:border-gray-200 dark:hover:border-neutral-700 transition-all group/item flex items-start gap-3.5">
                       <div className="p-2.5 rounded-xl bg-blue-50 border border-blue-100 text-blue-700 dark:bg-blue-950/60 dark:border-blue-800/50 dark:text-blue-400 shrink-0 shadow-sm transition-transform duration-200 group-hover/item:scale-105 group-hover/item:bg-[#2563eb] group-hover/item:text-white group-hover/item:border-[#2563eb]">
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -604,9 +592,11 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
             </button>
             {activeMobileMenu === 'solutions' && (
               <div className="pl-4 py-2 space-y-2 text-sm text-gray-500 dark:text-gray-400">
-                <Link to="#" className="block py-1 hover:text-[#2563eb]">Electronics & Repairs</Link>
-                <Link to="#" className="block py-1 hover:text-[#2563eb]">Multi-Branch Chains</Link>
-                <Link to="#" className="block py-1 hover:text-[#2563eb]">Mobile Stores</Link>
+                <Link to="/electronics-repair" className="block py-1 hover:text-[#2563eb]">Electronics & Repairs</Link>
+                 <Link to="/computer-retailer" className="block py-1 hover:text-[#2563eb]">Computer Retailer</Link>
+                 <Link to="/mobile-money-agents" className="block py-1 hover:text-[#2563eb]">MobileMoneyAgent</Link>
+                <Link to="/multi-branch-chain" className="block py-1 hover:text-[#2563eb]">Multi-Branch Chains</Link>
+                  <Link to="/whole-sale" className="block py-1 hover:text-[#2563eb]">WholeSale Distributors</Link>
               </div>
             )}
           </div>

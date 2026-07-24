@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
+import ScrollToTop from '../../components/ScrollToTop';
 
 // Sample product database
 const PRODUCTS_DATA = [
@@ -284,7 +285,7 @@ export default function ProductLookupPage() {
           </div>
         </section>
       </main>
-
+<ScrollToTop />
       <Footer />
     </div>
   );

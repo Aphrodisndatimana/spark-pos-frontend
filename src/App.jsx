@@ -19,6 +19,14 @@ import InterShopTransfersPage from './pages/Products/InterShopTransfersPage'
 import RepairsPage from './pages/Products/RepairsPage'
 import WarrantyManagerPage from './pages/Products/WarrantyManagerPage'
 import ProductLookupPage from './pages/Products/ProductLookupPage'
+import ElectronicsRepairSolution from './pages/Solutions/ElectronicsRepairPage'
+import ComputerRetailerSolution from './pages/Solutions/ComputerRetailerPage'
+import AboutUs from './pages/AboutPage'
+import HelpCenter from './pages/HelpPage'
+import MultiBranchChainSolution from './pages/Solutions/MultiBranchChainPage'
+import Partner from './pages/PartnerPage'
+import MobileMoneyAgentSolution from './pages/Solutions/MobileMoneyAgentPage'
+import WholesaleDistributorSolution from './pages/Solutions/WholesaleDistributorPage'
 
 
 function App() {
@@ -30,11 +38,18 @@ function App() {
   <Route path='/register' element={<RegisterPage />}></Route>
   <Route path='/login' element={<LoginPage />}></Route>
   <Route path='/forgot-password' element={<ForgotPassword />}></Route>
+  <Route path='/about' element={<AboutUs />}></Route>
+  <Route path='/help' element={<HelpCenter />}></Route>
+  <Route path='/partners' element={<Partner />}></Route>
+
+  {/* Dashboards Pages */}
   <Route path='/super-admin-dashboard' element={<SuperAdminDashboard />}></Route>
   <Route path='/shop-owner-dashboard' element={<ShopOwnerDashboard />}></Route>
   <Route path='/branch-manager-dashboard' element={<BranchManagerDashboard />}></Route>
   <Route path='/seller-dashboard' element={<SellerDashboard />}></Route>
   <Route path='/repair-tech-dashboard' element={<RepairTechDashboard />}></Route>
+
+   {/* Products dropdownLink Pages */}
   <Route path='/pos' element={<PointOfSalePage />}></Route>
   <Route path='/payments-momo' element={<PaymentsMoMoPage />}></Route>
   <Route path='/digital-receipts' element={<DigitalReceiptPage />}></Route>
@@ -43,6 +58,14 @@ function App() {
   <Route path='/repair-tickets' element={<RepairsPage />}></Route>
   <Route path='/warranty-manager' element={<WarrantyManagerPage />}></Route>
   <Route path='/product-lookup' element={<ProductLookupPage />}></Route>
+
+    {/* Solutions dropdownLink Pages */}
+  <Route path='/electronics-repair' element={<ElectronicsRepairSolution />}></Route>
+  <Route path='/computer-retailer' element={<ComputerRetailerSolution />}></Route>
+  <Route path='/multi-branch-chain' element={<MultiBranchChainSolution />}></Route>
+  <Route path='/mobile-money-agents' element={<MobileMoneyAgentSolution />}></Route>
+   <Route path='/whole-sale' element={<WholesaleDistributorSolution />}></Route>
+
   <Route path='*' element={<PageNotFound />}></Route>
   </Routes>
   </Router>
