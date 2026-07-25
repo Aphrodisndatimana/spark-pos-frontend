@@ -96,12 +96,12 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
                     : 'bg-white border-gray-200 text-gray-800'
                 }`}
               >
-                <div className="max-w-7xl mx-auto px-6 py-8">
+                <div className="px-6 py-8 mx-auto max-w-7xl">
                   <div className="grid grid-cols-4 gap-8">
                     
                     {/* Column 1: Sales & Checkout */}
                     <div className="space-y-4">
-                      <span className="text-xs font-black tracking-wider text-blue-600 dark:text-blue-400 uppercase">
+                      <span className="text-xs font-black tracking-wider text-blue-600 uppercase dark:text-blue-400">
                         Sales & Checkout
                       </span>
                       
@@ -144,7 +144,7 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
 
                     {/* Column 2: Stock & Inventory */}
                     <div className="space-y-4">
-                      <span className="text-xs font-black tracking-wider text-blue-600 dark:text-blue-400 uppercase">
+                      <span className="text-xs font-black tracking-wider text-blue-600 uppercase dark:text-blue-400">
                         Stock & Inventory
                       </span>
 
@@ -175,7 +175,7 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
 
                     {/* Column 3: Repairs & Support */}
                     <div className="space-y-4">
-                      <span className="text-xs font-black tracking-wider text-blue-600 dark:text-blue-400 uppercase">
+                      <span className="text-xs font-black tracking-wider text-blue-600 uppercase dark:text-blue-400">
                         Repairs & Support
                       </span>
 
@@ -217,7 +217,7 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
                           </svg>
                         </div>
                         <h5 className="text-base font-extrabold text-gray-900 dark:text-white">Electronic Product Lookup</h5>
-                        <p className="text-xs text-gray-600 dark:text-gray-400 mt-2 leading-relaxed">
+                        <p className="mt-2 text-xs leading-relaxed text-gray-600 dark:text-gray-400">
                           Quickly search electronic stock, check IMEI status, warranties, or device details across stores.
                         </p>
                       </div>
@@ -266,9 +266,9 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
                     : 'bg-white border-gray-200 text-gray-800'
                 }`}
               >
-                <div className="max-w-7xl mx-auto px-6 py-8">
-                  <div className="mb-6 pb-4 border-b border-gray-200 dark:border-neutral-800">
-                    <h4 className="text-xs font-black tracking-wider text-blue-600 dark:text-blue-400 uppercase">Tailored Retail Solutions</h4>
+                <div className="px-6 py-8 mx-auto max-w-7xl">
+                  <div className="pb-4 mb-6 border-b border-gray-200 dark:border-neutral-800">
+                    <h4 className="text-xs font-black tracking-wider text-blue-600 uppercase dark:text-blue-400">Tailored Retail Solutions</h4>
                     <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Customized POS workflows built for your business type.</p>
                   </div>
 
@@ -282,7 +282,7 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
                       </div>
                       <div>
                         <p className="text-base font-bold group-hover/item:text-[#2563eb]">Electronics & Repair Shops</p>
-                        <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Track IMEI codes, technician repair tickets & instant SMS notifications.</p>
+                        <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">Track IMEI codes, technician repair tickets & instant SMS notifications.</p>
                       </div>
                     </Link>
 
@@ -294,7 +294,7 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
                       </div>
                       <div>
                         <p className="text-base font-bold group-hover/item:text-[#2563eb]">Multi-Branch Chains</p>
-                        <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Manage stock transfers, approve orders & monitor central sales.</p>
+                        <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">Manage stock transfers, approve orders & monitor central sales.</p>
                       </div>
                     </Link>
 
@@ -306,7 +306,7 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
                       </div>
                       <div>
                         <p className="text-base font-bold group-hover/item:text-[#2563eb]">Wholesale Distributors</p>
-                        <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Bulk pricing tiers, supplier management & purchase tracking.</p>
+                        <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">Bulk pricing tiers, supplier management & purchase tracking.</p>
                       </div>
                     </Link>
 
@@ -318,7 +318,7 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
                       </div>
                       <div>
                         <p className="text-base font-bold group-hover/item:text-[#2563eb]">Computer Retailers</p>
-                        <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Custom build logs, part tracking, warranties & trade-ins.</p>
+                        <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">Custom build logs, part tracking, warranties & trade-ins.</p>
                       </div>
                     </Link>
 
@@ -330,7 +330,7 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
                       </div>
                       <div>
                         <p className="text-base font-bold group-hover/item:text-[#2563eb]">Mobile Money Agents</p>
-                        <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">MoMo float management, agent ledger & commission reports.</p>
+                        <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">MoMo float management, agent ledger & commission reports.</p>
                       </div>
                     </Link>
                   </div>
@@ -366,21 +366,21 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
                     : 'bg-white border-gray-200 text-gray-800'
                 }`}
               >
-                <div className="max-w-7xl mx-auto px-6 py-8 grid grid-cols-3 gap-8">
+                <div className="grid grid-cols-3 gap-8 px-6 py-8 mx-auto max-w-7xl">
                   <div className="space-y-3">
-                    <span className="text-xs font-black tracking-wider text-blue-600 dark:text-blue-400 uppercase">Documentation</span>
-                    <Link to="#" className="block p-3 rounded-xl hover:bg-gray-100 dark:hover:bg-neutral-800 text-sm font-semibold">User Manual & Video Guides</Link>
-                    <Link to="#" className="block p-3 rounded-xl hover:bg-gray-100 dark:hover:bg-neutral-800 text-sm font-semibold">Hardware Setup Guides</Link>
+                    <span className="text-xs font-black tracking-wider text-blue-600 uppercase dark:text-blue-400">Documentation</span>
+                    <Link to="/user-manual-guide" className="block p-3 text-sm font-semibold rounded-xl hover:bg-gray-100 dark:hover:bg-neutral-800">User Manual & Video Guides</Link>
+                    <Link to="/hardware-setup-guide" className="block p-3 text-sm font-semibold rounded-xl hover:bg-gray-100 dark:hover:bg-neutral-800">Hardware Setup Guides</Link>
                   </div>
                   <div className="space-y-3">
-                    <span className="text-xs font-black tracking-wider text-blue-600 dark:text-blue-400 uppercase">Learning</span>
-                    <Link to="#" className="block p-3 rounded-xl hover:bg-gray-100 dark:hover:bg-neutral-800 text-sm font-semibold">Retail Growth Blog</Link>
-                    <Link to="#" className="block p-3 rounded-xl hover:bg-gray-100 dark:hover:bg-neutral-800 text-sm font-semibold">Customer Case Studies</Link>
+                    <span className="text-xs font-black tracking-wider text-blue-600 uppercase dark:text-blue-400">Learning</span>
+                    <Link to="/retail-growth-blog" className="block p-3 text-sm font-semibold rounded-xl hover:bg-gray-100 dark:hover:bg-neutral-800">Retail Growth Blog</Link>
+                    <Link to="/customer-case-studies" className="block p-3 text-sm font-semibold rounded-xl hover:bg-gray-100 dark:hover:bg-neutral-800">Customer Case Studies</Link>
                   </div>
                   <div className="space-y-3">
-                    <span className="text-xs font-black tracking-wider text-blue-600 dark:text-blue-400 uppercase">Support</span>
-                    <Link to="#" className="block p-3 rounded-xl hover:bg-gray-100 dark:hover:bg-neutral-800 text-sm font-semibold">REST API Documentation</Link>
-                    <Link to="#" className="block p-3 rounded-xl hover:bg-gray-100 dark:hover:bg-neutral-800 text-sm font-semibold">Live System Status</Link>
+                    <span className="text-xs font-black tracking-wider text-blue-600 uppercase dark:text-blue-400">Support</span>
+                    <Link to="#" className="block p-3 text-sm font-semibold rounded-xl hover:bg-gray-100 dark:hover:bg-neutral-800">REST API Documentation</Link>
+                    <Link to="/live-system-status" className="block p-3 text-sm font-semibold rounded-xl hover:bg-gray-100 dark:hover:bg-neutral-800">Live System Status</Link>
                   </div>
                 </div>
               </div>
@@ -561,7 +561,7 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
               </svg>
             </button>
             {activeMobileMenu === 'products' && (
-              <div className="pl-4 py-2 space-y-2 text-sm text-gray-500 dark:text-gray-400">
+              <div className="py-2 pl-4 space-y-2 text-sm text-gray-500 dark:text-gray-400">
                 <Link to="/product-lookup" className="block py-1 font-bold text-[#2563eb]">🔍 Product / IMEI Lookup</Link>
                 <Link to="/pos" className="block py-1 hover:text-[#2563eb]">Point of Sale & Payments</Link>
                 <Link to="/imei-tracking" className="block py-1 hover:text-[#2563eb]">IMEI & Serial Tracking</Link>
@@ -591,7 +591,7 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
               </svg>
             </button>
             {activeMobileMenu === 'solutions' && (
-              <div className="pl-4 py-2 space-y-2 text-sm text-gray-500 dark:text-gray-400">
+              <div className="py-2 pl-4 space-y-2 text-sm text-gray-500 dark:text-gray-400">
                 <Link to="/electronics-repair" className="block py-1 hover:text-[#2563eb]">Electronics & Repairs</Link>
                  <Link to="/computer-retailer" className="block py-1 hover:text-[#2563eb]">Computer Retailer</Link>
                  <Link to="/mobile-money-agents" className="block py-1 hover:text-[#2563eb]">MobileMoneyAgent</Link>
@@ -619,10 +619,12 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
               </svg>
             </button>
             {activeMobileMenu === 'resources' && (
-              <div className="pl-4 py-2 space-y-2 text-sm text-gray-500 dark:text-gray-400">
-                <Link to="#" className="block py-1 hover:text-[#2563eb]">User Manual & Guides</Link>
-                <Link to="#" className="block py-1 hover:text-[#2563eb]">API Docs</Link>
-                <Link to="#" className="block py-1 hover:text-[#2563eb]">Case Studies</Link>
+              <div className="py-2 pl-4 space-y-2 text-sm text-gray-500 dark:text-gray-400">
+                <Link to="/user-manual-guide" className="block py-1 hover:text-[#2563eb]">User Manual & Guides</Link>
+                <Link to="/customer-case-studies" className="block py-1 hover:text-[#2563eb]">Customer Case Studies</Link>
+                 <Link to="/hardware-setup-guide" className="block py-1 hover:text-[#2563eb]">Hardware Setup Guides</Link>
+                  <Link to="/retail-growth-blog" className="block py-1 hover:text-[#2563eb]">Retailer Growth Blog</Link>
+                   <Link to="/live-system-status" className="block py-1 hover:text-[#2563eb]">Live System Status</Link>
               </div>
             )}
           </div>

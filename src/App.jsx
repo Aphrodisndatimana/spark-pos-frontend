@@ -27,6 +27,11 @@ import MultiBranchChainSolution from './pages/Solutions/MultiBranchChainPage'
 import Partner from './pages/PartnerPage'
 import MobileMoneyAgentSolution from './pages/Solutions/MobileMoneyAgentPage'
 import WholesaleDistributorSolution from './pages/Solutions/WholesaleDistributorPage'
+import UserManualGuides from './pages/Resources/UserManualGuides'
+import CustomerCaseStudies from './pages/Resources/CustomerCaseStudies'
+import HardwareSetupGuides from './pages/Resources/HardwareSetupGuides'
+import LiveSystemStatus from './pages/Resources/LiveSystemStatus'
+import RetailGrowthBlog from './pages/Resources/RetailGrowthBlog'
 
 
 function App() {
@@ -65,6 +70,13 @@ function App() {
   <Route path='/multi-branch-chain' element={<MultiBranchChainSolution />}></Route>
   <Route path='/mobile-money-agents' element={<MobileMoneyAgentSolution />}></Route>
    <Route path='/whole-sale' element={<WholesaleDistributorSolution />}></Route>
+
+    {/* Resources dropdownLink Pages */}
+  <Route path='/user-manual-guide' element={<UserManualGuides />}></Route>
+  <Route path='/customer-case-studies' element={<CustomerCaseStudies />}></Route>
+  <Route path='/hardware-setup-guide' element={<HardwareSetupGuides />}></Route>
+  <Route path='/live-system-status' element={<LiveSystemStatus />}></Route>
+  <Route path='/retail-growth-blog' element={<RetailGrowthBlog />}></Route>
 
   <Route path='*' element={<PageNotFound />}></Route>
   </Routes>
