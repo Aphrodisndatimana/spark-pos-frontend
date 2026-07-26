@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ScrollToTop from "../components/ScrollToTop";
 
-const HelpPage = () => {
+const HelpPage = ({ isDarkMode, setIsDarkMode }) => {
   const [openFaq, setOpenFaq] = useState(null);
 
   const toggleFaq = (index) => {
@@ -39,18 +39,38 @@ const HelpPage = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800 font-sans">
+    <div
+      className={`min-h-screen flex flex-col font-sans transition-colors duration-300 ${
+        isDarkMode
+          ? 'bg-[#111827] text-slate-100 selection:bg-indigo-500 selection:text-white'
+          : 'bg-slate-50 text-slate-800 selection:bg-indigo-500 selection:text-white'
+      }`}
+    >
       {/* Navigation Bar */}
-      <Navbar />
+      <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
 
       {/* Main Container - pt-20 sm:pt-24 handles fixed navbar offset */}
       <main className="flex-grow pt-20 sm:pt-24">
         {/* Banner Section */}
-        <div className="px-4 py-12 sm:py-16 text-center border-b bg-slate-100 border-slate-200">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-[#1A3D6D]">
-            Support & Help Center
+        <div
+          className={`px-4 py-12 sm:py-16 text-center border-b ${
+            isDarkMode
+              ? 'bg-[#1f2937] border-slate-800'
+              : 'bg-slate-100 border-slate-200'
+          }`}
+        >
+          <h1
+            className={`text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight ${
+              isDarkMode ? 'text-white' : 'text-[#1A3D6D]'
+            }`}
+          >
+            Support &amp; Help Center
           </h1>
-          <p className="max-w-xl mx-auto mt-3 text-xs sm:text-sm md:text-base font-medium text-slate-600">
+          <p
+            className={`max-w-xl mx-auto mt-3 text-xs sm:text-sm md:text-base font-medium ${
+              isDarkMode ? 'text-slate-400' : 'text-slate-600'
+            }`}
+          >
             Assistance for both everyday shoppers finding electronics and shop owners operating their store inventory.
           </p>
         </div>
@@ -59,31 +79,67 @@ const HelpPage = () => {
           
           {/* Quick Action Cards */}
           <div className="grid grid-cols-1 gap-4 sm:gap-6 mb-8 sm:mb-12 md:grid-cols-2">
-            <div className="flex flex-col justify-between p-5 sm:p-6 bg-white border shadow-sm rounded-xl border-slate-200">
+            <div
+              className={`flex flex-col justify-between p-5 sm:p-6 border rounded-xl transition ${
+                isDarkMode
+                  ? 'bg-[#1f2937] border-slate-800'
+                  : 'bg-white border-slate-200 shadow-sm'
+              }`}
+            >
               <div>
-                <h3 className="text-base sm:text-lg font-bold text-[#1A3D6D] mb-2">Customer & Merchant Support</h3>
-                <p className="mb-4 text-xs sm:text-sm text-slate-600">
+                <h3
+                  className={`text-base sm:text-lg font-bold mb-2 ${
+                    isDarkMode ? 'text-white' : 'text-[#1A3D6D]'
+                  }`}
+                >
+                  Customer &amp; Merchant Support
+                </h3>
+                <p
+                  className={`mb-4 text-xs sm:text-sm ${
+                    isDarkMode ? 'text-slate-400' : 'text-slate-600'
+                  }`}
+                >
                   Need help finding an item, tracking an order, checking repair tickets, or troubleshooting your POS account? Contact our team.
                 </p>
               </div>
               <Link 
                 to="/contact" 
-                className="inline-block text-center w-full bg-[#1A3D6D] hover:bg-[#1A3D6D]/90 text-white font-semibold py-2.5 px-4 rounded-lg transition-colors text-xs sm:text-sm"
+                className="inline-block text-center w-full bg-[#1A3D6D] hover:bg-[#1A3D6D]/90 text-white font-semibold py-2.5 px-4 rounded-lg transition-colors text-xs sm:text-sm shadow-sm"
               >
                 Contact Support Desk
               </Link>
             </div>
 
-            <div className="flex flex-col justify-between p-5 sm:p-6 bg-white border shadow-sm rounded-xl border-slate-200">
+            <div
+              className={`flex flex-col justify-between p-5 sm:p-6 border rounded-xl transition ${
+                isDarkMode
+                  ? 'bg-[#1f2937] border-slate-800'
+                  : 'bg-white border-slate-200 shadow-sm'
+              }`}
+            >
               <div>
-                <h3 className="text-base sm:text-lg font-bold text-[#1A3D6D] mb-2">Explore Platform Guides</h3>
-                <p className="mb-4 text-xs sm:text-sm text-slate-600">
+                <h3
+                  className={`text-base sm:text-lg font-bold mb-2 ${
+                    isDarkMode ? 'text-white' : 'text-[#1A3D6D]'
+                  }`}
+                >
+                  Explore Platform Guides
+                </h3>
+                <p
+                  className={`mb-4 text-xs sm:text-sm ${
+                    isDarkMode ? 'text-slate-400' : 'text-slate-600'
+                  }`}
+                >
                   Learn how customers order products, how store owners sync stock across branches, and how warranty tracking works.
                 </p>
               </div>
               <Link 
                 to="/explore" 
-                className="inline-block text-center w-full border border-[#1A3D6D] text-[#1A3D6D] hover:bg-slate-50 font-semibold py-2.5 px-4 rounded-lg transition-colors text-xs sm:text-sm"
+                className={`inline-block text-center w-full border font-semibold py-2.5 px-4 rounded-lg transition-colors text-xs sm:text-sm ${
+                  isDarkMode
+                    ? 'border-indigo-400 text-indigo-400 hover:bg-slate-800'
+                    : 'border-[#1A3D6D] text-[#1A3D6D] hover:bg-slate-50'
+                }`}
               >
                 Browse System Guides
               </Link>
@@ -91,23 +147,42 @@ const HelpPage = () => {
           </div>
 
           {/* FAQ Accordion Section */}
-          <div className="p-5 sm:p-8 bg-white border shadow-sm rounded-xl border-slate-200">
-            <h2 className="text-xl sm:text-2xl font-bold text-[#1A3D6D] mb-6 border-b pb-4">
+          <div
+            className={`p-5 sm:p-8 border rounded-xl transition ${
+              isDarkMode
+                ? 'bg-[#1f2937] border-slate-800'
+                : 'bg-white border-slate-200 shadow-sm'
+            }`}
+          >
+            <h2
+              className={`text-xl sm:text-2xl font-bold mb-6 border-b pb-4 ${
+                isDarkMode ? 'text-white border-slate-800' : 'text-[#1A3D6D] border-slate-100'
+              }`}
+            >
               Frequently Asked Questions
             </h2>
             
             <div className="space-y-4">
               {faqs.map((faq, index) => (
-                <div key={index} className="pb-4 border-b border-slate-100 last:border-none">
+                <div
+                  key={index}
+                  className={`pb-4 border-b last:border-none ${
+                    isDarkMode ? 'border-slate-800' : 'border-slate-100'
+                  }`}
+                >
                   <button
                     onClick={() => toggleFaq(index)}
-                    className="w-full flex items-center justify-between text-left font-semibold text-xs sm:text-sm md:text-base text-slate-800 hover:text-indigo-600 transition-colors focus:outline-none py-2"
+                    className={`w-full flex items-center justify-between text-left font-semibold text-xs sm:text-sm md:text-base transition-colors focus:outline-none py-2 ${
+                      isDarkMode
+                        ? 'text-slate-200 hover:text-indigo-400'
+                        : 'text-slate-800 hover:text-indigo-600'
+                    }`}
                   >
                     <span>{faq.question}</span>
                     <svg
-                      className={`w-5 h-5 text-slate-500 transform transition-transform duration-200 flex-shrink-0 ml-2 ${
-                        openFaq === index ? "rotate-180" : ""
-                      }`}
+                      className={`w-5 h-5 transform transition-transform duration-200 flex-shrink-0 ml-2 ${
+                        isDarkMode ? 'text-slate-400' : 'text-slate-500'
+                      } ${openFaq === index ? "rotate-180" : ""}`}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -118,7 +193,9 @@ const HelpPage = () => {
                   
                   {/* Accordion Content */}
                   <div 
-                    className={`mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed overflow-hidden transition-all duration-300 ${
+                    className={`mt-2 text-xs sm:text-sm leading-relaxed overflow-hidden transition-all duration-300 ${
+                      isDarkMode ? 'text-slate-400' : 'text-slate-600'
+                    } ${
                       openFaq === index ? "max-h-48 opacity-100" : "max-h-0 opacity-0"
                     }`}
                   >
@@ -131,7 +208,8 @@ const HelpPage = () => {
 
         </div>
       </main>
-              <ScrollToTop />
+
+      <ScrollToTop />
       {/* Footer */}
       <Footer />
     </div>
