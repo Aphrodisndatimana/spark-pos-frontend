@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
-export default function Navbar({ isDarkMode, setIsDarkMode }) {
+export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
+  const [isProductsOpen, setIsProductsOpen] = useState(false);
+  const [isResourcesOpen, setIsResourcesOpen] = useState(false);
   const [selectedLang, setSelectedLang] = useState('English');
   const [activeMobileMenu, setActiveMobileMenu] = useState(null);
   const langMenuRef = useRef(null);
@@ -11,7 +13,6 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
   const languages = [
     { code: 'en', name: 'English' },
     { code: 'fr', name: 'French' },
-    { code: 'sw', name: 'Swahili' },
     { code: 'rw', name: 'Kinyarwanda' },
   ];
 
@@ -35,47 +36,48 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
   }, []);
 
   return (
-    <nav
-      className={`fixed top-0 left-0 w-full z-50 border-b font-sans shadow-sm transition-colors duration-300 ${
-        isDarkMode
-          ? 'bg-[#1f2937] border-neutral-800 text-white'
-          : 'bg-white border-gray-200 text-black'
-      }`}
-    >
-      <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
+    <nav className="fixed top-0 left-0 z-50 w-full font-sans text-black transition-colors duration-300 bg-white border-b border-gray-200 shadow-sm">
+      <div className="w-full px-8 sm:px-12 lg:px-16">
         <div className="flex items-center justify-between h-16 sm:h-20">
           
           {/* Logo Brand Layout */}
           <div className="flex items-center flex-shrink-0 gap-2 sm:gap-3">
             <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#2563eb] flex items-center justify-center text-white overflow-hidden shadow-sm">
               <img
-                src="images/logo.jpg"
+                src="images/logo2.jpg"
                 className="object-cover w-full h-full"
                 alt="logo"
               />
             </div>
             <Link
               to="/"
-              className={`text-xl sm:text-2xl font-black tracking-tight ${
-                isDarkMode ? 'text-white' : 'text-black'
-              }`}
+              className="font-sans text-xl font-black tracking-tight text-black sm:text-2xl"
             >
               SparkPos
             </Link>
           </div>
 
           {/* Center Links Layout (Desktop Full Screen-Width Dropdowns) */}
-          <div className="items-center hidden gap-6 xl:gap-8 lg:flex">
+          <div className="items-center hidden gap-6 font-sans xl:gap-8 lg:flex">
             
-            {/* 1. PRODUCTS FULL-WIDTH MEGA DROPDOWN */}
             <div className="group">
+              <Link
+                to="/"
+                className="text-base xl:text-[17px] font-semibold flex items-center gap-1.5 transition-colors py-6 border-b-2 border-transparent group-hover:border-[#2563eb] text-gray-700 group-hover:text-[#2563eb]"
+              >
+                <span>Home</span>
+              </Link>
+            </div>
+
+            {/* 1. PRODUCTS FULL-WIDTH MEGA DROPDOWN */}
+            <div
+              onMouseEnter={() => setIsProductsOpen(true)}
+              onMouseLeave={() => setIsProductsOpen(false)}
+              className="relative group"
+            >
               <button
                 type="button"
-                className={`text-base xl:text-lg font-bold flex items-center gap-1.5 transition-colors py-6 border-b-2 border-transparent group-hover:border-[#2563eb] ${
-                  isDarkMode
-                    ? 'text-gray-300 group-hover:text-[#2563eb]'
-                    : 'text-gray-700 group-hover:text-[#2563eb]'
-                }`}
+                className="text-base xl:text-[17px] font-semibold flex items-center gap-1.5 transition-colors py-6 border-b-2 border-transparent group-hover:border-[#2563eb] text-gray-700 group-hover:text-[#2563eb]"
               >
                 <span>Products</span>
                 <svg
@@ -88,265 +90,235 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
                 </svg>
               </button>
 
-              {/* Full Screen-Width Dropdown Bar */}
-              <div
-                className={`fixed left-0 top-16 sm:top-20 w-screen max-h-[75vh] overflow-y-auto hidden group-hover:block border-b shadow-2xl z-40 transition-all ${
-                  isDarkMode
-                    ? 'bg-[#1f2937] border-neutral-800 text-white'
-                    : 'bg-white border-gray-200 text-gray-800'
-                }`}
-              >
-                <div className="px-6 py-8 mx-auto max-w-7xl">
-                  <div className="grid grid-cols-4 gap-8">
-                    
-                    {/* Column 1: Sales & Checkout */}
-                    <div className="space-y-4">
-                      <span className="text-xs font-black tracking-wider text-blue-600 uppercase dark:text-blue-400">
-                        Sales & Checkout
-                      </span>
-                      
-                      <Link to="/pos" className="flex items-start gap-3.5 p-3 rounded-2xl hover:bg-gray-100/80 dark:hover:bg-neutral-800 transition-all group/item">
-                        <div className="p-2.5 rounded-xl bg-blue-50 border border-blue-100 text-blue-700 dark:bg-blue-950/60 dark:border-blue-800/50 dark:text-blue-400 shrink-0 shadow-sm transition-transform duration-200 group-hover/item:scale-105 group-hover/item:bg-[#2563eb] group-hover/item:text-white group-hover/item:border-[#2563eb]">
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                          </svg>
-                        </div>
-                        <div>
-                          <p className="text-sm font-bold group-hover/item:text-[#2563eb]">Point of Sale</p>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Barcode scanning, fast discounts & offline mode</p>
-                        </div>
-                      </Link>
+              {isProductsOpen && (
+                <div className="fixed left-0 top-[72px] w-screen bg-white border-t border-gray-200 shadow-xl z-40 transition-all duration-200 font-sans">
+                  <div className="max-w-7xl mx-auto px-8 py-8 max-h-[calc(100vh-72px)] overflow-y-auto">
+                    <div className="grid grid-cols-4 gap-8">
 
-                      <Link to="/payments-momo" className="flex items-start gap-3.5 p-3 rounded-2xl hover:bg-gray-100/80 dark:hover:bg-neutral-800 transition-all group/item">
-                        <div className="p-2.5 rounded-xl bg-blue-50 border border-blue-100 text-blue-700 dark:bg-blue-950/60 dark:border-blue-800/50 dark:text-blue-400 shrink-0 shadow-sm transition-transform duration-200 group-hover/item:scale-105 group-hover/item:bg-[#2563eb] group-hover/item:text-white group-hover/item:border-[#2563eb]">
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                          </svg>
-                        </div>
-                        <div>
-                          <p className="text-sm font-bold group-hover/item:text-[#2563eb]">Payments & MoMo</p>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">MTN MoMo, Airtel, Cards & Split checkout</p>
-                        </div>
-                      </Link>
-
-                      <Link to="/digital-receipts" className="flex items-start gap-3.5 p-3 rounded-2xl hover:bg-gray-100/80 dark:hover:bg-neutral-800 transition-all group/item">
-                        <div className="p-2.5 rounded-xl bg-blue-50 border border-blue-100 text-blue-700 dark:bg-blue-950/60 dark:border-blue-800/50 dark:text-blue-400 shrink-0 shadow-sm transition-transform duration-200 group-hover/item:scale-105 group-hover/item:bg-[#2563eb] group-hover/item:text-white group-hover/item:border-[#2563eb]">
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                          </svg>
-                        </div>
-                        <div>
-                          <p className="text-sm font-bold group-hover/item:text-[#2563eb]">Digital Receipts</p>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Instant SMS, Email, and print formatting</p>
-                        </div>
-                      </Link>
-                    </div>
-
-                    {/* Column 2: Stock & Inventory */}
-                    <div className="space-y-4">
-                      <span className="text-xs font-black tracking-wider text-blue-600 uppercase dark:text-blue-400">
-                        Stock & Inventory
-                      </span>
-
-                      <Link to="/imei-tracking" className="flex items-start gap-3.5 p-3 rounded-2xl hover:bg-gray-100/80 dark:hover:bg-neutral-800 transition-all group/item">
-                        <div className="p-2.5 rounded-xl bg-blue-50 border border-blue-100 text-blue-700 dark:bg-blue-950/60 dark:border-blue-800/50 dark:text-blue-400 shrink-0 shadow-sm transition-transform duration-200 group-hover/item:scale-105 group-hover/item:bg-[#2563eb] group-hover/item:text-white group-hover/item:border-[#2563eb]">
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
-                          </svg>
-                        </div>
-                        <div>
-                          <p className="text-sm font-bold group-hover/item:text-[#2563eb]">IMEI & Serial Tracking</p>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Track high-value devices from intake to sale</p>
-                        </div>
-                      </Link>
-
-                      <Link to="/inter-shop-transfers" className="flex items-start gap-3.5 p-3 rounded-2xl hover:bg-gray-100/80 dark:hover:bg-neutral-800 transition-all group/item">
-                        <div className="p-2.5 rounded-xl bg-blue-50 border border-blue-100 text-blue-700 dark:bg-blue-950/60 dark:border-blue-800/50 dark:text-blue-400 shrink-0 shadow-sm transition-transform duration-200 group-hover/item:scale-105 group-hover/item:bg-[#2563eb] group-hover/item:text-white group-hover/item:border-[#2563eb]">
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-                          </svg>
-                        </div>
-                        <div>
-                          <p className="text-sm font-bold group-hover/item:text-[#2563eb]">Inter-Shop Transfers</p>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Move inventory between branches with logs</p>
-                        </div>
-                      </Link>
-                    </div>
-
-                    {/* Column 3: Repairs & Support */}
-                    <div className="space-y-4">
-                      <span className="text-xs font-black tracking-wider text-blue-600 uppercase dark:text-blue-400">
-                        Repairs & Support
-                      </span>
-
-                      <Link to="/repair-tickets" className="flex items-start gap-3.5 p-3 rounded-2xl hover:bg-gray-100/80 dark:hover:bg-neutral-800 transition-all group/item">
-                        <div className="p-2.5 rounded-xl bg-blue-50 border border-blue-100 text-blue-700 dark:bg-blue-950/60 dark:border-blue-800/50 dark:text-blue-400 shrink-0 shadow-sm transition-transform duration-200 group-hover/item:scale-105 group-hover/item:bg-[#2563eb] group-hover/item:text-white group-hover/item:border-[#2563eb]">
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                          </svg>
-                        </div>
-                        <div>
-                          <p className="text-sm font-bold group-hover/item:text-[#2563eb]">Repair Tickets</p>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Assign technicians & send pickup SMS alerts</p>
-                        </div>
-                      </Link>
-
-                      <Link to="/warranty-manager" className="flex items-start gap-3.5 p-3 rounded-2xl hover:bg-gray-100/80 dark:hover:bg-neutral-800 transition-all group/item">
-                        <div className="p-2.5 rounded-xl bg-blue-50 border border-blue-100 text-blue-700 dark:bg-blue-950/60 dark:border-blue-800/50 dark:text-blue-400 shrink-0 shadow-sm transition-transform duration-200 group-hover/item:scale-105 group-hover/item:bg-[#2563eb] group-hover/item:text-white group-hover/item:border-[#2563eb]">
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                          </svg>
-                        </div>
-                        <div>
-                          <p className="text-sm font-bold group-hover/item:text-[#2563eb]">Warranty Manager</p>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Device claim records & expiry warnings</p>
-                        </div>
-                      </Link>
-                    </div>
-
-                    {/* Column 4: High-Contrast Side Card for Electronic Product Search */}
-                    <div className={`p-6 rounded-3xl flex flex-col justify-between border shadow-sm ${
-                      isDarkMode 
-                        ? 'bg-neutral-800/80 border-neutral-700' 
-                        : 'bg-slate-50 border-slate-200/80'
-                    }`}>
+                      {/* Column 1: Mobile Devices & Wearables */}
                       <div>
-                        <div className="w-10 h-10 rounded-2xl bg-[#2563eb] text-white flex items-center justify-center mb-3.5 shadow-md">
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                          </svg>
+                        <h3 className="mb-4 text-xs font-bold tracking-wider text-blue-600 uppercase font-jakarta">
+                          Mobile Devices & Wearables
+                        </h3>
+                        <div className="space-y-3">
+                          <Link to="#" className="group flex items-start gap-3.5 p-2 rounded-xl hover:bg-gray-50 transition-colors">
+                            <div className="p-2.5 rounded-lg bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors flex-shrink-0">
+                              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                              </svg>
+                            </div>
+                            <div>
+                              <div className="text-sm font-semibold text-gray-900 transition-colors group-hover:text-black">
+                                Smartphones
+                              </div>
+                              <p className="text-xs text-gray-500 mt-0.5 font-jakarta">
+                                Top flagship & budget models
+                              </p>
+                            </div>
+                          </Link>
+
+                          <Link to="#" className="group flex items-start gap-3.5 p-2 rounded-xl hover:bg-gray-50 transition-colors">
+                            <div className="p-2.5 rounded-lg bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors flex-shrink-0">
+                              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                              </svg>
+                            </div>
+                            <div>
+                              <div className="text-sm font-semibold text-gray-900 transition-colors group-hover:text-black">
+                                Tablets
+                              </div>
+                              <p className="text-xs text-gray-500 mt-0.5 font-jakarta">
+                                Portable tech for work & play
+                              </p>
+                            </div>
+                          </Link>
+
+                          <Link to="#" className="group flex items-start gap-3.5 p-2 rounded-xl hover:bg-gray-50 transition-colors">
+                            <div className="p-2.5 rounded-lg bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors flex-shrink-0">
+                              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                              </svg>
+                            </div>
+                            <div>
+                              <div className="text-sm font-semibold text-gray-900 transition-colors group-hover:text-black">
+                                Smartwatches
+                              </div>
+                              <p className="text-xs text-gray-500 mt-0.5 font-jakarta">
+                                Track fitness & stay connected
+                              </p>
+                            </div>
+                          </Link>
                         </div>
-                        <h5 className="text-base font-extrabold text-gray-900 dark:text-white">Electronic Product Lookup</h5>
-                        <p className="mt-2 text-xs leading-relaxed text-gray-600 dark:text-gray-400">
-                          Quickly search electronic stock, check IMEI status, warranties, or device details across stores.
-                        </p>
                       </div>
 
-                      <Link 
-                        to="/product-lookup" 
-                        className="mt-6 inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-[#2563eb] hover:bg-blue-700 text-white text-xs font-extrabold rounded-xl transition-all shadow-md active:scale-95"
-                      >
-                        <span>Search Electronic Stock</span>
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                      </Link>
-                    </div>
+                      {/* Column 2: Computers & Office Tech */}
+                      <div>
+                        <h3 className="mb-4 text-xs font-bold tracking-wider text-blue-600 uppercase font-jakarta">
+                          Computers & Office Tech
+                        </h3>
+                        <div className="space-y-3">
+                          <Link to="#" className="group flex items-start gap-3.5 p-2 rounded-xl hover:bg-gray-50 transition-colors">
+                            <div className="p-2.5 rounded-lg bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors flex-shrink-0">
+                              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                              </svg>
+                            </div>
+                            <div>
+                              <div className="text-sm font-semibold text-gray-900 transition-colors group-hover:text-black">
+                                Laptops & Desktops
+                              </div>
+                              <p className="text-xs text-gray-500 mt-0.5 font-jakarta">
+                                High performance computers
+                              </p>
+                            </div>
+                          </Link>
 
+                          <Link to="#" className="group flex items-start gap-3.5 p-2 rounded-xl hover:bg-gray-50 transition-colors">
+                            <div className="p-2.5 rounded-lg bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors flex-shrink-0">
+                              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+                              </svg>
+                            </div>
+                            <div>
+                              <div className="text-sm font-semibold text-gray-900 transition-colors group-hover:text-black">
+                                Peripherals & Accessories
+                              </div>
+                              <p className="text-xs text-gray-500 mt-0.5 font-jakarta">
+                                Essential gear for workflow
+                              </p>
+                            </div>
+                          </Link>
+
+                          <Link to="#" className="group flex items-start gap-3.5 p-2 rounded-xl hover:bg-gray-50 transition-colors">
+                            <div className="p-2.5 rounded-lg bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors flex-shrink-0">
+                              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                              </svg>
+                            </div>
+                            <div>
+                              <div className="text-sm font-semibold text-gray-900 transition-colors group-hover:text-black">
+                                Printers & Scanners
+                              </div>
+                              <p className="text-xs text-gray-500 mt-0.5 font-jakarta">
+                                Reliable document printing
+                              </p>
+                            </div>
+                          </Link>
+                        </div>
+                      </div>
+
+                      {/* Column 3: Power, Cables & Networking */}
+                      <div>
+                        <h3 className="mb-4 text-xs font-bold tracking-wider text-blue-600 uppercase font-jakarta">
+                          Power, Cables & Networking
+                        </h3>
+                        <div className="space-y-3">
+                          <Link to="#" className="group flex items-start gap-3.5 p-2 rounded-xl hover:bg-gray-50 transition-colors">
+                            <div className="p-2.5 rounded-lg bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors flex-shrink-0">
+                              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                              </svg>
+                            </div>
+                            <div>
+                              <div className="text-sm font-semibold text-gray-900 transition-colors group-hover:text-black">
+                                Power Supplies
+                              </div>
+                              <p className="text-xs text-gray-500 mt-0.5 font-jakarta">
+                                Power banks & surge adapters
+                              </p>
+                            </div>
+                          </Link>
+
+                          <Link to="#" className="group flex items-start gap-3.5 p-2 rounded-xl hover:bg-gray-50 transition-colors">
+                            <div className="p-2.5 rounded-lg bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors flex-shrink-0">
+                              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
+                              </svg>
+                            </div>
+                            <div>
+                              <div className="text-sm font-semibold text-gray-900 transition-colors group-hover:text-black">
+                                Networking Equipment
+                              </div>
+                              <p className="text-xs text-gray-500 mt-0.5 font-jakarta">
+                                Fast routers, MiFi & switches
+                              </p>
+                            </div>
+                          </Link>
+
+                          <Link to="#" className="group flex items-start gap-3.5 p-2 rounded-xl hover:bg-gray-50 transition-colors">
+                            <div className="p-2.5 rounded-lg bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors flex-shrink-0">
+                              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                              </svg>
+                            </div>
+                            <div>
+                              <div className="text-sm font-semibold text-gray-900 transition-colors group-hover:text-black">
+                                Cables & Converters
+                              </div>
+                              <p className="text-xs text-gray-500 mt-0.5 font-jakarta">
+                                Heavy-duty cords & adapters
+                              </p>
+                            </div>
+                          </Link>
+                        </div>
+                      </div>
+
+                      {/* Column 4: Security & Specialty Electronics */}
+                      <div>
+                        <h3 className="mb-4 text-xs font-bold tracking-wider text-blue-600 uppercase font-jakarta">
+                          Security & Specialty Electronics
+                        </h3>
+                        <div className="space-y-3">
+                          <Link to="#" className="group flex items-start gap-3.5 p-2 rounded-xl hover:bg-gray-50 transition-colors">
+                            <div className="p-2.5 rounded-lg bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors flex-shrink-0">
+                              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                              </svg>
+                            </div>
+                            <div>
+                              <div className="text-sm font-semibold text-gray-900 transition-colors group-hover:text-black">
+                                CCTV & Security
+                              </div>
+                              <p className="text-xs text-gray-500 mt-0.5 font-jakarta">
+                                Smart surveillance systems
+                              </p>
+                            </div>
+                          </Link>
+
+                          <Link to="#" className="group flex items-start gap-3.5 p-2 rounded-xl hover:bg-gray-50 transition-colors">
+                            <div className="p-2.5 rounded-lg bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors flex-shrink-0">
+                              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                              </svg>
+                            </div>
+                            <div>
+                              <div className="text-sm font-semibold text-gray-900 transition-colors group-hover:text-black">
+                                Cameras & Audio Gear
+                              </div>
+                              <p className="text-xs text-gray-500 mt-0.5 font-jakarta">
+                                Professional capture & sound
+                              </p>
+                            </div>
+                          </Link>
+                        </div>
+                      </div>
+
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
 
-            {/* 2. SOLUTIONS FULL-WIDTH MEGA DROPDOWN */}
-            <div className="group">
+            {/* 2. RESOURCES FULL-WIDTH MEGA DROPDOWN */}
+            <div
+              onMouseEnter={() => setIsResourcesOpen(true)}
+              onMouseLeave={() => setIsResourcesOpen(false)}
+              className="relative group"
+            >
               <button
                 type="button"
-                className={`text-base xl:text-lg font-bold flex items-center gap-1.5 transition-colors py-6 border-b-2 border-transparent group-hover:border-[#2563eb] ${
-                  isDarkMode
-                    ? 'text-gray-300 group-hover:text-[#2563eb]'
-                    : 'text-gray-700 group-hover:text-[#2563eb]'
-                }`}
-              >
-                <span>Solutions</span>
-                <svg
-                  className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180 opacity-70"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-
-              <div
-                className={`fixed left-0 top-16 sm:top-20 w-screen max-h-[75vh] overflow-y-auto hidden group-hover:block border-b shadow-2xl z-40 transition-all ${
-                  isDarkMode
-                    ? 'bg-[#1f2937] border-neutral-800 text-white'
-                    : 'bg-white border-gray-200 text-gray-800'
-                }`}
-              >
-                <div className="px-6 py-8 mx-auto max-w-7xl">
-                  <div className="pb-4 mb-6 border-b border-gray-200 dark:border-neutral-800">
-                    <h4 className="text-xs font-black tracking-wider text-blue-600 uppercase dark:text-blue-400">Tailored Retail Solutions</h4>
-                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Customized POS workflows built for your business type.</p>
-                  </div>
-
-                  <div className="grid grid-cols-3 gap-6">
-                    <Link to="/electronics-repair" className="p-4 rounded-2xl hover:bg-gray-100/80 dark:hover:bg-neutral-800 border border-transparent hover:border-gray-200 dark:hover:border-neutral-700 transition-all group/item flex items-start gap-3.5">
-                      <div className="p-2.5 rounded-xl bg-blue-50 border border-blue-100 text-blue-700 dark:bg-blue-950/60 dark:border-blue-800/50 dark:text-blue-400 shrink-0 shadow-sm transition-transform duration-200 group-hover/item:scale-105 group-hover/item:bg-[#2563eb] group-hover/item:text-white group-hover/item:border-[#2563eb]">
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <p className="text-base font-bold group-hover/item:text-[#2563eb]">Electronics & Repair Shops</p>
-                        <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">Track IMEI codes, technician repair tickets & instant SMS notifications.</p>
-                      </div>
-                    </Link>
-
-                    <Link to="/multi-branch-chain" className="p-4 rounded-2xl hover:bg-gray-100/80 dark:hover:bg-neutral-800 border border-transparent hover:border-gray-200 dark:hover:border-neutral-700 transition-all group/item flex items-start gap-3.5">
-                      <div className="p-2.5 rounded-xl bg-blue-50 border border-blue-100 text-blue-700 dark:bg-blue-950/60 dark:border-blue-800/50 dark:text-blue-400 shrink-0 shadow-sm transition-transform duration-200 group-hover/item:scale-105 group-hover/item:bg-[#2563eb] group-hover/item:text-white group-hover/item:border-[#2563eb]">
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                        </svg>
-                      </div>
-                      <div>
-                        <p className="text-base font-bold group-hover/item:text-[#2563eb]">Multi-Branch Chains</p>
-                        <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">Manage stock transfers, approve orders & monitor central sales.</p>
-                      </div>
-                    </Link>
-
-                    <Link to="/whole-sale" className="p-4 rounded-2xl hover:bg-gray-100/80 dark:hover:bg-neutral-800 border border-transparent hover:border-gray-200 dark:hover:border-neutral-700 transition-all group/item flex items-start gap-3.5">
-                      <div className="p-2.5 rounded-xl bg-blue-50 border border-blue-100 text-blue-700 dark:bg-blue-950/60 dark:border-blue-800/50 dark:text-blue-400 shrink-0 shadow-sm transition-transform duration-200 group-hover/item:scale-105 group-hover/item:bg-[#2563eb] group-hover/item:text-white group-hover/item:border-[#2563eb]">
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-2m-4-1v8m0 0l3-3m-3 3L9 8m-5 5h2.586a1 1 0 01.707.293l2.414 2.414a1 1 0 00.707.293h3.172a1 1 0 00.707-.293l2.414-2.414a1 1 0 01.707-.293H20" />
-                        </svg>
-                      </div>
-                      <div>
-                        <p className="text-base font-bold group-hover/item:text-[#2563eb]">Wholesale Distributors</p>
-                        <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">Bulk pricing tiers, supplier management & purchase tracking.</p>
-                      </div>
-                    </Link>
-
-                    <Link to="/computer-retailer" className="p-4 rounded-2xl hover:bg-gray-100/80 dark:hover:bg-neutral-800 border border-transparent hover:border-gray-200 dark:hover:border-neutral-700 transition-all group/item flex items-start gap-3.5">
-                      <div className="p-2.5 rounded-xl bg-blue-50 border border-blue-100 text-blue-700 dark:bg-blue-950/60 dark:border-blue-800/50 dark:text-blue-400 shrink-0 shadow-sm transition-transform duration-200 group-hover/item:scale-105 group-hover/item:bg-[#2563eb] group-hover/item:text-white group-hover/item:border-[#2563eb]">
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <p className="text-base font-bold group-hover/item:text-[#2563eb]">Computer Retailers</p>
-                        <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">Custom build logs, part tracking, warranties & trade-ins.</p>
-                      </div>
-                    </Link>
-
-                    <Link to="/mobile-money-agents" className="p-4 rounded-2xl hover:bg-gray-100/80 dark:hover:bg-neutral-800 border border-transparent hover:border-gray-200 dark:hover:border-neutral-700 transition-all group/item flex items-start gap-3.5">
-                      <div className="p-2.5 rounded-xl bg-blue-50 border border-blue-100 text-blue-700 dark:bg-blue-950/60 dark:border-blue-800/50 dark:text-blue-400 shrink-0 shadow-sm transition-transform duration-200 group-hover/item:scale-105 group-hover/item:bg-[#2563eb] group-hover/item:text-white group-hover/item:border-[#2563eb]">
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <p className="text-base font-bold group-hover/item:text-[#2563eb]">Mobile Money Agents</p>
-                        <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">MoMo float management, agent ledger & commission reports.</p>
-                      </div>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* 3. RESOURCES FULL-WIDTH MEGA DROPDOWN */}
-            <div className="group">
-              <button
-                type="button"
-                className={`text-base xl:text-lg font-bold flex items-center gap-1.5 transition-colors py-6 border-b-2 border-transparent group-hover:border-[#2563eb] ${
-                  isDarkMode
-                    ? 'text-gray-300 group-hover:text-[#2563eb]'
-                    : 'text-gray-700 group-hover:text-[#2563eb]'
-                }`}
+                className="text-base xl:text-[17px] font-semibold flex items-center gap-1.5 transition-colors py-6 border-b-2 border-transparent group-hover:border-[#2563eb] text-gray-700 group-hover:text-[#2563eb]"
               >
                 <span>Resources</span>
                 <svg
@@ -359,54 +331,152 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
                 </svg>
               </button>
 
-              <div
-                className={`fixed left-0 top-16 sm:top-20 w-screen max-h-[75vh] overflow-y-auto hidden group-hover:block border-b shadow-2xl z-40 transition-all ${
-                  isDarkMode
-                    ? 'bg-[#1f2937] border-neutral-800 text-white'
-                    : 'bg-white border-gray-200 text-gray-800'
-                }`}
-              >
-                <div className="grid grid-cols-3 gap-8 px-6 py-8 mx-auto max-w-7xl">
-                  <div className="space-y-3">
-                    <span className="text-xs font-black tracking-wider text-blue-600 uppercase dark:text-blue-400">Documentation</span>
-                    <Link to="/user-manual-guide" className="block p-3 text-sm font-semibold rounded-xl hover:bg-gray-100 dark:hover:bg-neutral-800">User Manual & Video Guides</Link>
-                    <Link to="/hardware-setup-guide" className="block p-3 text-sm font-semibold rounded-xl hover:bg-gray-100 dark:hover:bg-neutral-800">Hardware Setup Guides</Link>
-                  </div>
-                  <div className="space-y-3">
-                    <span className="text-xs font-black tracking-wider text-blue-600 uppercase dark:text-blue-400">Learning</span>
-                    <Link to="/retail-growth-blog" className="block p-3 text-sm font-semibold rounded-xl hover:bg-gray-100 dark:hover:bg-neutral-800">Retail Growth Blog</Link>
-                    <Link to="/customer-case-studies" className="block p-3 text-sm font-semibold rounded-xl hover:bg-gray-100 dark:hover:bg-neutral-800">Customer Case Studies</Link>
-                  </div>
-                  <div className="space-y-3">
-                    <span className="text-xs font-black tracking-wider text-blue-600 uppercase dark:text-blue-400">Support</span>
-                    <Link to="#" className="block p-3 text-sm font-semibold rounded-xl hover:bg-gray-100 dark:hover:bg-neutral-800">REST API Documentation</Link>
-                    <Link to="/live-system-status" className="block p-3 text-sm font-semibold rounded-xl hover:bg-gray-100 dark:hover:bg-neutral-800">Live System Status</Link>
+              {isResourcesOpen && (
+                <div className="fixed left-0 top-[72px] w-screen bg-white border-t border-gray-200 shadow-xl z-40 transition-all duration-200 font-sans">
+                  <div className="max-w-7xl mx-auto px-8 py-8 max-h-[calc(100vh-72px)] overflow-y-auto">
+                    <div className="grid grid-cols-3 gap-12">
+
+                      {/* Column 1: Stock & Inventory */}
+                      <div>
+                        <h3 className="mb-4 text-xs font-bold tracking-wider text-blue-600 uppercase font-jakarta">
+                          Stock & Inventory
+                        </h3>
+                        <div className="space-y-4">
+                          <Link to="#" className="group flex items-start gap-3.5 p-2.5 -mx-2.5 rounded-xl hover:bg-gray-50 transition-colors">
+                            <div className="p-2.5 rounded-lg bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors flex-shrink-0">
+                              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                              </svg>
+                            </div>
+                            <div>
+                              <div className="text-sm font-semibold text-gray-900 transition-colors group-hover:text-black">
+                                IMEI & Serial Tracking
+                              </div>
+                              <p className="text-xs text-gray-500 mt-0.5 font-jakarta">
+                                Track high-value devices from intake to sale
+                              </p>
+                            </div>
+                          </Link>
+
+                          <Link to="#" className="group flex items-start gap-3.5 p-2.5 -mx-2.5 rounded-xl hover:bg-gray-50 transition-colors">
+                            <div className="p-2.5 rounded-lg bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors flex-shrink-0">
+                              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                              </svg>
+                            </div>
+                            <div>
+                              <div className="text-sm font-semibold text-gray-900 transition-colors group-hover:text-black">
+                                Inter-shop Transfer
+                              </div>
+                              <p className="text-xs text-gray-500 mt-0.5 font-jakarta">
+                                Move inventory between branches with logs
+                              </p>
+                            </div>
+                          </Link>
+                        </div>
+                      </div>
+
+                      {/* Column 2: Repairs & Support */}
+                      <div>
+                        <h3 className="mb-4 text-xs font-bold tracking-wider text-blue-600 uppercase font-jakarta">
+                          Repairs & Support
+                        </h3>
+                        <div className="space-y-4">
+                          <Link to="#" className="group flex items-start gap-3.5 p-2.5 -mx-2.5 rounded-xl hover:bg-gray-50 transition-colors">
+                            <div className="p-2.5 rounded-lg bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors flex-shrink-0">
+                              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M11 5a2 2 0 10-4 0v1H5a2 2 0 00-2 2v10a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-2V5a2 2 0 10-4 0v1h-2V5zM9 5h6v1H9V5z" />
+                              </svg>
+                            </div>
+                            <div>
+                              <div className="text-sm font-semibold text-gray-900 transition-colors group-hover:text-black">
+                                Repairs
+                              </div>
+                              <p className="text-xs text-gray-500 mt-0.5 font-jakarta">
+                                Assign technicians & Pickup SMS alerts
+                              </p>
+                            </div>
+                          </Link>
+
+                          <Link to="#" className="group flex items-start gap-3.5 p-2.5 -mx-2.5 rounded-xl hover:bg-gray-50 transition-colors">
+                            <div className="p-2.5 rounded-lg bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors flex-shrink-0">
+                              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                              </svg>
+                            </div>
+                            <div>
+                              <div className="text-sm font-semibold text-gray-900 transition-colors group-hover:text-black">
+                                Warranty Manager
+                              </div>
+                              <p className="text-xs text-gray-500 mt-0.5 font-jakarta">
+                                Device claim records & expiry Warning
+                              </p>
+                            </div>
+                          </Link>
+                        </div>
+                      </div>
+
+                      {/* Column 3: Learning */}
+                      <div>
+                        <h3 className="mb-4 text-xs font-bold tracking-wider text-blue-600 uppercase font-jakarta">
+                          Learning Center
+                        </h3>
+                        <div className="space-y-4">
+                          <Link to="/help" className="group flex items-start gap-3.5 p-2.5 -mx-2.5 rounded-xl hover:bg-gray-50 transition-colors">
+                            <div className="p-2.5 rounded-lg bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors flex-shrink-0">
+                              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                              </svg>
+                            </div>
+                            <div>
+                              <div className="text-sm font-semibold text-gray-900 transition-colors group-hover:text-black">
+                                Help Center
+                              </div>
+                              <p className="text-xs text-gray-500 mt-0.5 font-jakarta">
+                                Searchable how tos & FAQS
+                              </p>
+                            </div>
+                          </Link>
+
+                          <Link to="/about" className="group flex items-start gap-3.5 p-2.5 -mx-2.5 rounded-xl hover:bg-gray-50 transition-colors">
+                            <div className="p-2.5 rounded-lg bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors flex-shrink-0">
+                              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                              </svg>
+                            </div>
+                            <div>
+                              <div className="text-sm font-semibold text-gray-900 transition-colors group-hover:text-black">
+                                About Us
+                              </div>
+                              <p className="text-xs text-gray-500 mt-0.5 font-jakarta">
+                                Get more information about our site
+                              </p>
+                            </div>
+                          </Link>
+                        </div>
+                      </div>
+
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
 
             {/* Language Selector Dropdown Button */}
-            <div className="relative" ref={langMenuRef}>
+            <div className="relative font-sans" ref={langMenuRef}>
               <button
                 type="button"
                 onClick={() => setIsLangOpen(!isLangOpen)}
-                className={`text-base xl:text-lg font-bold flex items-center gap-2 border border-transparent px-3 py-3 rounded-xl transition-all cursor-pointer ${
-                  isDarkMode
-                    ? 'text-gray-300 hover:bg-neutral-800 hover:border-neutral-700 hover:text-white'
-                    : 'text-gray-700 hover:bg-gray-100 hover:border-gray-200 hover:text-black'
-                }`}
+                className="text-base xl:text-[17px] font-semibold flex items-center gap-1 border border-transparent pl-1 pr-3 py-3 rounded-xl transition-all cursor-pointer text-gray-700 hover:bg-gray-100 hover:border-gray-200 hover:text-black"
               >
                 <img
                   src="/images/globe (1).png"
-                  className={`object-contain w-5 h-5 transition-all ${
-                    isDarkMode ? 'invert brightness-200' : ''
-                  }`}
+                  className="object-contain transition-all w-7 h-7"
                   alt="Global Icon"
                 />
                 <span>{selectedLang}</span>
                 <svg
-                  className={`w-3.5 h-3.5 transition-transform duration-200 opacity-70 ${
+                  className={`w-4 h-4 transition-transform duration-200 opacity-70 ${
                     isLangOpen ? 'rotate-180' : ''
                   }`}
                   fill="none"
@@ -418,22 +488,14 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
               </button>
 
               {isLangOpen && (
-                <div
-                  className={`absolute right-0 mt-2 w-44 rounded-xl shadow-xl border py-2 z-50 ${
-                    isDarkMode
-                      ? 'bg-[#1f2937] border-neutral-700 text-white'
-                      : 'bg-white border-gray-200 text-gray-800'
-                  }`}
-                >
+                <div className="absolute z-50 py-2 mt-2 text-gray-800 -translate-x-1/2 bg-white border border-gray-200 shadow-xl left-1/2 w-44 rounded-xl">
                   {languages.map((lang) => (
                     <button
                       key={lang.code}
                       onClick={() => handleLangSelect(lang.name)}
                       className={`w-full text-left px-4 py-2.5 text-sm font-semibold transition-colors flex items-center justify-between cursor-pointer ${
                         selectedLang === lang.name
-                          ? 'text-[#2563eb] font-extrabold bg-blue-50/50 dark:bg-blue-900/20'
-                          : isDarkMode
-                          ? 'hover:bg-neutral-800'
+                          ? 'text-[#2563eb] font-extrabold bg-blue-50/50'
                           : 'hover:bg-gray-100'
                       }`}
                     >
@@ -446,40 +508,17 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
                 </div>
               )}
             </div>
-
-            {/* Dynamic Theme Toggle Button */}
-            <button
-              type="button"
-              onClick={() => setIsDarkMode(!isDarkMode)}
-              className={`p-2 rounded-full transition-all duration-200 cursor-pointer flex items-center justify-center hover:scale-110 ${
-                isDarkMode
-                  ? 'hover:bg-neutral-800 text-yellow-400'
-                  : 'hover:bg-gray-100 text-gray-600'
-              }`}
-              title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Night Mode'}
-            >
-              {isDarkMode ? (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 3v2.25m0 13.5V21M4.22 4.22l1.591 1.591M16.636 16.636l1.591 1.591M21 12h-2.25m-13.5 0H3m16.545-7.78l-1.591 1.591M6.136 16.636l-1.591 1.591M12 7.5a4.5 4.5 0 100 9 4.5 4.5 0 000-9z" />
-                </svg>
-              ) : (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
-                </svg>
-              )}
-            </button>
           </div>
 
+          {/* Vertical Divider */}
+          <div className="hidden lg:block w-[1px] h-6 bg-gray-300 ml-1 mr-2" />
+
           {/* Action Buttons (Desktop only) */}
-          <div className="items-center hidden gap-3 lg:flex">
+          <div className="items-center hidden gap-3 font-sans lg:flex">
             <Link
               to="/login"
               target="_blank"
-              className={`text-sm xl:text-base font-bold border px-5 xl:px-8 py-2 xl:py-2.5 rounded-full transition-all text-center ${
-                isDarkMode
-                  ? 'bg-neutral-800 border-neutral-700 text-gray-300 hover:bg-neutral-700 hover:text-white'
-                  : 'bg-white border-gray-300 text-gray-700 hover:bg-gray-50 hover:text-black'
-              }`}
+              className="text-sm xl:text-base font-semibold border px-5 xl:px-8 py-2 xl:py-2.5 rounded-full transition-all text-center bg-white border-gray-300 text-blue-700 hover:bg-gray-50 hover:text-black"
             >
               Login
             </Link>
@@ -487,72 +526,56 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
             <Link
               to="/register"
               target="_blank"
-              className="bg-[#2563eb] hover:bg-blue-700 text-white px-5 xl:px-7 py-2 xl:py-2.5 rounded-full text-sm xl:text-base font-black shadow-sm transition-all text-center whitespace-nowrap"
+              className="bg-[#2563eb] hover:bg-blue-700 text-white px-5 xl:px-7 py-2 xl:py-2.5 rounded-full text-sm xl:text-base font-semibold shadow-sm transition-all text-center whitespace-nowrap"
             >
               Get started
             </Link>
           </div>
 
-          {/* Mobile Toggle Button */}
-          <div className="flex items-center gap-2 lg:hidden">
-            <button
-              type="button"
-              onClick={() => setIsDarkMode(!isDarkMode)}
-              className={`p-2 rounded-full transition-colors ${
-                isDarkMode ? 'text-yellow-400' : 'text-gray-600'
-              }`}
-            >
-              {isDarkMode ? (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v2.25m0 13.5V21M4.22 4.22l1.591 1.591M16.636 16.636l1.591 1.591M21 12h-2.25m-13.5 0H3m16.545-7.78l-1.591 1.591M6.136 16.636l-1.591 1.591M12 7.5a4.5 4.5 0 100 9 4.5 4.5 0 000-9z" />
-                </svg>
-              ) : (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
-                </svg>
-              )}
-            </button>
-
+          {/* Mobile Hamburger Toggle Button */}
+          <div className="flex items-center lg:hidden">
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className={`p-2 rounded-lg cursor-pointer focus:outline-none ${
-                isDarkMode
-                  ? 'text-gray-300 hover:text-white hover:bg-neutral-800'
-                  : 'text-gray-600 hover:text-black hover:bg-gray-100'
-              }`}
+              className="p-2 text-gray-700 rounded-lg hover:bg-gray-100 focus:outline-none"
+              aria-label="Toggle menu"
             >
-              <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {isOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                 ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
                 )}
               </svg>
             </button>
           </div>
+
         </div>
       </div>
 
-      {/* Mobile Accordions Drawer */}
+      {/* Mobile Responsive Navigation Drawer */}
       {isOpen && (
-        <div
-          className={`lg:hidden border-b px-4 pt-3 pb-6 space-y-3 shadow-xl max-h-[85vh] overflow-y-auto ${
-            isDarkMode
-              ? 'bg-[#1f2937] border-neutral-800 text-white'
-              : 'bg-white border-gray-200 text-black'
-          }`}
-        >
-          {/* Mobile Accordion: Products */}
+        <div className="lg:hidden border-t border-gray-200 bg-white font-sans px-4 pt-4 pb-6 space-y-4 max-h-[calc(100vh-80px)] overflow-y-auto">
+          <Link
+            to="/"
+            onClick={() => setIsOpen(false)}
+            className="block px-3 py-2.5 text-base font-bold text-gray-800 hover:bg-gray-100 rounded-lg tracking-tight"
+          >
+            Home
+          </Link>
+
+          {/* Mobile Accordion - Products */}
           <div>
             <button
               type="button"
               onClick={() => toggleMobileAccordion('products')}
-              className="flex items-center justify-between w-full py-2 text-base font-bold text-left hover:text-[#2563eb]"
+              className="w-full flex items-center justify-between px-3 py-2.5 text-base font-bold text-gray-800 hover:bg-gray-100 rounded-lg tracking-tight"
             >
               <span>Products</span>
               <svg
-                className={`w-4 h-4 transition-transform ${activeMobileMenu === 'products' ? 'rotate-180' : ''}`}
+                className={`w-4 h-4 transition-transform duration-200 ${
+                  activeMobileMenu === 'products' ? 'rotate-180' : ''
+                }`}
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -560,57 +583,191 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
               </svg>
             </button>
+
             {activeMobileMenu === 'products' && (
-              <div className="py-2 pl-4 space-y-2 text-sm text-gray-500 dark:text-gray-400">
-                <Link to="/product-lookup" className="block py-1 font-bold text-[#2563eb]">🔍 Product / IMEI Lookup</Link>
-                <Link to="/pos" className="block py-1 hover:text-[#2563eb]">Point of Sale & Payments</Link>
-                <Link to="/imei-tracking" className="block py-1 hover:text-[#2563eb]">IMEI & Serial Tracking</Link>
-                 <Link to="/digital-receipts" className="block py-1 hover:text-[#2563eb]">Digital Receipts</Link>
-                <Link to="/warranty-manager" className="block py-1 hover:text-[#2563eb]">Waranty Manager</Link>
-                <Link to="/inter-shop-transfers" className="block py-1 hover:text-[#2563eb]">Inter-Shop Transfers</Link>
-                <Link to="/repair-tickets" className="block py-1 hover:text-[#2563eb]">Repair Tickets</Link>
+              <div className="p-3 mt-2 space-y-4 border border-gray-100 bg-gray-50 rounded-xl">
+                
+                {/* Mobile Devices & Wearables */}
+                <div>
+                  <p className="mb-2 text-xs font-bold tracking-wider text-blue-600 uppercase font-jakarta">
+                    Mobile Devices & Wearables
+                  </p>
+                  <div className="space-y-3">
+                    <Link to="#" onClick={() => setIsOpen(false)} className="flex items-start gap-3 p-1.5 rounded-lg hover:bg-white transition-colors">
+                      <div className="flex-shrink-0 p-2 text-blue-600 rounded-lg bg-blue-50">
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <div className="text-sm font-semibold text-gray-900">Smartphones</div>
+                        <p className="text-xs text-gray-500 font-jakarta">Top flagship & budget models</p>
+                      </div>
+                    </Link>
+
+                    <Link to="#" onClick={() => setIsOpen(false)} className="flex items-start gap-3 p-1.5 rounded-lg hover:bg-white transition-colors">
+                      <div className="flex-shrink-0 p-2 text-blue-600 rounded-lg bg-blue-50">
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <div className="text-sm font-semibold text-gray-900">Tablets</div>
+                        <p className="text-xs text-gray-500 font-jakarta">Portable tech for work & play</p>
+                      </div>
+                    </Link>
+
+                    <Link to="#" onClick={() => setIsOpen(false)} className="flex items-start gap-3 p-1.5 rounded-lg hover:bg-white transition-colors">
+                      <div className="flex-shrink-0 p-2 text-blue-600 rounded-lg bg-blue-50">
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <div className="text-sm font-semibold text-gray-900">Smartwatches</div>
+                        <p className="text-xs text-gray-500 font-jakarta">Track fitness & stay connected</p>
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Computers & Office Tech */}
+                <div>
+                  <p className="mb-2 text-xs font-bold tracking-wider text-blue-600 uppercase font-jakarta">
+                    Computers & Office Tech
+                  </p>
+                  <div className="space-y-3">
+                    <Link to="#" onClick={() => setIsOpen(false)} className="flex items-start gap-3 p-1.5 rounded-lg hover:bg-white transition-colors">
+                      <div className="flex-shrink-0 p-2 text-blue-600 rounded-lg bg-blue-50">
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <div className="text-sm font-semibold text-gray-900">Laptops & Desktops</div>
+                        <p className="text-xs text-gray-500 font-jakarta">High performance computers</p>
+                      </div>
+                    </Link>
+
+                    <Link to="#" onClick={() => setIsOpen(false)} className="flex items-start gap-3 p-1.5 rounded-lg hover:bg-white transition-colors">
+                      <div className="flex-shrink-0 p-2 text-blue-600 rounded-lg bg-blue-50">
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+                        </svg>
+                      </div>
+                      <div>
+                        <div className="text-sm font-semibold text-gray-900">Peripherals & Accessories</div>
+                        <p className="text-xs text-gray-500 font-jakarta">Essential gear for workflow</p>
+                      </div>
+                    </Link>
+
+                    <Link to="#" onClick={() => setIsOpen(false)} className="flex items-start gap-3 p-1.5 rounded-lg hover:bg-white transition-colors">
+                      <div className="flex-shrink-0 p-2 text-blue-600 rounded-lg bg-blue-50">
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <div className="text-sm font-semibold text-gray-900">Printers & Scanners</div>
+                        <p className="text-xs text-gray-500 font-jakarta">Reliable document printing</p>
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Power, Cables & Networking */}
+                <div>
+                  <p className="mb-2 text-xs font-bold tracking-wider text-blue-600 uppercase font-jakarta">
+                    Power, Cables & Networking
+                  </p>
+                  <div className="space-y-3">
+                    <Link to="#" onClick={() => setIsOpen(false)} className="flex items-start gap-3 p-1.5 rounded-lg hover:bg-white transition-colors">
+                      <div className="flex-shrink-0 p-2 text-blue-600 rounded-lg bg-blue-50">
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <div className="text-sm font-semibold text-gray-900">Power Supplies</div>
+                        <p className="text-xs text-gray-500 font-jakarta">Power banks & surge adapters</p>
+                      </div>
+                    </Link>
+
+                    <Link to="#" onClick={() => setIsOpen(false)} className="flex items-start gap-3 p-1.5 rounded-lg hover:bg-white transition-colors">
+                      <div className="flex-shrink-0 p-2 text-blue-600 rounded-lg bg-blue-50">
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
+                        </svg>
+                      </div>
+                      <div>
+                        <div className="text-sm font-semibold text-gray-900">Networking Equipment</div>
+                        <p className="text-xs text-gray-500 font-jakarta">Fast routers, MiFi & switches</p>
+                      </div>
+                    </Link>
+
+                    <Link to="#" onClick={() => setIsOpen(false)} className="flex items-start gap-3 p-1.5 rounded-lg hover:bg-white transition-colors">
+                      <div className="flex-shrink-0 p-2 text-blue-600 rounded-lg bg-blue-50">
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                        </svg>
+                      </div>
+                      <div>
+                        <div className="text-sm font-semibold text-gray-900">Cables & Converters</div>
+                        <p className="text-xs text-gray-500 font-jakarta">Heavy-duty cords & adapters</p>
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Security & Specialty Electronics */}
+                <div>
+                  <p className="mb-2 text-xs font-bold tracking-wider text-blue-600 uppercase font-jakarta">
+                    Security & Specialty Electronics
+                  </p>
+                  <div className="space-y-3">
+                    <Link to="#" onClick={() => setIsOpen(false)} className="flex items-start gap-3 p-1.5 rounded-lg hover:bg-white transition-colors">
+                      <div className="flex-shrink-0 p-2 text-blue-600 rounded-lg bg-blue-50">
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <div className="text-sm font-semibold text-gray-900">CCTV & Security</div>
+                        <p className="text-xs text-gray-500 font-jakarta">Smart surveillance systems</p>
+                      </div>
+                    </Link>
+
+                    <Link to="#" onClick={() => setIsOpen(false)} className="flex items-start gap-3 p-1.5 rounded-lg hover:bg-white transition-colors">
+                      <div className="flex-shrink-0 p-2 text-blue-600 rounded-lg bg-blue-50">
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <div className="text-sm font-semibold text-gray-900">Cameras & Audio Gear</div>
+                        <p className="text-xs text-gray-500 font-jakarta">Professional capture & sound</p>
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+
               </div>
             )}
           </div>
 
-          {/* Mobile Accordion: Solutions */}
-          <div>
-            <button
-              type="button"
-              onClick={() => toggleMobileAccordion('solutions')}
-              className="flex items-center justify-between w-full py-2 text-base font-bold text-left hover:text-[#2563eb]"
-            >
-              <span>Solutions</span>
-              <svg
-                className={`w-4 h-4 transition-transform ${activeMobileMenu === 'solutions' ? 'rotate-180' : ''}`}
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            {activeMobileMenu === 'solutions' && (
-              <div className="py-2 pl-4 space-y-2 text-sm text-gray-500 dark:text-gray-400">
-                <Link to="/electronics-repair" className="block py-1 hover:text-[#2563eb]">Electronics & Repairs</Link>
-                 <Link to="/computer-retailer" className="block py-1 hover:text-[#2563eb]">Computer Retailer</Link>
-                 <Link to="/mobile-money-agents" className="block py-1 hover:text-[#2563eb]">MobileMoneyAgent</Link>
-                <Link to="/multi-branch-chain" className="block py-1 hover:text-[#2563eb]">Multi-Branch Chains</Link>
-                  <Link to="/whole-sale" className="block py-1 hover:text-[#2563eb]">WholeSale Distributors</Link>
-              </div>
-            )}
-          </div>
-
-          {/* Mobile Accordion: Resources */}
+          {/* Mobile Accordion - Resources */}
           <div>
             <button
               type="button"
               onClick={() => toggleMobileAccordion('resources')}
-              className="flex items-center justify-between w-full py-2 text-base font-bold text-left hover:text-[#2563eb]"
+              className="w-full flex items-center justify-between px-3 py-2.5 text-base font-bold text-gray-800 hover:bg-gray-100 rounded-lg tracking-tight"
             >
               <span>Resources</span>
               <svg
-                className={`w-4 h-4 transition-transform ${activeMobileMenu === 'resources' ? 'rotate-180' : ''}`}
+                className={`w-4 h-4 transition-transform duration-200 ${
+                  activeMobileMenu === 'resources' ? 'rotate-180' : ''
+                }`}
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -618,58 +775,191 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
               </svg>
             </button>
+
             {activeMobileMenu === 'resources' && (
-              <div className="py-2 pl-4 space-y-2 text-sm text-gray-500 dark:text-gray-400">
-                <Link to="/user-manual-guide" className="block py-1 hover:text-[#2563eb]">User Manual & Guides</Link>
-                <Link to="/customer-case-studies" className="block py-1 hover:text-[#2563eb]">Customer Case Studies</Link>
-                 <Link to="/hardware-setup-guide" className="block py-1 hover:text-[#2563eb]">Hardware Setup Guides</Link>
-                  <Link to="/retail-growth-blog" className="block py-1 hover:text-[#2563eb]">Retailer Growth Blog</Link>
-                   <Link to="/live-system-status" className="block py-1 hover:text-[#2563eb]">Live System Status</Link>
+              <div className="p-3 mt-2 space-y-4 border border-gray-100 bg-gray-50 rounded-xl">
+                
+                {/* Stock & Inventory */}
+                <div>
+                  <p className="mb-2 text-xs font-bold tracking-wider text-blue-600 uppercase font-jakarta">
+                    Stock & Inventory
+                  </p>
+                  <div className="space-y-3">
+                    <Link
+                      to="#"
+                      onClick={() => setIsOpen(false)}
+                      className="flex items-start gap-3 p-1.5 rounded-lg hover:bg-white transition-colors"
+                    >
+                      <div className="flex-shrink-0 p-2 text-blue-600 rounded-lg bg-blue-50">
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <div className="text-sm font-semibold text-gray-900">IMEI & Serial Tracking</div>
+                        <p className="text-xs text-gray-500 font-jakarta">Track high-value devices from intake to sale</p>
+                      </div>
+                    </Link>
+
+                    <Link
+                      to="#"
+                      onClick={() => setIsOpen(false)}
+                      className="flex items-start gap-3 p-1.5 rounded-lg hover:bg-white transition-colors"
+                    >
+                      <div className="flex-shrink-0 p-2 text-blue-600 rounded-lg bg-blue-50">
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                        </svg>
+                      </div>
+                      <div>
+                        <div className="text-sm font-semibold text-gray-900">Inter-shop Transfer</div>
+                        <p className="text-xs text-gray-500 font-jakarta">Move inventory between branches with logs</p>
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Repairs & Support */}
+                <div>
+                  <p className="mb-2 text-xs font-bold tracking-wider text-blue-600 uppercase font-jakarta">
+                    Repairs & Support
+                  </p>
+                  <div className="space-y-3">
+                    <Link
+                      to="#"
+                      onClick={() => setIsOpen(false)}
+                      className="flex items-start gap-3 p-1.5 rounded-lg hover:bg-white transition-colors"
+                    >
+                      <div className="flex-shrink-0 p-2 text-blue-600 rounded-lg bg-blue-50">
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M11 5a2 2 0 10-4 0v1H5a2 2 0 00-2 2v10a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-2V5a2 2 0 10-4 0v1h-2V5zM9 5h6v1H9V5z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <div className="text-sm font-semibold text-gray-900">Repairs</div>
+                        <p className="text-xs text-gray-500 font-jakarta">Assign technicians & Pickup SMS alerts</p>
+                      </div>
+                    </Link>
+
+                    <Link
+                      to="#"
+                      onClick={() => setIsOpen(false)}
+                      className="flex items-start gap-3 p-1.5 rounded-lg hover:bg-white transition-colors"
+                    >
+                      <div className="flex-shrink-0 p-2 text-blue-600 rounded-lg bg-blue-50">
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <div className="text-sm font-semibold text-gray-900">Warranty Manager</div>
+                        <p className="text-xs text-gray-500 font-jakarta">Device claim records & expiry Warning</p>
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Learning */}
+                <div>
+                  <p className="mb-2 text-xs font-bold tracking-wider text-blue-600 uppercase font-jakarta">
+                    Learning
+                  </p>
+                  <div className="space-y-3">
+                    <Link
+                      to="#"
+                      onClick={() => setIsOpen(false)}
+                      className="flex items-start gap-3 p-1.5 rounded-lg hover:bg-white transition-colors"
+                    >
+                      <div className="flex-shrink-0 p-2 text-blue-600 rounded-lg bg-blue-50">
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <div className="text-sm font-semibold text-gray-900">Help Center</div>
+                        <p className="text-xs text-gray-500 font-jakarta">Searchable how tos & FAQS</p>
+                      </div>
+                    </Link>
+
+                    <Link
+                      to="#"
+                      onClick={() => setIsOpen(false)}
+                      className="flex items-start gap-3 p-1.5 rounded-lg hover:bg-white transition-colors"
+                    >
+                      <div className="flex-shrink-0 p-2 text-blue-600 rounded-lg bg-blue-50">
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <div className="text-sm font-semibold text-gray-900">About Us</div>
+                        <p className="text-xs text-gray-500 font-jakarta">Get more information about our site</p>
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+
               </div>
             )}
           </div>
 
-          {/* Mobile Language Selector Grid */}
-          <div className="pt-3 border-t border-gray-200 dark:border-neutral-800">
-            <span className="block mb-2 text-xs font-bold tracking-wider text-gray-400 uppercase">
-              Select Language
-            </span>
-            <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-              {languages.map((lang) => (
-                <button
-                  key={lang.code}
-                  type="button"
-                  onClick={() => handleLangSelect(lang.name)}
-                  className={`py-2 px-3 text-sm font-bold rounded-lg border text-center transition-all ${
-                    selectedLang === lang.name
-                      ? 'bg-[#2563eb] text-white border-[#2563eb]'
-                      : isDarkMode
-                      ? 'bg-neutral-800 border-neutral-700 text-gray-300'
-                      : 'bg-gray-50 border-gray-200 text-gray-700'
-                  }`}
-                >
-                  {lang.name}
-                </button>
-              ))}
-            </div>
+          {/* Mobile Language Selector */}
+          <div>
+            <button
+              type="button"
+              onClick={() => toggleMobileAccordion('lang')}
+              className="w-full flex items-center justify-between px-3 py-2.5 text-base font-bold text-gray-800 hover:bg-gray-100 rounded-lg tracking-tight"
+            >
+              <div className="flex items-center gap-2">
+                <img src="/images/globe (1).png" className="w-5 h-5" alt="Global Icon" />
+                <span>Language : {selectedLang}</span>
+              </div>
+              <svg
+                className={`w-4 h-4 transition-transform duration-200 ${
+                  activeMobileMenu === 'lang' ? 'rotate-180' : ''
+                }`}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+
+            {activeMobileMenu === 'lang' && (
+              <div className="py-2 pl-4 pr-2 mt-1 space-y-1 rounded-lg bg-gray-50">
+                {languages.map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => {
+                      handleLangSelect(lang.name);
+                      setIsOpen(false);
+                    }}
+                    className={`w-full text-left py-1.5 text-sm font-semibold ${
+                      selectedLang === lang.name ? 'text-[#2563eb]' : 'text-gray-700'
+                    }`}
+                  >
+                    {lang.name}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
-          <hr className={isDarkMode ? 'border-neutral-800' : 'border-gray-200'} />
-
-          <div className="flex flex-col gap-3 pt-1 sm:flex-row">
+          <div className="flex flex-col gap-2 pt-4 font-sans border-t border-gray-200">
             <Link
-              className={`w-full text-center py-3 text-base font-bold border rounded-full transition-colors ${
-                isDarkMode
-                  ? 'border-neutral-700 text-white bg-neutral-800 hover:bg-neutral-700'
-                  : 'border-gray-300 text-gray-700 bg-white hover:bg-gray-50'
-              }`}
               to="/login"
+              target="_blank"
+              onClick={() => setIsOpen(false)}
+              className="w-full py-2.5 text-center text-sm font-bold border border-gray-300 rounded-full text-gray-700 bg-white"
             >
               Login
             </Link>
             <Link
-              className="w-full bg-[#2563eb] text-white text-center py-3 rounded-full text-base font-black hover:bg-blue-700 transition-colors"
               to="/register"
+              target="_blank"
+              onClick={() => setIsOpen(false)}
+              className="w-full py-2.5 text-center text-sm font-bold bg-[#2563eb] text-white rounded-full"
             >
               Get started
             </Link>
