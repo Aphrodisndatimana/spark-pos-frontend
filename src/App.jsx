@@ -17,7 +17,6 @@ import PaymentsMoMoPage from './pages/Products/PaymentsMoMoPage'
 import DigitalReceiptPage from './pages/Products/DigitalReceiptPage'
 import ImeiSerialTrackingPage from './pages/Products/ImeiSerialTrackingPage'
 import InterShopTransfersPage from './pages/Products/InterShopTransfersPage'
-import RepairsPage from './pages/Products/RepairsPage'
 import WarrantyManagerPage from './pages/Products/WarrantyManagerPage'
 import ProductLookupPage from './pages/Products/ProductLookupPage'
 import ElectronicsRepairSolution from './pages/Solutions/ElectronicsRepairPage'
@@ -33,6 +32,7 @@ import CustomerCaseStudies from './pages/Resources/CustomerCaseStudies'
 import HardwareSetupGuides from './pages/Resources/HardwareSetupGuides'
 import LiveSystemStatus from './pages/Resources/LiveSystemStatus'
 import RetailGrowthBlog from './pages/Resources/RetailGrowthBlog'
+import RepairsPage from './pages/Resources/Repairs';
 
 
 function App() {
@@ -62,7 +62,7 @@ function App() {
   <Route path='/digital-receipts' element={<DigitalReceiptPage isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />}></Route>
   <Route path='/imei-tracking' element={<ImeiSerialTrackingPage />}></Route>
   <Route path='/inter-shop-transfers' element={<InterShopTransfersPage isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />}></Route>
-  <Route path='/repair-tickets' element={<RepairsPage isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />}></Route>
+  <Route path='/resources/repairs' element={<RepairsPage />}></Route>
   <Route path='/warranty-manager' element={<WarrantyManagerPage isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />}></Route>
   <Route path='/product-lookup' element={<ProductLookupPage isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />}></Route>
 

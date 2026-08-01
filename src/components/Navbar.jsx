@@ -44,7 +44,7 @@ export default function Navbar() {
           <div className="flex items-center flex-shrink-0 gap-2 sm:gap-3">
             <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#2563eb] flex items-center justify-center text-white overflow-hidden shadow-sm">
               <img
-                src="images/logo2.jpg"
+                src="/images/logo2.jpg"
                 className="object-cover w-full h-full"
                 alt="logo"
               />
@@ -382,7 +382,7 @@ export default function Navbar() {
                           Repairs & Support
                         </h3>
                         <div className="space-y-4">
-                          <Link to="#" className="group flex items-start gap-3.5 p-2.5 -mx-2.5 rounded-xl hover:bg-gray-50 transition-colors">
+                          <Link to="/resources/repairs" className="group flex items-start gap-3.5 p-2.5 -mx-2.5 rounded-xl hover:bg-gray-50 transition-colors">
                             <div className="p-2.5 rounded-lg bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors flex-shrink-0">
                               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M11 5a2 2 0 10-4 0v1H5a2 2 0 00-2 2v10a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-2V5a2 2 0 10-4 0v1h-2V5zM9 5h6v1H9V5z" />
