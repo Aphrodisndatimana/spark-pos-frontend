@@ -1356,3 +1356,5 @@ export default function HomePage() {
   );
 }
 
+bg-gradient-to-r from-blue-700 via-blue-600 to-sky-500
+

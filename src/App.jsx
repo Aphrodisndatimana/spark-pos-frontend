@@ -13,26 +13,16 @@ import RepairTechDashboard from './pages/Dashboards/RepairTech'
 import CustomerPortal from './pages/CustomerPortalPage'
 import PageNotFound from './pages/404Page'
 import PointOfSalePage from './pages/Products/PointSale'
-import PaymentsMoMoPage from './pages/Products/PaymentsMoMoPage'
-import DigitalReceiptPage from './pages/Products/DigitalReceiptPage'
-import ImeiSerialTrackingPage from './pages/Products/ImeiSerialTrackingPage'
 import InterShopTransfersPage from './pages/Products/InterShopTransfersPage'
 import WarrantyManagerPage from './pages/Products/WarrantyManagerPage'
 import ProductLookupPage from './pages/Products/ProductLookupPage'
-import ElectronicsRepairSolution from './pages/Solutions/ElectronicsRepairPage'
-import ComputerRetailerSolution from './pages/Solutions/ComputerRetailerPage'
 import AboutUs from './pages/AboutPage'
 import HelpCenter from './pages/HelpPage'
-import MultiBranchChainSolution from './pages/Solutions/MultiBranchChainPage'
 import Partner from './pages/PartnerPage'
-import MobileMoneyAgentSolution from './pages/Solutions/MobileMoneyAgentPage'
-import WholesaleDistributorSolution from './pages/Solutions/WholesaleDistributorPage'
-import UserManualGuides from './pages/Resources/UserManualGuides'
-import CustomerCaseStudies from './pages/Resources/CustomerCaseStudies'
-import HardwareSetupGuides from './pages/Resources/HardwareSetupGuides'
-import LiveSystemStatus from './pages/Resources/LiveSystemStatus'
-import RetailGrowthBlog from './pages/Resources/RetailGrowthBlog'
 import RepairsPage from './pages/Resources/Repairs';
+import ImeiCheckPage from './pages/Resources/ImeiSerialTrackingPage';
+import ProductCatalog from './pages/Products/ProductCatalog';
+
 
 
 function App() {
@@ -57,28 +47,15 @@ function App() {
   <Route path='/repair-tech-dashboard' element={<RepairTechDashboard />}></Route>
 
    {/* Products dropdownLink Pages */}
+  <Route path='/products/mobile devices & wearables/smartphones' element={<ProductCatalog />} ></Route>
   <Route path='/pos' element={<PointOfSalePage isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />}></Route>
-  <Route path='/payments-momo' element={<PaymentsMoMoPage isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />}></Route>
-  <Route path='/digital-receipts' element={<DigitalReceiptPage isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />}></Route>
-  <Route path='/imei-tracking' element={<ImeiSerialTrackingPage />}></Route>
   <Route path='/inter-shop-transfers' element={<InterShopTransfersPage isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />}></Route>
-  <Route path='/resources/repairs' element={<RepairsPage />}></Route>
   <Route path='/warranty-manager' element={<WarrantyManagerPage isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />}></Route>
   <Route path='/product-lookup' element={<ProductLookupPage isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />}></Route>
 
-    {/* Solutions dropdownLink Pages */}
-  <Route path='/electronics-repair' element={<ElectronicsRepairSolution isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />}></Route>
-  <Route path='/computer-retailer' element={<ComputerRetailerSolution isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />}></Route>
-  <Route path='/multi-branch-chain' element={<MultiBranchChainSolution isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />}></Route>
-  <Route path='/mobile-money-agents' element={<MobileMoneyAgentSolution isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode}  />}></Route>
-   <Route path='/whole-sale' element={<WholesaleDistributorSolution />}></Route>
-
     {/* Resources dropdownLink Pages */}
-  <Route path='/user-manual-guide' element={<UserManualGuides />}></Route>
-  <Route path='/customer-case-studies' element={<CustomerCaseStudies />}></Route>
-  <Route path='/hardware-setup-guide' element={<HardwareSetupGuides />}></Route>
-  <Route path='/live-system-status' element={<LiveSystemStatus />}></Route>
-  <Route path='/retail-growth-blog' element={<RetailGrowthBlog />}></Route>
+  <Route path='/resources/repairs' element={<RepairsPage />}></Route>
+  <Route path='/resources/imei-tracking' element={<ImeiCheckPage />}></Route>
 
   <Route path='*' element={<PageNotFound />}></Route>
   </Routes>
