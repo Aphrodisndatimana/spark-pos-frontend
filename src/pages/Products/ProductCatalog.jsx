@@ -221,7 +221,7 @@ export default function ProductCatalog() {
                 </div>
 
                 {/* Shop Now Action Button - Increased text to text-base */}
-                <button className="w-full mt-2 bg-[#007BFF] hover:bg-blue-600 text-white text-base font-medium py-3 px-5 rounded flex items-center justify-center gap-2 transition-colors">
+                <button className="w-full mt-2 bg-[#007BFF] hover:bg-blue-600 text-white text-base font-medium py-4 px-5 rounded-xl flex items-center justify-center gap-2 transition-colors">
                   <span>Shop Now</span>
                   <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />

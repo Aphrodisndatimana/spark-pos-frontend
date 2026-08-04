@@ -47,7 +47,7 @@ function App() {
   <Route path='/repair-tech-dashboard' element={<RepairTechDashboard />}></Route>
 
    {/* Products dropdownLink Pages */}
-  <Route path='/products/mobile devices & wearables/smartphones' element={<ProductCatalog />} ></Route>
+  <Route path='/products/mobile-devices-and-wearables/smartphones' element={<ProductCatalog />} ></Route>
   <Route path='/pos' element={<PointOfSalePage isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />}></Route>
   <Route path='/inter-shop-transfers' element={<InterShopTransfersPage isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />}></Route>
   <Route path='/warranty-manager' element={<WarrantyManagerPage isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />}></Route>

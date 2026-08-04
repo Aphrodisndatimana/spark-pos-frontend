@@ -103,7 +103,7 @@ export default function HomePage() {
       <section className={`relative w-full border-b px-4 sm:px-6 md:px-8 py-10 sm:py-14 md:py-20 transition-colors duration-300 ${
         isDarkMode ? 'bg-[#1f2937] border-neutral-800' : 'bg-[#f4f3ef] border-gray-200'
       }`}>
-        <div className="relative z-10 max-w-4xl mx-auto space-y-4 sm:space-y-6 text-center">
+        <div className="relative z-10 max-w-4xl mx-auto space-y-4 text-center sm:space-y-6">
           
           {/* Top Feature Tagline Bar */}
           <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-semibold text-[#2563eb]">
@@ -118,7 +118,7 @@ export default function HomePage() {
           </div>
 
           {/* Main Headline */}
-          <h1 className='text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight sm:leading-tight'>
+          <h1 className='text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl sm:leading-tight'>
             Shop Fast. Sell More. Operate Easily <br className="hidden sm:inline" />
             <span className='text-2xl sm:text-3xl lg:text-4xl text-[#2563eb] font-bold block sm:inline mt-1 sm:mt-0'> Get Started For Free. Forever</span>
           </h1>
@@ -131,7 +131,7 @@ export default function HomePage() {
           </p>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-2 sm:pt-4 w-full max-w-md sm:max-w-none mx-auto">
+          <div className="flex flex-col items-center justify-center w-full max-w-md gap-3 pt-2 mx-auto sm:flex-row sm:gap-4 sm:pt-4 sm:max-w-none">
             <Link 
               to="/register" 
               className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 rounded-full bg-[#0066ff] hover:bg-blue-700 text-white font-bold text-sm sm:text-base shadow-md transition-all text-center"
@@ -139,7 +139,7 @@ export default function HomePage() {
               Get Started
             </Link>
             <Link 
-              to="/" 
+              to="/products/mobile-devices-and-wearables/smartphones" 
               className={`w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 rounded-full font-bold text-sm sm:text-base border shadow-sm transition-all text-center ${
                 isDarkMode 
                   ? 'bg-neutral-800 border-neutral-700 text-white hover:bg-neutral-700' 
@@ -180,18 +180,18 @@ export default function HomePage() {
       </section>
 
       {/* --- SECTION: FOR CUSTOMERS --- */}
-      <section className="w-full px-4 sm:px-6 lg:px-8 py-12 sm:py-20 lg:py-24 text-white bg-black">
-        <div className="grid items-center grid-cols-1 gap-8 lg:gap-12 mx-auto max-w-7xl lg:grid-cols-2">
-          <div className="relative rounded-xl overflow-hidden border border-neutral-800 aspect-video bg-neutral-900 flex items-center justify-center shadow-2xl w-full">
+      <section className="w-full px-4 py-12 text-white bg-black sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+        <div className="grid items-center grid-cols-1 gap-8 mx-auto lg:gap-12 max-w-7xl lg:grid-cols-2">
+          <div className="relative flex items-center justify-center w-full overflow-hidden border shadow-2xl rounded-xl border-neutral-800 aspect-video bg-neutral-900">
             <img src="/images/user strugling.jpg" alt="customer struggling" className="object-cover w-full h-full" />
           </div>
 
           <div className="space-y-3 sm:space-y-5">
             <span className="text-xs sm:text-sm font-black text-[#2563eb] tracking-widest block uppercase">— For Customers</span>
-            <h2 className="text-xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight">
+            <h2 className="text-xl font-extrabold leading-tight tracking-tight text-white sm:text-3xl lg:text-4xl">
               All of Kigali's Electronics Shops, Right in Your Hands.
             </h2>
-            <p className="max-w-xl text-xs sm:text-base lg:text-lg font-light leading-relaxed text-gray-400">
+            <p className="max-w-xl text-xs font-light leading-relaxed text-gray-400 sm:text-base lg:text-lg">
               Stop wasting hours checking different catalogs or websites from shop to shop. Find all items right here in one place. Save time, lock down availability information, and locate matching variant choices without the stress.
             </p>
           </div>
@@ -199,13 +199,13 @@ export default function HomePage() {
       </section>
 
       {/* --- SECTION: SEE HOW SHOPPING IS EASY --- */}
-      <section className="w-full px-4 sm:px-6 lg:px-8 py-12 sm:py-20 lg:py-24 mx-auto max-w-7xl">
-        <div className="mb-6 sm:mb-10 space-y-2 sm:space-y-3">
+      <section className="w-full px-4 py-12 mx-auto sm:px-6 lg:px-8 sm:py-20 lg:py-24 max-w-7xl">
+        <div className="mb-6 space-y-2 sm:mb-10 sm:space-y-3">
           <span className="text-[#2563eb] text-xs sm:text-sm font-extrabold tracking-wider uppercase block">— Built for your convenience</span>
           <h2 className={`text-xl sm:text-3xl lg:text-4xl font-black tracking-tight ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
             See how <span className="text-[#e800c7]">SparkPos</span> makes shopping easy
           </h2>
-          <p className="text-xs sm:text-sm lg:text-base font-normal text-gray-400">
+          <p className="text-xs font-normal text-gray-400 sm:text-sm lg:text-base">
             Find what you need immediately, examine alternative item choices, lock down your payments securely.
           </p>
         </div>
@@ -254,39 +254,39 @@ export default function HomePage() {
             </p>
             <Link to="/register" className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-extrabold text-[#2563eb] hover:underline pt-1 sm:pt-2">
               <span>Explore Marketplace</span>
-              <img src="/images/arrow.png" className='w-5 h-5 sm:w-6 sm:h-6 object-contain' alt="arrow icon"/>
+              <img src="/images/arrow.png" className='object-contain w-5 h-5 sm:w-6 sm:h-6' alt="arrow icon"/>
             </Link>
           </div>
         </div>
       </section>
 
       {/* --- SECTION: FOR STORE OWNERS --- */}
-      <section className="w-full px-4 sm:px-6 lg:px-8 py-12 sm:py-20 lg:py-24 text-white bg-black">
-        <div className="grid items-center grid-cols-1 gap-8 lg:gap-12 mx-auto max-w-7xl lg:grid-cols-2">
-          <div className="order-2 lg:order-1 space-y-3 sm:space-y-5">
+      <section className="w-full px-4 py-12 text-white bg-black sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+        <div className="grid items-center grid-cols-1 gap-8 mx-auto lg:gap-12 max-w-7xl lg:grid-cols-2">
+          <div className="order-2 space-y-3 lg:order-1 sm:space-y-5">
             <span className="text-xs sm:text-sm font-black text-[#2563eb] tracking-widest block uppercase">— For Shop Owners</span>
-            <h2 className="text-xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight">
+            <h2 className="text-xl font-extrabold leading-tight tracking-tight text-white sm:text-3xl lg:text-4xl">
               Stop Losing Money to Manual Paperwork
             </h2>
-            <p className="max-w-xl text-xs sm:text-base lg:text-lg font-light leading-relaxed text-gray-400">
+            <p className="max-w-xl text-xs font-light leading-relaxed text-gray-400 sm:text-base lg:text-lg">
               Track multi-shop business parameters inside one beautiful dashboard space. Manage dynamic inventory stock levels, repairs logs, structural items processing workflows, and multi-branch transfer transactions automatically.
             </p>
           </div>
           
-          <div className="relative rounded-xl overflow-hidden border border-neutral-800 aspect-video bg-neutral-900 flex items-center justify-center order-1 lg:order-2 shadow-2xl w-full">
+          <div className="relative flex items-center justify-center order-1 w-full overflow-hidden border shadow-2xl rounded-xl border-neutral-800 aspect-video bg-neutral-900 lg:order-2">
             <img src='/images/ShopOwner frustrating.jpg' alt='Frustrated Shop Owner' className="object-cover w-full h-full" />
           </div>
         </div>
       </section>
 
       {/* --- SECTION: SEE HOW IT WORKS ON BUSINESSES --- */}
-      <section className="w-full px-4 sm:px-6 lg:px-8 py-12 sm:py-20 lg:py-24 mx-auto max-w-7xl">
-        <div className="mb-6 sm:mb-10 space-y-2 sm:space-y-3">
+      <section className="w-full px-4 py-12 mx-auto sm:px-6 lg:px-8 sm:py-20 lg:py-24 max-w-7xl">
+        <div className="mb-6 space-y-2 sm:mb-10 sm:space-y-3">
           <span className="text-[#2563eb] text-xs sm:text-sm font-extrabold tracking-wider uppercase block">— Built for your creation</span>
           <h2 className={`text-xl sm:text-3xl lg:text-4xl font-black tracking-tight ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
             See how <span className="text-[#2563eb]">SparkPos</span> works for Businesses
           </h2>
-          <p className="text-xs sm:text-sm lg:text-base font-normal text-gray-400">
+          <p className="text-xs font-normal text-gray-400 sm:text-sm lg:text-base">
             Track components, run repair jobs pipelines, and map cross branch item adjustments cleanly.
           </p>
         </div>
@@ -318,7 +318,7 @@ export default function HomePage() {
         <div className={`rounded-2xl border p-5 sm:p-8 lg:p-12 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center shadow-sm w-full transition-colors duration-300 ${
           isDarkMode ? 'bg-[#1f2937] border-neutral-800' : 'bg-white border-gray-200'
         }`}>
-          <div className="flex flex-col justify-center order-2 lg:order-1 h-full space-y-3 sm:space-y-5 lg:col-span-5">
+          <div className="flex flex-col justify-center order-2 h-full space-y-3 lg:order-1 sm:space-y-5 lg:col-span-5">
             <h3 className={`text-lg sm:text-2xl font-black tracking-tight ${isDarkMode ? 'text-white' : 'text-black'}`}>
               {businessTabData[activeBusinessTab].title}
             </h3>
@@ -329,7 +329,7 @@ export default function HomePage() {
             </p>
             <Link to="/register" className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-extrabold text-[#2563eb] hover:underline pt-1 sm:pt-2">
               <span>Get In Touch</span>
-              <img src="/images/arrow.png" className='w-5 h-5 sm:w-6 sm:h-6 object-contain' alt="arrow icon"/>
+              <img src="/images/arrow.png" className='object-contain w-5 h-5 sm:w-6 sm:h-6' alt="arrow icon"/>
             </Link>
           </div>
 
@@ -345,9 +345,9 @@ export default function HomePage() {
       <section className="py-12 sm:py-20 lg:py-24 bg-[#0a0f19] text-white w-full px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           
-          <div className="mb-8 sm:mb-12 space-y-2 text-center sm:space-y-3">
-            <h2 className="text-xl sm:text-3xl lg:text-4xl font-black tracking-tight text-white">Frequently Asked Questions</h2>
-            <p className="max-w-md mx-auto text-xs sm:text-sm lg:text-base font-light text-neutral-400">
+          <div className="mb-8 space-y-2 text-center sm:mb-12 sm:space-y-3">
+            <h2 className="text-xl font-black tracking-tight text-white sm:text-3xl lg:text-4xl">Frequently Asked Questions</h2>
+            <p className="max-w-md mx-auto text-xs font-light sm:text-sm lg:text-base text-neutral-400">
               Everything you need to know matching system deployment data matrices and user tracking functions.
             </p>
           </div>
@@ -384,12 +384,12 @@ export default function HomePage() {
                     onClick={() => setOpenFaqIndex(isOpen ? -1 : idx)}
                     className="flex items-center justify-between w-full gap-3 px-4 py-3.5 sm:px-6 sm:py-4 text-left cursor-pointer hover:bg-neutral-850"
                   >
-                    <span className="text-xs sm:text-base font-bold tracking-tight text-white">{item.q}</span>
+                    <span className="text-xs font-bold tracking-tight text-white sm:text-base">{item.q}</span>
                     <span className="text-xs sm:text-sm text-[#2563eb] flex-shrink-0">{isOpen ? '▲' : '▼'}</span>
                   </button>
 
                   {isOpen && (
-                    <div className="px-4 pt-2 pb-4 text-xs sm:text-sm leading-relaxed bg-black/20 border-t border-neutral-800/40 text-neutral-400">
+                    <div className="px-4 pt-2 pb-4 text-xs leading-relaxed border-t sm:text-sm bg-black/20 border-neutral-800/40 text-neutral-400">
                       {item.a}
                     </div>
                   )}
@@ -404,16 +404,16 @@ export default function HomePage() {
       {/* --- BRAND ACTION TARGET CONSOLE HOOK --- */}
       <section className="py-12 sm:py-20 lg:py-24 bg-[#040c1e] text-center text-white px-4 sm:px-6 lg:px-8 w-full border-t border-neutral-900">
         <div className="max-w-3xl mx-auto space-y-3 sm:space-y-6">
-          <h2 className="text-xl sm:text-3xl lg:text-5xl font-black tracking-tight text-white leading-tight">
+          <h2 className="text-xl font-black leading-tight tracking-tight text-white sm:text-3xl lg:text-5xl">
             Shop, Manage and Collaborate With SparkPos
           </h2>
           <p className="text-[#e800c7] font-black text-lg sm:text-2xl lg:text-3xl tracking-wider">
             Starting at RWF0, today
           </p>
-          <p className="max-w-xl mx-auto text-xs sm:text-sm lg:text-base leading-relaxed text-blue-200/70">
+          <p className="max-w-xl mx-auto text-xs leading-relaxed sm:text-sm lg:text-base text-blue-200/70">
             Join 4,000+ Kigali Shops Leaving Paper Behind to Connect, Sell and Shop Smarter.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-3 sm:pt-6 w-full max-w-sm sm:max-w-none mx-auto">
+          <div className="flex flex-col items-center justify-center w-full max-w-sm gap-3 pt-3 mx-auto sm:flex-row sm:gap-4 sm:pt-6 sm:max-w-none">
             <Link to='/register' className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 rounded-lg bg-[#e800c7] hover:bg-[#d000b2] text-white font-black text-xs sm:text-sm shadow-md transition-all cursor-pointer text-center">
               Start Free Now
             </Link>
@@ -428,7 +428,7 @@ export default function HomePage() {
       <section className={`py-8 sm:py-12 border-t px-4 sm:px-6 lg:px-8 w-full transition-colors duration-300 ${
         isDarkMode ? 'bg-neutral-900 border-neutral-800' : 'bg-gray-100 border-gray-200'
       }`}>
-        <div className="flex flex-col items-center justify-between gap-4 lg:flex-row sm:gap-6 max-w-7xl mx-auto">
+        <div className="flex flex-col items-center justify-between gap-4 mx-auto lg:flex-row sm:gap-6 max-w-7xl">
           <div className="text-center lg:text-left">
             <h4 className={`font-black text-sm sm:text-base lg:text-lg tracking-tight ${isDarkMode ? 'text-white' : 'text-black'}`}>
               Get live updates notification for SparkPos — free
