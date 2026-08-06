@@ -42,7 +42,8 @@ const PRODUCTS = [
     price: '345000 RFW',
     rating: 5,
     brand: 'google',
-    image: '/images/products/google/Google Pixel 10.jpg',},
+    image: '/images/products/google/Google Pixel 10.jpg',
+  },
   {
     id: 6,
     name: 'Google Pixel 9 Pro',
@@ -129,7 +130,7 @@ export default function ProductCatalog() {
           <span className="font-semibold text-slate-900">Smart Phones</span>
         </nav>
 
-        {/* Filter & Search Bar - Increased text to text-base */}
+        {/* Filter & Search Bar */}
         <div className="flex flex-wrap items-center gap-4 mb-8">
           
           {/* Sort Button */}
@@ -148,8 +149,8 @@ export default function ProductCatalog() {
             </svg>
           </button>
 
-          {/* Search Box Input */}
-          <div className="flex flex-1 min-w-[280px] sm:max-w-xl border border-slate-200 rounded-lg overflow-hidden bg-slate-100/70">
+          {/* Expanded Search Box Container */}
+          <div className="flex flex-1 min-w-[320px] sm:max-w-3xl border border-slate-200 rounded-lg overflow-hidden bg-slate-100/70">
             <select className="px-4 py-3 text-base font-medium bg-transparent border-r outline-none cursor-pointer text-slate-600 border-slate-200">
               <option>All Products</option>
               <option>Smartphones</option>
@@ -169,6 +170,23 @@ export default function ProductCatalog() {
                 </svg>
               </button>
             </div>
+          </div>
+
+          {/* Action Icons: Wishlist & Cart */}
+          <div className="flex items-center gap-3 ml-auto">
+            {/* Heart / Wishlist Icon */}
+            <button className="p-2 transition-colors text-slate-700 hover:text-slate-900 rounded-lg hover:bg-slate-50" aria-label="Wishlist">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 21.364l-7.682-7.682a4.5 4.5 0 010-6.364z" />
+              </svg>
+            </button>
+
+            {/* Shopping Bag / Cart Icon */}
+            <button className="p-2 transition-colors text-slate-700 hover:text-slate-900 rounded-lg hover:bg-slate-50" aria-label="Cart">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+              </svg>
+            </button>
           </div>
 
         </div>
@@ -192,7 +210,6 @@ export default function ProductCatalog() {
 
               {/* Product Information */}
               <div className="flex flex-col items-center text-center">
-                {/* Increased title text to text-lg */}
                 <h3 className="mb-2 text-lg font-semibold text-slate-900">
                   {product.name}
                 </h3>
@@ -212,7 +229,7 @@ export default function ProductCatalog() {
                   </div>
                 )}
 
-                {/* Price and Brand Logo - Increased price text to text-base */}
+                {/* Price and Brand Logo */}
                 <div className="flex items-center justify-between w-full px-1 my-3">
                   <span className="text-base font-bold text-sky-500">
                     {product.price}
@@ -220,7 +237,7 @@ export default function ProductCatalog() {
                   <BrandLogo brand={product.brand} />
                 </div>
 
-                {/* Shop Now Action Button - Increased text to text-base */}
+                {/* Shop Now Action Button */}
                 <button className="w-full mt-2 bg-[#007BFF] hover:bg-blue-600 text-white text-base font-medium py-4 px-5 rounded-xl flex items-center justify-center gap-2 transition-colors">
                   <span>Shop Now</span>
                   <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -232,7 +249,7 @@ export default function ProductCatalog() {
           ))}
         </div>
 
-        {/* Load More Pagination Section - Increased text sizes */}
+        {/* Load More Pagination Section */}
         <div className="flex flex-col items-center justify-center mb-10 space-y-3">
           <p className="text-base text-slate-600">
             You've viewed <span className="font-semibold text-slate-800">72</span> of <span className="font-semibold text-slate-800">3,907</span> products

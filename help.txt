@@ -1358,3 +1358,9 @@ export default function HomePage() {
 
 bg-gradient-to-r from-blue-700 via-blue-600 to-sky-500
 
+
+
+https://demo.yo-kart.com/electronics
+
+
+https://www.asos.com/men/ctas/generic-promos/promotion-6/cat/?cid=28238&ctaref=globalbanner%7Cmw%7Cgeneric&_gl=1*9y041b*_up*MQ..*_gs*MQ..&gclid=Cj0KCQjw-MDTBhCgARIsAKAkdlRXSLG2BM08uPFSNgwxaCs2Pq3WesdJ_vzTVYjPTfSVC8M1WI0S-GQaAg2OEALw_wcB&gbraid=0AAAAADqFjOABe5YBIx7Zlan30wugSEZj8&currentpricerange=0-715&sort=freshness&refine=currentprice:0%3C715

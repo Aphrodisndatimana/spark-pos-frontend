@@ -13,8 +13,8 @@ import RepairTechDashboard from './pages/Dashboards/RepairTech'
 import CustomerPortal from './pages/CustomerPortalPage'
 import PageNotFound from './pages/404Page'
 import PointOfSalePage from './pages/Products/PointSale'
-import InterShopTransfersPage from './pages/Products/InterShopTransfersPage'
-import WarrantyManagerPage from './pages/Products/WarrantyManagerPage'
+import InterShopTransfersPage from './pages/Resources/InterShopTransfersPage'
+import WarrantyManagerPage from './pages/Resources/WarrantyManagerPage'
 import ProductLookupPage from './pages/Products/ProductLookupPage'
 import AboutUs from './pages/AboutPage'
 import HelpCenter from './pages/HelpPage'
@@ -48,14 +48,13 @@ function App() {
 
    {/* Products dropdownLink Pages */}
   <Route path='/products/mobile-devices-and-wearables/smartphones' element={<ProductCatalog />} ></Route>
-  <Route path='/pos' element={<PointOfSalePage isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />}></Route>
-  <Route path='/inter-shop-transfers' element={<InterShopTransfersPage isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />}></Route>
-  <Route path='/warranty-manager' element={<WarrantyManagerPage isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />}></Route>
-  <Route path='/product-lookup' element={<ProductLookupPage isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />}></Route>
+
 
     {/* Resources dropdownLink Pages */}
   <Route path='/resources/repairs' element={<RepairsPage />}></Route>
   <Route path='/resources/imei-tracking' element={<ImeiCheckPage />}></Route>
+  <Route path='/resources/inter-shop-transfers' element={<InterShopTransfersPage isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />}></Route>
+  <Route path='/resources/warranty-manager' element={<WarrantyManagerPage isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />}></Route>
 
   <Route path='*' element={<PageNotFound />}></Route>
   </Routes>

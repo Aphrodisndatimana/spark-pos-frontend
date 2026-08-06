@@ -9,8 +9,8 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
     <div
       className={`min-h-screen font-sans transition-colors duration-300 flex flex-col justify-between ${
         isDarkMode
-          ? 'bg-[#111827] text-slate-100 selection:bg-indigo-500 selection:text-white'
-          : 'bg-slate-50 text-slate-800 selection:bg-indigo-500 selection:text-white'
+          ? 'bg-[#0f172a] text-slate-100 selection:bg-blue-500 selection:text-white'
+          : 'bg-[#F8F9FA] text-slate-800 selection:bg-blue-500 selection:text-white'
       }`}
     >
       {/* Pass Theme State to Navbar */}
@@ -20,20 +20,20 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
       <main className="flex-grow pt-16">
         {/* HERO SECTION */}
         <section className="relative pt-20 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden text-center">
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-indigo-500/15 blur-[120px] rounded-full pointer-events-none"></div>
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-blue-500/15 blur-[120px] rounded-full pointer-events-none"></div>
 
           <div className="max-w-4xl mx-auto relative z-10">
             <div
               className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold mb-6 border ${
                 isDarkMode
-                  ? 'bg-indigo-500/10 border-indigo-500/20 text-indigo-400'
-                  : 'bg-indigo-50 border-indigo-200 text-indigo-700'
+                  ? 'bg-blue-500/10 border-blue-500/20 text-blue-400'
+                  : 'bg-blue-50 border-blue-200 text-blue-700'
               }`}
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
               </svg>
-              Multi-Branch Inventory &amp; Stock Lending System
+              Shop-to-Shop Network &amp; Deals
             </div>
 
             <h1
@@ -41,9 +41,9 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
                 isDarkMode ? 'text-white' : 'text-slate-900'
               }`}
             >
-              Inter-Shop Transfers &amp;{' '}
-              <span className="bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">
-                Stock Lending
+              Connect Shops,{' '}
+              <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                Buy &amp; Borrow Products
               </span>
             </h1>
 
@@ -52,7 +52,7 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
                 isDarkMode ? 'text-slate-400' : 'text-slate-600'
               }`}
             >
-              Effortlessly move inventory permanently or lend serialized stock temporarily between store branches. Eliminate missing devices, prevent theft, and maintain full financial accountability.
+              Communicate easily with other shop owners. Buy items from them or borrow products temporarily to serve your customers and share stock without any stress.
             </p>
           </div>
         </section>
@@ -64,19 +64,19 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
           }`}
         >
           <div className="mb-10 text-center sm:text-left">
-            <span className="text-xs font-bold uppercase tracking-wider text-indigo-500">
-              Core Functionality
+            <span className="text-xs font-bold uppercase tracking-wider text-blue-600">
+              Shop Connections
             </span>
             <h2 className={`text-2xl sm:text-3xl font-extrabold mt-1 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
-              How Inventory Movements Work in SparkPOS
+              How Shop Owners Trade in SparkPOS
             </h2>
             <p className={`text-sm mt-1 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-              Choose between permanent relocation or temporary borrowing between shop locations.
+              Talk to other shop owners to buy products directly or borrow items when you run short.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Card 1: Permanent Transfers */}
+            {/* Card 1: Buy Products */}
             <div
               className={`p-6 sm:p-8 rounded-3xl border relative flex flex-col justify-between transition-colors ${
                 isDarkMode
@@ -85,39 +85,39 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
               }`}
             >
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-indigo-500/20 border border-indigo-500/30 text-indigo-500 flex items-center justify-center mb-6">
+                <div className="w-12 h-12 rounded-2xl bg-blue-500/20 border border-blue-500/30 text-blue-600 flex items-center justify-center mb-6">
                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
                   </svg>
                 </div>
-                <span className="text-[10px] font-extrabold uppercase tracking-widest text-indigo-500 bg-indigo-500/10 border border-indigo-500/20 px-3 py-1 rounded-full">
-                  Permanent Relocation
+                <span className="text-[10px] font-extrabold uppercase tracking-widest text-blue-600 bg-blue-500/10 border border-blue-500/20 px-3 py-1 rounded-full">
+                  Direct Buying
                 </span>
                 <h3 className={`text-xl font-bold mt-3 mb-2 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
-                  Inter-Shop Stock Transfers
+                  Buy Products from Other Shops
                 </h3>
                 <p className={`text-xs leading-relaxed mb-6 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-                  Permanently moves ownership of items or serialized devices (IMEI/Serial) from Store A to Store B to rebalance inventory across stores.
+                  Message another shop owner and buy products or devices straight from their inventory to restock your store.
                 </p>
 
                 <ul className={`space-y-3 text-xs ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
                   <li className="flex items-start gap-2">
-                    <span className="text-indigo-500 font-bold">✓</span>
-                    <span><strong>Dispatch Lock:</strong> Outgoing items are marked as "In-Transit" to prevent accidental sales during delivery.</span>
+                    <span className="text-blue-600 font-bold">✓</span>
+                    <span><strong>Shop-to-Shop Deals:</strong> Send purchase requests directly to other shop owners in the network.</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-indigo-500 font-bold">✓</span>
-                    <span><strong>Barcode Scan Verification:</strong> Receiving branch staff must scan incoming IMEIs to confirm arrival.</span>
+                    <span className="text-blue-600 font-bold">✓</span>
+                    <span><strong>Scan Upon Delivery:</strong> Scan item barcodes when they arrive to confirm everything was delivered.</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-indigo-500 font-bold">✓</span>
-                    <span><strong>Instant Stock Shift:</strong> Live stock count decreases at Store A and increases at Store B upon confirmation.</span>
+                    <span className="text-blue-600 font-bold">✓</span>
+                    <span><strong>Automatic Ownership Shift:</strong> Purchased items transfer completely to your shop’s inventory.</span>
                   </li>
                 </ul>
               </div>
             </div>
 
-            {/* Card 2: Stock Lending */}
+            {/* Card 2: Borrow Products */}
             <div
               className={`p-6 sm:p-8 rounded-3xl border relative flex flex-col justify-between transition-colors ${
                 isDarkMode
@@ -126,33 +126,33 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
               }`}
             >
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-purple-500/20 border border-purple-500/30 text-purple-500 flex items-center justify-center mb-6">
+                <div className="w-12 h-12 rounded-2xl bg-blue-500/20 border border-blue-500/30 text-blue-600 flex items-center justify-center mb-6">
                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <span className="text-[10px] font-extrabold uppercase tracking-widest text-purple-500 bg-purple-500/10 border border-purple-500/20 px-3 py-1 rounded-full">
+                <span className="text-[10px] font-extrabold uppercase tracking-widest text-blue-600 bg-blue-500/10 border border-blue-500/20 px-3 py-1 rounded-full">
                   Temporary Borrowing
                 </span>
                 <h3 className={`text-xl font-bold mt-3 mb-2 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
-                  Stock Lending Products
+                  Borrow Products for Quick Sales
                 </h3>
                 <p className={`text-xs leading-relaxed mb-6 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-                  Allows Store A to temporarily borrow a product or IMEI unit from Store B to close a walk-in sale or for display purposes without altering stock ownership permanently.
+                  Ask a neighboring shop owner to lend you a product to make a fast sale or show a customer without buying full stock.
                 </p>
 
                 <ul className={`space-y-3 text-xs ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
                   <li className="flex items-start gap-2">
-                    <span className="text-purple-500 font-bold">✓</span>
-                    <span><strong>Lending Tracking Tag:</strong> The borrowed item is tagged under "Lent Stock" assigned to the requesting store.</span>
+                    <span className="text-blue-600 font-bold">✓</span>
+                    <span><strong>Clear Borrow Tag:</strong> Borrowed items are tracked so both owners know who holds the product.</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-purple-500 font-bold">✓</span>
-                    <span><strong>Automated Cost Settlement:</strong> If Store A sells the item, SparkPOS credits sale profit to Store A while reimbursing cost price to Store B.</span>
+                    <span className="text-blue-600 font-bold">✓</span>
+                    <span><strong>Automatic Money Settlement:</strong> When sold, your shop keeps the profit and pays the item cost back to the owner.</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-purple-500 font-bold">✓</span>
-                    <span><strong>Return Logging:</strong> If unsold, the item is returned to Store B and restored to active stock upon scan.</span>
+                    <span className="text-blue-600 font-bold">✓</span>
+                    <span><strong>Easy Unsold Return:</strong> If the customer doesn't buy, simply return the product back to the original shop owner.</span>
                   </li>
                 </ul>
               </div>
@@ -168,14 +168,14 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
         >
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mb-12 text-center sm:text-left">
-              <span className="text-xs font-bold uppercase tracking-wider text-indigo-500">
-                Process Breakdown
+              <span className="text-xs font-bold uppercase tracking-wider text-blue-600">
+                Simple Steps
               </span>
               <h2 className={`text-2xl sm:text-3xl font-extrabold mt-1 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
-                Step-by-Step Execution Workflow
+                How Owners Connect &amp; Trade
               </h2>
               <p className={`text-sm mt-1 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-                How cashier and manager requests are handled seamlessly across stores.
+                How you communicate and swap products with other shop owners safely.
               </p>
             </div>
 
@@ -186,14 +186,14 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
                   isDarkMode ? 'bg-[#1f2937] border-slate-800' : 'bg-white border-slate-200 shadow-sm'
                 }`}
               >
-                <div className="w-8 h-8 rounded-full bg-indigo-500/20 text-indigo-500 font-extrabold flex items-center justify-center text-xs mb-4">
+                <div className="w-8 h-8 rounded-full bg-blue-500/20 text-blue-600 font-extrabold flex items-center justify-center text-xs mb-4">
                   01
                 </div>
                 <h3 className={`font-bold text-sm mb-1 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
-                  Request &amp; Dispatch
+                  Send Request
                 </h3>
                 <p className={`text-xs leading-relaxed ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-                  Store manager creates a transfer order or stock lend request selecting specific items or IMEIs from another branch.
+                  Select another shop in the system and send a request to buy or borrow specific products.
                 </p>
               </div>
 
@@ -203,14 +203,14 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
                   isDarkMode ? 'bg-[#1f2937] border-slate-800' : 'bg-white border-slate-200 shadow-sm'
                 }`}
               >
-                <div className="w-8 h-8 rounded-full bg-indigo-500/20 text-indigo-500 font-extrabold flex items-center justify-center text-xs mb-4">
+                <div className="w-8 h-8 rounded-full bg-blue-500/20 text-blue-600 font-extrabold flex items-center justify-center text-xs mb-4">
                   02
                 </div>
                 <h3 className={`font-bold text-sm mb-1 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
-                  Transit Status Lock
+                  Owner Approves
                 </h3>
                 <p className={`text-xs leading-relaxed ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-                  The owning store approves dispatch. Items enter an in-transit/borrowed status, locking them from local sales.
+                  The other shop owner approves the deal. The items get marked "In Delivery".
                 </p>
               </div>
 
@@ -220,14 +220,14 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
                   isDarkMode ? 'bg-[#1f2937] border-slate-800' : 'bg-white border-slate-200 shadow-sm'
                 }`}
               >
-                <div className="w-8 h-8 rounded-full bg-indigo-500/20 text-indigo-500 font-extrabold flex items-center justify-center text-xs mb-4">
+                <div className="w-8 h-8 rounded-full bg-blue-500/20 text-blue-600 font-extrabold flex items-center justify-center text-xs mb-4">
                   03
                 </div>
                 <h3 className={`font-bold text-sm mb-1 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
-                  Receiving Handshake
+                  Scan &amp; Receive
                 </h3>
                 <p className={`text-xs leading-relaxed ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-                  The receiving branch scans barcode labels on physical arrival to acknowledge intake and verify no missing units.
+                  Scan the item barcode when handed over to confirm you got the right product.
                 </p>
               </div>
 
@@ -237,14 +237,14 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
                   isDarkMode ? 'bg-[#1f2937] border-slate-800' : 'bg-white border-slate-200 shadow-sm'
                 }`}
               >
-                <div className="w-8 h-8 rounded-full bg-indigo-500/20 text-indigo-500 font-extrabold flex items-center justify-center text-xs mb-4">
+                <div className="w-8 h-8 rounded-full bg-blue-500/20 text-blue-600 font-extrabold flex items-center justify-center text-xs mb-4">
                   04
                 </div>
                 <h3 className={`font-bold text-sm mb-1 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
-                  Final Settlement
+                  Instant Settle
                 </h3>
                 <p className={`text-xs leading-relaxed ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-                  SparkPOS updates live stock counts, reconciles revenue, and generates an audit log for store accounting.
+                  SparkPOS records who owes what, updates inventory, and keeps accurate account logs.
                 </p>
               </div>
             </div>
@@ -254,14 +254,14 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
         {/* SECTION 3: KEY SYSTEM ADVANTAGES */}
         <section className="py-16 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center sm:text-left">
-            <span className="text-xs font-bold uppercase tracking-wider text-indigo-500">
-              Security &amp; Management
+            <span className="text-xs font-bold uppercase tracking-wider text-blue-600">
+              Trust &amp; Communication
             </span>
             <h2 className={`text-2xl sm:text-3xl font-extrabold mt-1 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
-              Multi-Branch Control Features
+              Built for Shop Owners
             </h2>
             <p className={`text-sm mt-1 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-              Protecting retail operations from inventory shrinkage and unrecorded loans.
+              Communicate clearly and prevent missing items or unpaid deals between shops.
             </p>
           </div>
 
@@ -271,17 +271,17 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
                 isDarkMode ? 'bg-[#1f2937] border-slate-800' : 'bg-white border-slate-200 shadow-sm'
               }`}
             >
-              <div className="p-3 bg-indigo-500/10 text-indigo-500 rounded-xl h-fit">
+              <div className="p-3 bg-blue-500/10 text-blue-600 rounded-xl h-fit">
                 <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                 </svg>
               </div>
               <div>
                 <h3 className={`font-bold text-lg mb-1 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
-                  Discrepancy Alerts
+                  Missing Item Alerts
                 </h3>
                 <p className={`text-xs leading-relaxed ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-                  If Store B sends 5 units but Store A only receives 4, SparkPOS raises an immediate missing-unit alert to store management.
+                  If another owner sends 3 items but you only receive 2, SparkPOS immediately alerts both owners to resolve it.
                 </p>
               </div>
             </div>
@@ -291,17 +291,17 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
                 isDarkMode ? 'bg-[#1f2937] border-slate-800' : 'bg-white border-slate-200 shadow-sm'
               }`}
             >
-              <div className="p-3 bg-purple-500/10 text-purple-500 rounded-xl h-fit">
+              <div className="p-3 bg-blue-500/10 text-blue-600 rounded-xl h-fit">
                 <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
               </div>
               <div>
                 <h3 className={`font-bold text-lg mb-1 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
-                  Centralized Live Dashboard
+                  Shop Network History
                 </h3>
                 <p className={`text-xs leading-relaxed ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-                  Business owners can track all active inter-shop transfers and borrowed stock across all branch locations in real time.
+                  Keep track of all active deals, bought items, and borrowed products with partner shop owners on one simple dashboard.
                 </p>
               </div>
             </div>
@@ -319,10 +319,10 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
           >
             <div>
               <h3 className={`text-xl font-bold ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
-                Streamline multi-store stock movements
+                Ready to trade with other shop owners?
               </h3>
               <p className={`text-xs mt-1 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
-                Manage inter-shop transfers and stock lending accurately in SparkPOS.
+                Connect shops, buy, and borrow products smoothly with SparkPOS.
               </p>
             </div>
             <div className="flex gap-3 w-full sm:w-auto">
@@ -338,7 +338,7 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
               </Link>
               <Link
                 to="/register"
-                className="flex-1 sm:flex-none text-center px-5 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs rounded-xl transition shadow-md"
+                className="flex-1 sm:flex-none text-center px-5 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs rounded-xl transition shadow-md"
               >
                 Get Started
               </Link>
