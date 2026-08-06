@@ -34,7 +34,7 @@ const PRODUCTS = [
     price: '278000 RFW',
     rating: 0,
     brand: 'android',
-    image: '/images/products/samsung/samsung galaxy s26 ultra.jpg',
+    image: '/images/products/samsung/Samsung s24.jpg',
   },
   {
     id: 5,
