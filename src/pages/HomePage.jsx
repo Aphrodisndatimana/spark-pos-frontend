@@ -96,7 +96,7 @@ export default function HomePage() {
     <div className={`min-h-screen font-sans antialiased pt-16 md:pt-20 transition-colors duration-300 selection:bg-[#e800c7] selection:text-white relative overflow-x-hidden ${
       isDarkMode ? 'bg-[#111827] text-white' : 'bg-[#f3f4f6] text-black'
     }`}>
-      {/* Navbar Component */}
+      {/* Navbar Component receiving Theme State */}
       <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
 
       {/* --- HERO SECTION --- */}
@@ -180,14 +180,16 @@ export default function HomePage() {
       </section>
 
       {/* --- SECTION: FOR CUSTOMERS --- */}
-      <section className="w-full px-4 py-12 text-white bg-black sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+      <section className={`w-full px-4 py-12 sm:px-6 lg:px-8 sm:py-20 lg:py-24 transition-colors duration-300 ${
+        isDarkMode ? 'bg-black text-white' : 'bg-gray-900 text-white'
+      }`}>
         <div className="grid items-center grid-cols-1 gap-8 mx-auto lg:gap-12 max-w-7xl lg:grid-cols-2">
           <div className="relative flex items-center justify-center w-full overflow-hidden border shadow-2xl rounded-xl border-neutral-800 aspect-video bg-neutral-900">
             <img src="/images/user strugling.jpg" alt="customer struggling" className="object-cover w-full h-full" />
           </div>
 
           <div className="space-y-3 sm:space-y-5">
-            <span className="text-xs sm:text-sm font-black text-[#2563eb] tracking-widest block uppercase">— For Customers</span>
+            <span className="text-xs sm:text-sm font-black text-[#2563eb] tracking-widest block ">— For Customers</span>
             <h2 className="text-xl font-extrabold leading-tight tracking-tight text-white sm:text-3xl lg:text-4xl">
               All of Kigali's Electronics Shops, Right in Your Hands.
             </h2>
@@ -201,11 +203,11 @@ export default function HomePage() {
       {/* --- SECTION: SEE HOW SHOPPING IS EASY --- */}
       <section className="w-full px-4 py-12 mx-auto sm:px-6 lg:px-8 sm:py-20 lg:py-24 max-w-7xl">
         <div className="mb-6 space-y-2 sm:mb-10 sm:space-y-3">
-          <span className="text-[#2563eb] text-xs sm:text-sm font-extrabold tracking-wider uppercase block">— Built for your convenience</span>
+          <span className="text-[#2563eb] text-xs sm:text-sm font-extrabold tracking-wider block">— Built for your convenience</span>
           <h2 className={`text-xl sm:text-3xl lg:text-4xl font-black tracking-tight ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
             See how <span className="text-[#e800c7]">SparkPos</span> makes shopping easy
           </h2>
-          <p className="text-xs font-normal text-gray-400 sm:text-sm lg:text-base">
+          <p className={`text-xs font-normal sm:text-sm lg:text-base ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
             Find what you need immediately, examine alternative item choices, lock down your payments securely.
           </p>
         </div>
@@ -222,7 +224,9 @@ export default function HomePage() {
               key={tab.id}
               onClick={() => setActiveCustomerTab(tab.id)}
               className={`pb-3 sm:pb-4 text-xs sm:text-sm lg:text-base font-bold tracking-tight transition-all relative whitespace-nowrap cursor-pointer flex-shrink-0 ${
-                activeCustomerTab === tab.id ? 'text-[#e800c7] font-black' : 'text-gray-400 hover:text-gray-300'
+                activeCustomerTab === tab.id 
+                  ? 'text-[#e800c7] font-black' 
+                  : isDarkMode ? 'text-gray-400 hover:text-gray-300' : 'text-gray-500 hover:text-gray-800'
               }`}
             >
               {tab.label}
@@ -261,10 +265,12 @@ export default function HomePage() {
       </section>
 
       {/* --- SECTION: FOR STORE OWNERS --- */}
-      <section className="w-full px-4 py-12 text-white bg-black sm:px-6 lg:px-8 sm:py-20 lg:py-24">
+      <section className={`w-full px-4 py-12 sm:px-6 lg:px-8 sm:py-20 lg:py-24 transition-colors duration-300 ${
+        isDarkMode ? 'bg-black text-white' : 'bg-gray-900 text-white'
+      }`}>
         <div className="grid items-center grid-cols-1 gap-8 mx-auto lg:gap-12 max-w-7xl lg:grid-cols-2">
           <div className="order-2 space-y-3 lg:order-1 sm:space-y-5">
-            <span className="text-xs sm:text-sm font-black text-[#2563eb] tracking-widest block uppercase">— For Shop Owners</span>
+            <span className="text-xs sm:text-sm font-black text-[#2563eb] tracking-widest block">— For Shop Owners</span>
             <h2 className="text-xl font-extrabold leading-tight tracking-tight text-white sm:text-3xl lg:text-4xl">
               Stop Losing Money to Manual Paperwork
             </h2>
@@ -282,11 +288,11 @@ export default function HomePage() {
       {/* --- SECTION: SEE HOW IT WORKS ON BUSINESSES --- */}
       <section className="w-full px-4 py-12 mx-auto sm:px-6 lg:px-8 sm:py-20 lg:py-24 max-w-7xl">
         <div className="mb-6 space-y-2 sm:mb-10 sm:space-y-3">
-          <span className="text-[#2563eb] text-xs sm:text-sm font-extrabold tracking-wider uppercase block">— Built for your creation</span>
+          <span className="text-[#2563eb] text-xs sm:text-sm font-extrabold tracking-wider block">— Built for your creation</span>
           <h2 className={`text-xl sm:text-3xl lg:text-4xl font-black tracking-tight ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
             See how <span className="text-[#2563eb]">SparkPos</span> works for Businesses
           </h2>
-          <p className="text-xs font-normal text-gray-400 sm:text-sm lg:text-base">
+          <p className={`text-xs font-normal sm:text-sm lg:text-base ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
             Track components, run repair jobs pipelines, and map cross branch item adjustments cleanly.
           </p>
         </div>
@@ -303,7 +309,9 @@ export default function HomePage() {
               key={tab.id}
               onClick={() => setActiveBusinessTab(tab.id)}
               className={`pb-3 sm:pb-4 text-xs sm:text-sm lg:text-base font-bold tracking-tight transition-all relative whitespace-nowrap cursor-pointer flex-shrink-0 ${
-                activeBusinessTab === tab.id ? 'text-[#2563eb] font-black' : 'text-gray-400 hover:text-gray-300'
+                activeBusinessTab === tab.id 
+                  ? 'text-[#2563eb] font-black' 
+                  : isDarkMode ? 'text-gray-400 hover:text-gray-300' : 'text-gray-500 hover:text-gray-800'
               }`}
             >
               {tab.label}
@@ -342,7 +350,9 @@ export default function HomePage() {
       </section>
 
       {/* --- SECTION: FAQ ACCORDION PANEL --- */}
-      <section className="py-12 sm:py-20 lg:py-24 bg-[#0a0f19] text-white w-full px-4 sm:px-6 lg:px-8">
+      <section className={`py-12 sm:py-20 lg:py-24 w-full px-4 sm:px-6 lg:px-8 transition-colors duration-300 ${
+        isDarkMode ? 'bg-[#0a0f19] text-white' : 'bg-slate-900 text-white'
+      }`}>
         <div className="max-w-4xl mx-auto">
           
           <div className="mb-8 space-y-2 text-center sm:mb-12 sm:space-y-3">
@@ -433,7 +443,7 @@ export default function HomePage() {
             <h4 className={`font-black text-sm sm:text-base lg:text-lg tracking-tight ${isDarkMode ? 'text-white' : 'text-black'}`}>
               Get live updates notification for SparkPos — free
             </h4>
-            <p className="mt-0.5 text-xs sm:text-sm text-gray-400">Join 3,500+ shop owners getting weekly updates lines.</p>
+            <p className="mt-0.5 text-xs sm:text-sm text-gray-400">Join 3,500+ shop owners and 4500+ customers getting weekly updates lines.</p>
           </div>
           
           <form onSubmit={(e) => e.preventDefault()} className={`w-full sm:w-auto flex flex-col sm:flex-row items-center gap-2 p-1.5 rounded-lg border shadow-sm ${

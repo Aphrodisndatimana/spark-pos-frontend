@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import ScrollToTop from "../components/ScrollToTop";
 
 const HelpPage = ({ isDarkMode, setIsDarkMode }) => {
   const [openFaq, setOpenFaq] = useState(null);
@@ -53,9 +52,9 @@ const HelpPage = ({ isDarkMode, setIsDarkMode }) => {
       <main className="flex-grow pt-20 sm:pt-24">
         {/* Banner Section */}
         <div
-          className={`px-4 py-12 sm:py-16 text-center border-b ${
+          className={`-mt-4 px-4 py-10 sm:py-14 text-center border-b ${
             isDarkMode
-              ? 'bg-[#1f2937] border-slate-800'
+              ? 'bg-[#273649] border-slate-800'
               : 'bg-slate-100 border-slate-200'
           }`}
         >
@@ -75,10 +74,10 @@ const HelpPage = ({ isDarkMode, setIsDarkMode }) => {
           </p>
         </div>
 
-        <div className="max-w-4xl px-4 sm:px-6 py-8 sm:py-12 mx-auto">
+        <div className="max-w-4xl px-4 py-8 mx-auto sm:px-6 sm:py-12">
           
           {/* Quick Action Cards */}
-          <div className="grid grid-cols-1 gap-4 sm:gap-6 mb-8 sm:mb-12 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-4 mb-8 sm:gap-6 sm:mb-12 md:grid-cols-2">
             <div
               className={`flex flex-col justify-between p-5 sm:p-6 border rounded-xl transition ${
                 isDarkMode
@@ -208,8 +207,6 @@ const HelpPage = ({ isDarkMode, setIsDarkMode }) => {
 
         </div>
       </main>
-
-      <ScrollToTop />
       {/* Footer */}
       <Footer />
     </div>

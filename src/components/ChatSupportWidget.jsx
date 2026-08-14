@@ -47,7 +47,7 @@ export default function ChatSupportWidget({ isDarkMode }) {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed z-50 bottom-6 right-6">
       {/* Chat Box Window */}
       {isChatOpen && (
         <div className={`mb-4 w-[320px] sm:w-[380px] h-[480px] rounded-2xl shadow-2xl border flex flex-col overflow-hidden transition-all duration-300 ${
@@ -57,10 +57,10 @@ export default function ChatSupportWidget({ isDarkMode }) {
           <div className="bg-[#2563eb] text-white p-4 flex items-center justify-between">
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-full bg-white text-[#2563eb] font-bold flex items-center justify-center text-xs">
-                <img src="/images/logo.jpg" className='rounded-full' alt="SparkPos logo"/>
+                <img src="/images/logo2.jpg" className='rounded-full' alt="SparkPos logo"/>
               </div>
               <div>
-                <h3 className="font-bold text-sm leading-tight">SparkPOS Admin Support</h3>
+                <h3 className="text-sm font-bold leading-tight">SparkPOS Admin Support</h3>
                 <p className="text-[10px] text-blue-100">Typically replies within a few minutes</p>
               </div>
             </div>
@@ -68,7 +68,7 @@ export default function ChatSupportWidget({ isDarkMode }) {
             {/* Close / Times Button inside the Chat Box */}
             <button 
               onClick={() => setIsChatOpen(false)}
-              className="text-white hover:bg-blue-700 w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm cursor-pointer transition-colors"
+              className="flex items-center justify-center text-sm font-bold text-white transition-colors rounded-full cursor-pointer hover:bg-blue-700 w-7 h-7"
               aria-label="Close chat"
             >
               ✕
@@ -94,7 +94,7 @@ export default function ChatSupportWidget({ isDarkMode }) {
           </div>
 
           {/* Message History */}
-          <div className="flex-1 p-4 overflow-y-auto space-y-3 text-xs">
+          <div className="flex-1 p-4 space-y-3 overflow-y-auto text-xs">
             {messages.map((msg) => (
               <div 
                 key={msg.id} 
@@ -147,7 +147,7 @@ export default function ChatSupportWidget({ isDarkMode }) {
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
         </svg>
-        <span className="hidden group-hover:inline text-xs font-bold pr-1">Chat with Admin</span>
+        <span className="hidden pr-1 text-xs font-bold group-hover:inline">Chat with Admin</span>
       </button>
     </div>
   );

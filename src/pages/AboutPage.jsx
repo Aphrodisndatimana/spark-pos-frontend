@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import ScrollToTop from "../components/ScrollToTop";
 
 const About = ({ isDarkMode, setIsDarkMode }) => {
   return (
@@ -54,7 +53,7 @@ const About = ({ isDarkMode, setIsDarkMode }) => {
         </section>
 
         {/* Content Section */}
-        <section className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12 space-y-8 sm:space-y-12">
+        <section className="max-w-4xl px-4 py-8 mx-auto space-y-8 sm:px-6 sm:py-12 sm:space-y-12">
           
           {/* Mission & Customer Value */}
           <div
@@ -108,7 +107,7 @@ const About = ({ isDarkMode, setIsDarkMode }) => {
             </h2>
             
             <div className="space-y-6">
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
                 <div
                   className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center font-bold ${
                     isDarkMode
@@ -136,7 +135,7 @@ const About = ({ isDarkMode, setIsDarkMode }) => {
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
                 <div
                   className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center font-bold ${
                     isDarkMode
@@ -164,7 +163,7 @@ const About = ({ isDarkMode, setIsDarkMode }) => {
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
                 <div
                   className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center font-bold ${
                     isDarkMode
@@ -192,7 +191,7 @@ const About = ({ isDarkMode, setIsDarkMode }) => {
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
                 <div
                   className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center font-bold ${
                     isDarkMode
@@ -240,7 +239,7 @@ const About = ({ isDarkMode, setIsDarkMode }) => {
               What Our System Offers
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 sm:gap-6">
               <div
                 className={`p-4 rounded-xl border ${
                   isDarkMode
@@ -337,11 +336,11 @@ const About = ({ isDarkMode, setIsDarkMode }) => {
 
           {/* CTA Banner */}
           <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#1A3D6D] to-indigo-900 text-white text-center shadow-lg">
-            <h3 className="text-xl sm:text-2xl font-bold mb-2">Looking for Products or Managing a Store?</h3>
-            <p className="text-indigo-200 text-xs sm:text-sm mb-6 max-w-xl mx-auto">
+            <h3 className="mb-2 text-xl font-bold sm:text-2xl">Looking for Products or Managing a Store?</h3>
+            <p className="max-w-xl mx-auto mb-6 text-xs text-indigo-200 sm:text-sm">
               Find the gadgets you need from verified local sellers or bring your store inventory onto our platform today.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
+            <div className="flex flex-col justify-center gap-3 sm:flex-row sm:gap-4">
               <Link 
                 to="/help" 
                 className="w-full sm:w-auto px-6 py-2.5 bg-white text-[#1A3D6D] hover:bg-slate-100 font-semibold rounded-lg transition-colors text-xs sm:text-sm shadow-sm"
@@ -359,8 +358,6 @@ const About = ({ isDarkMode, setIsDarkMode }) => {
 
         </section>
       </main>
-
-      <ScrollToTop />
       {/* Footer */}
       <Footer />
     </div>

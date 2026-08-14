@@ -1,7 +1,6 @@
 import React from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
-import ScrollToTop from '../../components/ScrollToTop';
 import { Link } from 'react-router-dom';
 
 export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
@@ -19,10 +18,10 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
       {/* MAIN CONTENT AREA */}
       <main className="flex-grow pt-16">
         {/* HERO SECTION */}
-        <section className="relative pt-20 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden text-center">
+        <section className="relative px-4 pt-20 pb-16 overflow-hidden text-center sm:px-6 lg:px-8">
           <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-blue-500/15 blur-[120px] rounded-full pointer-events-none"></div>
 
-          <div className="max-w-4xl mx-auto relative z-10">
+          <div className="relative z-10 max-w-4xl mx-auto">
             <div
               className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold mb-6 border ${
                 isDarkMode
@@ -42,7 +41,7 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
               }`}
             >
               Connect Shops,{' '}
-              <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+              <span className="text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text">
                 Buy &amp; Borrow Products
               </span>
             </h1>
@@ -64,7 +63,7 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
           }`}
         >
           <div className="mb-10 text-center sm:text-left">
-            <span className="text-xs font-bold uppercase tracking-wider text-blue-600">
+            <span className="text-xs font-bold tracking-wider text-blue-600 uppercase">
               Shop Connections
             </span>
             <h2 className={`text-2xl sm:text-3xl font-extrabold mt-1 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
@@ -75,7 +74,7 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             {/* Card 1: Buy Products */}
             <div
               className={`p-6 sm:p-8 rounded-3xl border relative flex flex-col justify-between transition-colors ${
@@ -85,7 +84,7 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
               }`}
             >
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-blue-500/20 border border-blue-500/30 text-blue-600 flex items-center justify-center mb-6">
+                <div className="flex items-center justify-center w-12 h-12 mb-6 text-blue-600 border rounded-2xl bg-blue-500/20 border-blue-500/30">
                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
                   </svg>
@@ -102,15 +101,15 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
 
                 <ul className={`space-y-3 text-xs ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
                   <li className="flex items-start gap-2">
-                    <span className="text-blue-600 font-bold">✓</span>
+                    <span className="font-bold text-blue-600">✓</span>
                     <span><strong>Shop-to-Shop Deals:</strong> Send purchase requests directly to other shop owners in the network.</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-blue-600 font-bold">✓</span>
+                    <span className="font-bold text-blue-600">✓</span>
                     <span><strong>Scan Upon Delivery:</strong> Scan item barcodes when they arrive to confirm everything was delivered.</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-blue-600 font-bold">✓</span>
+                    <span className="font-bold text-blue-600">✓</span>
                     <span><strong>Automatic Ownership Shift:</strong> Purchased items transfer completely to your shop’s inventory.</span>
                   </li>
                 </ul>
@@ -126,7 +125,7 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
               }`}
             >
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-blue-500/20 border border-blue-500/30 text-blue-600 flex items-center justify-center mb-6">
+                <div className="flex items-center justify-center w-12 h-12 mb-6 text-blue-600 border rounded-2xl bg-blue-500/20 border-blue-500/30">
                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
@@ -143,15 +142,15 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
 
                 <ul className={`space-y-3 text-xs ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
                   <li className="flex items-start gap-2">
-                    <span className="text-blue-600 font-bold">✓</span>
+                    <span className="font-bold text-blue-600">✓</span>
                     <span><strong>Clear Borrow Tag:</strong> Borrowed items are tracked so both owners know who holds the product.</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-blue-600 font-bold">✓</span>
+                    <span className="font-bold text-blue-600">✓</span>
                     <span><strong>Automatic Money Settlement:</strong> When sold, your shop keeps the profit and pays the item cost back to the owner.</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-blue-600 font-bold">✓</span>
+                    <span className="font-bold text-blue-600">✓</span>
                     <span><strong>Easy Unsold Return:</strong> If the customer doesn't buy, simply return the product back to the original shop owner.</span>
                   </li>
                 </ul>
@@ -166,9 +165,9 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
             isDarkMode ? 'bg-[#0f172a] border-slate-800' : 'bg-slate-100/70 border-slate-200'
           }`}
         >
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl px-4 mx-auto sm:px-6 lg:px-8">
             <div className="mb-12 text-center sm:text-left">
-              <span className="text-xs font-bold uppercase tracking-wider text-blue-600">
+              <span className="text-xs font-bold tracking-wider text-blue-600 uppercase">
                 Simple Steps
               </span>
               <h2 className={`text-2xl sm:text-3xl font-extrabold mt-1 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
@@ -179,14 +178,14 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
               {/* Step 1 */}
               <div
                 className={`p-6 rounded-2xl border transition-colors ${
                   isDarkMode ? 'bg-[#1f2937] border-slate-800' : 'bg-white border-slate-200 shadow-sm'
                 }`}
               >
-                <div className="w-8 h-8 rounded-full bg-blue-500/20 text-blue-600 font-extrabold flex items-center justify-center text-xs mb-4">
+                <div className="flex items-center justify-center w-8 h-8 mb-4 text-xs font-extrabold text-blue-600 rounded-full bg-blue-500/20">
                   01
                 </div>
                 <h3 className={`font-bold text-sm mb-1 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
@@ -203,7 +202,7 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
                   isDarkMode ? 'bg-[#1f2937] border-slate-800' : 'bg-white border-slate-200 shadow-sm'
                 }`}
               >
-                <div className="w-8 h-8 rounded-full bg-blue-500/20 text-blue-600 font-extrabold flex items-center justify-center text-xs mb-4">
+                <div className="flex items-center justify-center w-8 h-8 mb-4 text-xs font-extrabold text-blue-600 rounded-full bg-blue-500/20">
                   02
                 </div>
                 <h3 className={`font-bold text-sm mb-1 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
@@ -220,7 +219,7 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
                   isDarkMode ? 'bg-[#1f2937] border-slate-800' : 'bg-white border-slate-200 shadow-sm'
                 }`}
               >
-                <div className="w-8 h-8 rounded-full bg-blue-500/20 text-blue-600 font-extrabold flex items-center justify-center text-xs mb-4">
+                <div className="flex items-center justify-center w-8 h-8 mb-4 text-xs font-extrabold text-blue-600 rounded-full bg-blue-500/20">
                   03
                 </div>
                 <h3 className={`font-bold text-sm mb-1 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
@@ -237,7 +236,7 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
                   isDarkMode ? 'bg-[#1f2937] border-slate-800' : 'bg-white border-slate-200 shadow-sm'
                 }`}
               >
-                <div className="w-8 h-8 rounded-full bg-blue-500/20 text-blue-600 font-extrabold flex items-center justify-center text-xs mb-4">
+                <div className="flex items-center justify-center w-8 h-8 mb-4 text-xs font-extrabold text-blue-600 rounded-full bg-blue-500/20">
                   04
                 </div>
                 <h3 className={`font-bold text-sm mb-1 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
@@ -252,9 +251,9 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
         </section>
 
         {/* SECTION 3: KEY SYSTEM ADVANTAGES */}
-        <section className="py-16 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="max-w-6xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
           <div className="mb-12 text-center sm:text-left">
-            <span className="text-xs font-bold uppercase tracking-wider text-blue-600">
+            <span className="text-xs font-bold tracking-wider text-blue-600 uppercase">
               Trust &amp; Communication
             </span>
             <h2 className={`text-2xl sm:text-3xl font-extrabold mt-1 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
@@ -265,13 +264,13 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             <div
               className={`p-6 rounded-2xl border flex gap-4 transition-colors ${
                 isDarkMode ? 'bg-[#1f2937] border-slate-800' : 'bg-white border-slate-200 shadow-sm'
               }`}
             >
-              <div className="p-3 bg-blue-500/10 text-blue-600 rounded-xl h-fit">
+              <div className="p-3 text-blue-600 bg-blue-500/10 rounded-xl h-fit">
                 <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                 </svg>
@@ -291,7 +290,7 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
                 isDarkMode ? 'bg-[#1f2937] border-slate-800' : 'bg-white border-slate-200 shadow-sm'
               }`}
             >
-              <div className="p-3 bg-blue-500/10 text-blue-600 rounded-xl h-fit">
+              <div className="p-3 text-blue-600 bg-blue-500/10 rounded-xl h-fit">
                 <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
@@ -309,7 +308,7 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
         </section>
 
         {/* SECTION 4: BOTTOM CTA */}
-        <section className="py-12 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="max-w-6xl px-4 py-12 mx-auto sm:px-6 lg:px-8">
           <div
             className={`rounded-3xl p-8 border text-center sm:text-left flex flex-col sm:flex-row justify-between items-center gap-6 transition-colors ${
               isDarkMode
@@ -325,7 +324,7 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
                 Connect shops, buy, and borrow products smoothly with SparkPOS.
               </p>
             </div>
-            <div className="flex gap-3 w-full sm:w-auto">
+            <div className="flex w-full gap-3 sm:w-auto">
               <Link
                 to="/login"
                 className={`flex-1 sm:flex-none text-center px-5 py-3 font-semibold text-xs rounded-xl border transition ${
@@ -338,7 +337,7 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
               </Link>
               <Link
                 to="/register"
-                className="flex-1 sm:flex-none text-center px-5 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs rounded-xl transition shadow-md"
+                className="flex-1 px-5 py-3 text-xs font-bold text-center text-white transition bg-blue-600 shadow-md sm:flex-none hover:bg-blue-500 rounded-xl"
               >
                 Get Started
               </Link>
@@ -347,7 +346,6 @@ export default function InterShopTransfersPage({ isDarkMode, setIsDarkMode }) {
         </section>
       </main>
 
-      <ScrollToTop />
       <Footer />
     </div>
   );
