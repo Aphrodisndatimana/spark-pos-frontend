@@ -180,7 +180,7 @@ export default function Navbar({
                   ${
                     isDarkMode
                       ? 'text-gray-100 group-hover:text-[#60a5fa]'
-                      : 'text-gray-700 group-hover:text-[#2563eb]'
+                      : 'text-gray-600 group-hover:text-[#2563eb]'
                   }
                 `}
               >
@@ -940,7 +940,7 @@ export default function Navbar({
                   ${
                     isDarkMode
                       ? 'text-gray-100 hover:bg-[#263244] hover:border-[#374151] hover:text-white'
-                      : 'text-gray-700 hover:bg-gray-100 hover:border-gray-200 hover:text-black'
+                      : 'text-gray-600 hover:bg-gray-100 hover:border-gray-200 hover:text-black'
                   }
                 `}
               >
