@@ -22,9 +22,7 @@ export default function Navbar({
   const isDarkMode =
     propIsDarkMode !== undefined ? propIsDarkMode : localIsDarkMode;
 
-  const setIsDarkMode =
-    propSetIsDarkMode || setLocalIsDarkMode;
-
+  const setIsDarkMode = propSetIsDarkMode || setLocalIsDarkMode;
   const [selectedLang, setSelectedLang] = useState('English');
   const [activeMobileMenu, setActiveMobileMenu] = useState(null);
   const langMenuRef = useRef(null);
@@ -259,9 +257,9 @@ export default function Navbar({
                             </div>
 
                             <div>
-                              <div className="text-sm font-semibold text-gray-900 transition-colors dark:text-gray-100 group-hover:text-black dark:group-hover:text-white">
-                                Smartphones
-                              </div>
+                          <div className={`text-sm font-semibold transition-colors   ${ isDarkMode ? 'text-white hover:text-gray-900' : 'text-black'}`}>
+                            Smartphones
+                            </div>
 
                               <p className="mt-0.5 text-xs text-gray-500 dark:text-gray-400 font-jakarta">
                                 Top flagship & budget models
@@ -290,7 +288,7 @@ export default function Navbar({
                             </div>
 
                             <div>
-                              <div className="text-sm font-semibold text-gray-900 transition-colors dark:text-gray-100 group-hover:text-black dark:group-hover:text-white">
+                              <div className={`text-sm font-semibold transition-colors   ${ isDarkMode ? 'text-white hover:text-gray-900' : 'text-black'}`}>
                                 Tablets
                               </div>
 
@@ -321,7 +319,7 @@ export default function Navbar({
                             </div>
 
                             <div>
-                              <div className="text-sm font-semibold text-gray-900 transition-colors dark:text-gray-100 group-hover:text-black dark:group-hover:text-white">
+                              <div className={`text-sm font-semibold transition-colors   ${ isDarkMode ? 'text-white hover:text-gray-900' : 'text-black'}`}>
                                 Smartwatches
                               </div>
 
@@ -363,7 +361,7 @@ export default function Navbar({
                             </div>
 
                             <div>
-                              <div className="text-sm font-semibold text-gray-900 transition-colors dark:text-gray-100 group-hover:text-black dark:group-hover:text-white">
+                              <div className={`text-sm font-semibold transition-colors   ${ isDarkMode ? 'text-white hover:text-gray-900' : 'text-black'}`}>
                                 Laptops & Desktops
                               </div>
 
@@ -394,7 +392,7 @@ export default function Navbar({
                             </div>
 
                             <div>
-                              <div className="text-sm font-semibold text-gray-900 transition-colors dark:text-gray-100 group-hover:text-black dark:group-hover:text-white">
+                              <div className={`text-sm font-semibold transition-colors   ${ isDarkMode ? 'text-white hover:text-gray-900' : 'text-black'}`}>
                                 Peripherals & Accessories
                               </div>
 
@@ -425,7 +423,7 @@ export default function Navbar({
                             </div>
 
                             <div>
-                              <div className="text-sm font-semibold text-gray-900 transition-colors dark:text-gray-100 group-hover:text-black dark:group-hover:text-white">
+                              <div className={`text-sm font-semibold transition-colors   ${ isDarkMode ? 'text-white hover:text-gray-900' : 'text-black'}`}>
                                 Printers & Scanners
                               </div>
 
@@ -467,7 +465,7 @@ export default function Navbar({
                             </div>
 
                             <div>
-                              <div className="text-sm font-semibold text-gray-900 transition-colors dark:text-gray-100 group-hover:text-black dark:group-hover:text-white">
+                              <div className={`text-sm font-semibold transition-colors   ${ isDarkMode ? 'text-white hover:text-gray-900' : 'text-black'}`}>
                                 Power Supplies
                               </div>
 
@@ -498,7 +496,7 @@ export default function Navbar({
                             </div>
 
                             <div>
-                              <div className="text-sm font-semibold text-gray-900 transition-colors dark:text-gray-100 group-hover:text-black dark:group-hover:text-white">
+                              <div className={`text-sm font-semibold transition-colors   ${ isDarkMode ? 'text-white hover:text-gray-900' : 'text-black'}`}>
                                 Networking Equipment
                               </div>
 
@@ -529,7 +527,7 @@ export default function Navbar({
                             </div>
 
                             <div>
-                              <div className="text-sm font-semibold text-gray-900 transition-colors dark:text-gray-100 group-hover:text-black dark:group-hover:text-white">
+                              <div className={`text-sm font-semibold transition-colors   ${ isDarkMode ? 'text-white hover:text-gray-900' : 'text-black'}`}>
                                 Cables & Converters
                               </div>
 
@@ -571,7 +569,7 @@ export default function Navbar({
                             </div>
 
                             <div>
-                              <div className="text-sm font-semibold text-gray-900 transition-colors dark:text-gray-100 group-hover:text-black dark:group-hover:text-white">
+                              <div className={`text-sm font-semibold transition-colors   ${ isDarkMode ? 'text-white hover:text-gray-900' : 'text-black'}`}>
                                 CCTV & Security
                               </div>
 
@@ -608,7 +606,7 @@ export default function Navbar({
                             </div>
 
                             <div>
-                              <div className="text-sm font-semibold text-gray-900 transition-colors dark:text-gray-100 group-hover:text-black dark:group-hover:text-white">
+                              <div className={`text-sm font-semibold transition-colors   ${ isDarkMode ? 'text-white hover:text-gray-900' : 'text-black'}`}>
                                 Cameras & Audio Gear
                               </div>
 
@@ -722,7 +720,7 @@ export default function Navbar({
                             </div>
 
                             <div>
-                              <div className="text-sm font-semibold text-gray-900 transition-colors dark:text-gray-100 group-hover:text-black dark:group-hover:text-white">
+                              <div className={`text-sm font-semibold transition-colors   ${ isDarkMode ? 'text-white hover:text-gray-900' : 'text-black'}`}>
                                 IMEI & Serial Tracking
                               </div>
 
@@ -753,7 +751,7 @@ export default function Navbar({
                             </div>
 
                             <div>
-                              <div className="text-sm font-semibold text-gray-900 transition-colors dark:text-gray-100 group-hover:text-black dark:group-hover:text-white">
+                              <div className={`text-sm font-semibold transition-colors   ${ isDarkMode ? 'text-white hover:text-gray-900' : 'text-black'}`}>
                                 Inter-shop Transfer
                               </div>
 
@@ -795,7 +793,7 @@ export default function Navbar({
                             </div>
 
                             <div>
-                              <div className="text-sm font-semibold text-gray-900 transition-colors dark:text-gray-100 group-hover:text-black dark:group-hover:text-white">
+                              <div className={`text-sm font-semibold transition-colors   ${ isDarkMode ? 'text-white hover:text-gray-900' : 'text-black'}`}>
                                 Repairs
                               </div>
 
@@ -826,7 +824,7 @@ export default function Navbar({
                             </div>
 
                             <div>
-                              <div className="text-sm font-semibold text-gray-900 transition-colors dark:text-gray-100 group-hover:text-black dark:group-hover:text-whit">
+                              <div className={`text-sm font-semibold transition-colors   ${ isDarkMode ? 'text-white hover:text-gray-900' : 'text-black'}`}>
                                 Warranty Manager
                               </div>
 
@@ -868,7 +866,7 @@ export default function Navbar({
                             </div>
 
                             <div>
-                              <div className="text-sm font-semibold text-gray-900 transition-colors dark:text-gray-100 group-hover:text-black dark:group-hover:text-white">
+                              <div className={`text-sm font-semibold transition-colors   ${ isDarkMode ? 'text-white hover:text-gray-900' : 'text-black'}`}>
                                 Help Center
                               </div>
 
@@ -899,7 +897,7 @@ export default function Navbar({
                             </div>
 
                             <div>
-                              <div className="text-sm font-semibold text-gray-900 transition-colors dark:text-gray-100 group-hover:text-black dark:group-hover:text-white">
+                              <div className={`text-sm font-semibold transition-colors   ${ isDarkMode ? 'text-white hover:text-gray-900' : 'text-black'}`}>
                                 About Us
                               </div>
 
@@ -1389,7 +1387,7 @@ export default function Navbar({
                       </div>
 
                       <div>
-                        <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                        <div className={`text-sm font-semibold ${ isDarkMode ? 'text-white hover:text-gray-900' : 'text-black'}`}>
                           Smartphones
                         </div>
 
@@ -1421,7 +1419,7 @@ export default function Navbar({
                       </div>
 
                       <div>
-                        <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                        <div className={`text-sm font-semibold ${ isDarkMode ? 'text-white hover:text-gray-900' : 'text-black'}`}>
                           Tablets
                         </div>
 
@@ -1453,7 +1451,7 @@ export default function Navbar({
                       </div>
 
                       <div>
-                        <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                        <div className={`text-sm font-semibold ${ isDarkMode ? 'text-white hover:text-gray-900' : 'text-black'}`}>
                           Smartwatches
                         </div>
 
@@ -1496,7 +1494,7 @@ export default function Navbar({
                       </div>
 
                       <div>
-                        <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                        <div className={`text-sm font-semibold ${ isDarkMode ? 'text-white hover:text-gray-900' : 'text-black'}`}>
                           Laptops & Desktops
                         </div>
 
@@ -1528,7 +1526,7 @@ export default function Navbar({
                       </div>
 
                       <div>
-                        <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                        <div className={`text-sm font-semibold ${ isDarkMode ? 'text-white hover:text-gray-900' : 'text-black'}`}>
                           Peripherals & Accessories
                         </div>
 
@@ -1560,7 +1558,7 @@ export default function Navbar({
                       </div>
 
                       <div>
-                        <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                        <div className={`text-sm font-semibold ${ isDarkMode ? 'text-white hover:text-gray-900' : 'text-black'}`}>
                           Printers & Scanners
                         </div>
 
@@ -1603,7 +1601,7 @@ export default function Navbar({
                       </div>
 
                       <div>
-                        <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                        <div className={`text-sm font-semibold ${ isDarkMode ? 'text-white hover:text-gray-900' : 'text-black'}`} >
                           Power Supplies
                         </div>
 
@@ -1635,7 +1633,7 @@ export default function Navbar({
                       </div>
 
                       <div>
-                        <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                        <div className={`text-sm font-semibold ${ isDarkMode ? 'text-white hover:text-gray-900' : 'text-black'}`}>
                           Networking Equipment
                         </div>
 
@@ -1667,7 +1665,7 @@ export default function Navbar({
                       </div>
 
                       <div>
-                        <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                        <div className={`text-sm font-semibold ${ isDarkMode ? 'text-white hover:text-gray-900' : 'text-black'}`}>
                           Cables & Converters
                         </div>
 
@@ -1710,7 +1708,7 @@ export default function Navbar({
                       </div>
 
                       <div>
-                        <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                        <div className={`text-sm font-semibold ${ isDarkMode ? 'text-white hover:text-gray-900' : 'text-black'}`}>
                           CCTV & Security
                         </div>
 
@@ -1748,7 +1746,7 @@ export default function Navbar({
                       </div>
 
                       <div>
-                        <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                        <div className={`text-sm font-semibold ${ isDarkMode ? 'text-white hover:text-gray-900' : 'text-black'}`}>
                           Cameras & Audio Gear
                         </div>
 
@@ -1855,7 +1853,7 @@ export default function Navbar({
                       </div>
 
                       <div>
-                        <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                        <div className={`text-sm font-semibold ${ isDarkMode ? 'text-white hover:text-gray-900' : 'text-black'}`} >
                           IMEI & Serial Tracking
                         </div>
 
@@ -1887,7 +1885,7 @@ export default function Navbar({
                       </div>
 
                       <div>
-                        <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                        <div className={`text-sm font-semibold ${ isDarkMode ? 'text-white hover:text-gray-900' : 'text-black'}`} >
                           Inter-shop Transfer
                         </div>
 
@@ -1930,7 +1928,7 @@ export default function Navbar({
                       </div>
 
                       <div>
-                        <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                        <div className={`text-sm font-semibold ${ isDarkMode ? 'text-white hover:text-gray-900' : 'text-black'}`}>
                           Repairs
                         </div>
 
@@ -1962,7 +1960,7 @@ export default function Navbar({
                       </div>
 
                       <div>
-                        <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                        <div className={`text-sm font-semibold ${ isDarkMode ? 'text-white hover:text-gray-900' : 'text-black'}`}>
                           Warranty Manager
                         </div>
 
@@ -2005,7 +2003,7 @@ export default function Navbar({
                       </div>
 
                       <div>
-                        <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                        <div className={`text-sm font-semibold ${ isDarkMode ? 'text-white hover:text-gray-900' : 'text-black'}`}>
                           Help Center
                         </div>
 
@@ -2037,7 +2035,7 @@ export default function Navbar({
                       </div>
 
                       <div>
-                        <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                        <div className={`text-sm font-semibold ${ isDarkMode ? 'text-white hover:text-gray-900' : 'text-black'}`}>
                           About Us
                         </div>
 
