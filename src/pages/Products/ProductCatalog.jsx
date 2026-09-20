@@ -2,64 +2,13 @@ import React, { useState } from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import { Link } from 'react-router-dom';
-
-// --- Sample Product Data ---
-const PRODUCTS = [
-  {
-    id: 1,
-    name: 'iPhone 15',
-    price: '320000 RFW',
-    rating: 5,
-    brand: 'apple',
-    image: '/images/products/iphones/i phone 15.jpg',
-  },
-  {
-    id: 2,
-    name: 'iPhone 17 pro',
-    price: '450000 RFW',
-    rating: 0,
-    brand: 'apple',
-    image: '/images/products/iphones/i phone pro 17.jpg',
-  },
-  {
-    id: 3,
-    name: 'Samsung Galaxy s26 ultra',
-    price: '520000 RFW',
-    rating: 5,
-    brand: 'android',
-    image: '/images/products/samsung/samsung galaxy s26 ultra.jpg',
-  },
-  {
-    id: 4,
-    name: 'Samsung s24',
-    price: '278000 RFW',
-    rating: 0,
-    brand: 'android',
-    image: '/images/products/samsung/Samsung s24.jpg',
-  },
-  {
-    id: 5,
-    name: 'Google Pixel 10',
-    price: '345000 RFW',
-    rating: 5,
-    brand: 'google',
-    image: '/images/products/google/Google Pixel 10.jpg',
-  },
-  {
-    id: 6,
-    name: 'Google Pixel 9 Pro',
-    price: '120000 RFW',
-    rating: 0,
-    brand: 'google',
-    image: '/images/products/google/Google Pixel 9 Pro.jpg',
-  },
-];
+import PRODUCTS from '../../components/reusable-js/products';
 
 // --- High-Quality Brand Logo SVG Component ---
 const BrandLogo = ({ brand, isDarkMode }) => {
   const iconClass = `fill-current w-7 h-7 ${isDarkMode ? 'text-white' : 'text-slate-900'}`;
 
-  switch (brand) {
+  switch (brand) { 
     case 'apple':
       return (
         <svg className={iconClass} viewBox="0 0 24 24" aria-label="Apple logo">
@@ -199,69 +148,65 @@ export default function ProductCatalog({ isDarkMode, setIsDarkMode }) {
         </div>
 
         {/* Product Grid */}
-        <div className="grid grid-cols-1 gap-6 mb-12 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-5 mb-2 sm:grid-cols-2 lg:grid-cols-3">
           {PRODUCTS.map((product) => (
-            <div
+            <Link
               key={product.id}
-              className={`flex flex-col justify-between p-6 transition-all border rounded-lg shadow-sm hover:shadow-md ${
+              to={`/products/mobile-devices-and-wearables/smartphones/productdetail/${product.id}`}
+              className={`group relative flex flex-col justify-between max-w-[360px] min-h-[430px] w-full mx-auto p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1 shadow-md hover:shadow-xl ${
                 isDarkMode 
-                  ? 'bg-[#1e293b] border-neutral-700' 
-                  : 'bg-white border-blue-200'
+                  ? 'bg-[#1e293b] border-slate-700 hover:border-slate-500 shadow-slate-900/50' 
+                  : 'bg-white border-sky-200 hover:border-sky-400 shadow-sky-100/60'
               }`}
             >
+              {/* Wishlist Heart Icon */}
+              <button 
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  // Add your wishlist toggle logic here
+                }}
+                className={`absolute top-5 right-5 z-10 p-1.5 transition-transform duration-200 hover:scale-110 ${
+                  isDarkMode ? 'text-slate-300 hover:text-red-400' : 'text-slate-700 hover:text-red-500'
+                }`}
+                aria-label="Add to wishlist"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 21.364l-7.682-7.682a4.5 4.5 0 010-6.364z" />
+                </svg>
+              </button>
+
               {/* Product Image Container */}
-              <div className="flex items-center justify-center w-full p-2 mb-4 bg-white rounded-lg h-52">
+              <div className="flex items-center justify-center w-full h-64 my-4 overflow-hidden">
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="object-contain max-w-full max-h-full"
+                  className="object-contain max-w-full max-h-full transition-transform duration-300 group-hover:scale-105"
                   loading="lazy"
                 />
               </div>
 
-              {/* Product Information */}
-              <div className="flex flex-col items-center text-center">
-                <h3 className={`mb-2 text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
+              {/* Product Details */}
+              <div className="flex flex-col items-center mt-2 text-center">
+                <h3 className={`mb-4 text-lg font-bold tracking-tight ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
                   {product.name}
                 </h3>
 
-                {/* Rating Stars */}
-                {product.rating > 0 && (
-                  <div className="flex items-center mb-3 space-x-1">
-                    {[...Array(5)].map((_, i) => (
-                      <svg
-                        key={i}
-                        className="w-5 h-5 fill-amber-400 text-amber-400"
-                        viewBox="0 0 20 20"
-                      >
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                    ))}
-                  </div>
-                )}
-
                 {/* Price and Brand Logo */}
-                <div className="flex items-center justify-between w-full px-1 my-3">
-                  <span className="text-base font-bold text-sky-500">
+                <div className="flex items-center justify-between w-full px-2 pt-2">
+                  <span className="font-bold text-sky-400 text-[16px]">
                     {product.price}
                   </span>
                   <BrandLogo brand={product.brand} isDarkMode={isDarkMode} />
                 </div>
-
-                {/* Shop Now Action Button */}
-                <button className="w-full mt-2 bg-[#007BFF] hover:bg-blue-600 text-white text-base font-medium py-4 px-5 rounded-xl flex items-center justify-center gap-2 transition-colors cursor-pointer">
-                  <span>Shop Now</span>
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </button>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
         {/* Load More Pagination Section */}
-        <div className="flex flex-col items-center justify-center mb-10 space-y-3">
+        <div className="flex flex-col items-center justify-center my-10 space-y-3">
           <p className={`text-base ${isDarkMode ? 'text-gray-300' : 'text-slate-600'}`}>
             You've viewed <span className={`font-semibold ${isDarkMode ? 'text-white' : 'text-slate-800'}`}>72</span> of <span className={`font-semibold ${isDarkMode ? 'text-white' : 'text-slate-800'}`}>3,907</span> products
           </p>
