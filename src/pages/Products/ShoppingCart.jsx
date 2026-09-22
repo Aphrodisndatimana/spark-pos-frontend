@@ -83,14 +83,14 @@ export default function Cart({ isDarkMode, setIsDarkMode }) {
       </header>
 
       {/* Main Container */}
-      <main className="flex-grow w-full px-4 sm:px-6 lg:px-12 pt-24 sm:pt-28 pb-8 sm:pb-12 mx-auto max-w-7xl">
+      <main className="flex-grow w-full px-4 pt-24 pb-8 mx-auto sm:px-6 lg:px-12 sm:pt-28 sm:pb-12 max-w-7xl">
         {/* Header Title */}
         <h1
-          className={`text-xl sm:text-2xl font-extrabold tracking-tight mb-6 ${
+          className={`text-2xl sm:text-3xl font-extrabold tracking-tight mb-6 ${
             isDarkMode ? 'text-white' : 'text-slate-900'
           }`}
         >
-          Shopping Cart({cartItems.reduce((acc, item) => acc + item.quantity, 0)})
+          My Cart({cartItems.reduce((acc, item) => acc + item.quantity, 0)})
         </h1>
 
         {cartItems.length === 0 ? (
@@ -101,21 +101,21 @@ export default function Cart({ isDarkMode, setIsDarkMode }) {
                 : 'bg-white border-slate-200/80'
             }`}
           >
-            <p className="text-base font-medium text-slate-400 mb-6">
+            <p className="mb-6 text-lg font-medium text-slate-400">
               Your shopping cart is empty.
             </p>
             <Link
               to="/catalog"
-              className="inline-block px-6 py-2.5 bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold rounded-xl transition-all shadow-md active:scale-95"
+              className="inline-block px-6 py-2.5 bg-teal-600 hover:bg-teal-700 text-white text-sm font-bold rounded-xl transition-all shadow-md active:scale-95"
             >
               Continue Shopping
             </Link>
           </div>
         ) : (
           /* Updated Grid Ratio: 8 Cols (Items) / 4 Cols (Summary) for extra summary width */
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div className="grid items-start grid-cols-1 gap-8 lg:grid-cols-12">
             {/* LEFT: Items List (8 Columns) */}
-            <div className="lg:col-span-8 flex flex-col gap-6">
+            <div className="flex flex-col gap-6 lg:col-span-8">
               {cartItems.map((item) => (
                 <div
                   key={item.cartItemId}
@@ -129,10 +129,10 @@ export default function Cart({ isDarkMode, setIsDarkMode }) {
                   <button
                     onClick={() => handleRemoveItem(item.cartItemId)}
                     title="Remove Item"
-                    className="absolute top-4 right-4 p-2 text-slate-400 hover:text-red-500 transition-colors rounded-full"
+                    className="absolute p-2 transition-colors rounded-full top-4 right-4 text-slate-400 hover:text-red-500"
                   >
                     <svg
-                      className="w-4 h-4"
+                      className="w-5 h-5"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -147,61 +147,64 @@ export default function Cart({ isDarkMode, setIsDarkMode }) {
                   </button>
 
                   {/* Item Image */}
-                  <div className="w-full sm:w-52 h-64 sm:h-60 flex-shrink-0 flex items-center justify-center p-3 rounded-lg bg-slate-50 dark:bg-slate-900/40 border border-slate-100 dark:border-slate-800">
+                  <div className="flex items-center justify-center flex-shrink-0 w-full h-64 p-3 border rounded-lg sm:w-52 sm:h-60 bg-slate-50 dark:bg-slate-900/40 border-slate-100 dark:border-slate-800">
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="object-contain max-h-full max-w-full drop-shadow-sm"
+                      className="object-contain max-w-full max-h-full drop-shadow-sm"
                     />
                   </div>
 
                   {/* Item Details */}
-                  <div className="flex-1 w-full flex flex-col justify-between h-full pt-1">
+                  <div className="flex flex-col justify-between flex-1 w-full h-full pt-1">
                     <div>
                       <h2
-                        className={`text-lg sm:text-xl font-extrabold tracking-tight leading-tight ${
+                        className={`text-xl sm:text-2xl font-extrabold tracking-tight leading-tight ${
                           isDarkMode ? 'text-white' : 'text-slate-900'
                         }`}
                       >
                         {item.name}
                       </h2>
 
-                      <div className="mt-3 space-y-1 text-xs sm:text-sm leading-snug">
-                        <p className={isDarkMode ? 'text-slate-300' : 'text-slate-700'}>
-                          <span className="font-medium text-slate-400">
+                      <div className="mt-3 space-y-1 text-sm leading-snug sm:text-base">
+                        <p className={isDarkMode ? 'text-slate-300' : 'text-slate-600'}>
+                          <span className={isDarkMode ? 'font-medium text-slate-400' : 'font-bold text-black'}>
                             Storage Capacity:{' '}
                           </span>
                           <span className="font-semibold">{item.specs.storage}</span>
                         </p>
-                        <p className={isDarkMode ? 'text-slate-300' : 'text-slate-700'}>
-                          <span className="font-medium text-slate-400">Battery: </span>
+                        <p className={isDarkMode ? 'text-slate-300' : 'text-slate-600'}>
+                          <span className={isDarkMode ? 'font-medium text-slate-400' : 'font-bold text-black'}>
+                            Battery:{' '}
+                          </span>
                           <span className="font-semibold">{item.specs.battery}</span>
                         </p>
-                        <p className={isDarkMode ? 'text-slate-300' : 'text-slate-700'}>
-                          <span className="font-medium text-slate-400">Camera: </span>
+                        <p className={isDarkMode ? 'text-slate-300' : 'text-slate-600'}>
+                          <span className={isDarkMode ? 'font-medium text-slate-400' : 'font-bold text-black'}>
+                            Camera:{' '}
+                          </span>
                           <span className="font-semibold">{item.specs.camera}</span>
                         </p>
                       </div>
 
                       <button
-                        className={`inline-flex items-center gap-1 mt-2.5 text-xs font-bold ${
+                        className={`inline-flex items-center gap-1 mt-2.5 text-sm font-bold ${
                           isDarkMode ? 'text-white' : 'text-slate-900'
-                        } hover:text-sky-500 transition-colors`}
+                        } hover:text-teal-600 transition-colors`}
                       >
                         <span>Delivery Information</span>
-                        <span className="text-xs">&gt;</span>
+                        <span className="text-sm">&gt;</span>
                       </button>
                     </div>
 
                     {/* Bottom Row */}
-                    <div className="mt-4 sm:mt-6 flex flex-wrap items-center justify-between gap-4 pt-2">
-                      {/* Fixed Unit Price (Does not multiply by quantity here) */}
-                      <span className="text-lg sm:text-xl font-black text-[#10b09d] dark:text-sky-400 tracking-tight">
+                    <div className="flex flex-wrap items-center justify-between gap-4 pt-2 mt-4 sm:mt-6">
+                      <span className="text-xl font-black tracking-tight text-orange-500 sm:text-2xl dark:text-orange-400">
                         {item.price.toLocaleString()} {item.currency}
                       </span>
 
                       <div
-                        className={`flex items-center justify-between border rounded-[4px] px-2.5 py-1 min-w-[110px] ${
+                        className={`flex items-center justify-between border rounded-[4px] px-3 py-1.5 min-w-[120px] ${
                           isDarkMode
                             ? 'bg-slate-900/60 border-slate-700'
                             : 'bg-white border-slate-300'
@@ -209,12 +212,12 @@ export default function Cart({ isDarkMode, setIsDarkMode }) {
                       >
                         <button
                           onClick={() => handleQuantityChange(item.cartItemId, 'decrease')}
-                          className="w-6 h-6 flex items-center justify-center text-base font-medium text-slate-600 dark:text-slate-300 hover:text-sky-500 transition-colors"
+                          className="flex items-center justify-center w-6 h-6 text-lg font-medium transition-colors text-slate-600 dark:text-slate-300 hover:text-orange-500"
                         >
                           -
                         </button>
                         <span
-                          className={`text-xs font-bold px-2 ${
+                          className={`text-sm font-bold px-2 ${
                             isDarkMode ? 'text-white' : 'text-slate-900'
                           }`}
                         >
@@ -222,7 +225,7 @@ export default function Cart({ isDarkMode, setIsDarkMode }) {
                         </span>
                         <button
                           onClick={() => handleQuantityChange(item.cartItemId, 'increase')}
-                          className="w-6 h-6 flex items-center justify-center text-base font-medium text-slate-600 dark:text-slate-300 hover:text-sky-500 transition-colors"
+                          className="flex items-center justify-center w-6 h-6 text-lg font-medium transition-colors text-slate-600 dark:text-slate-300 hover:text-orange-500"
                         >
                           +
                         </button>
@@ -234,7 +237,7 @@ export default function Cart({ isDarkMode, setIsDarkMode }) {
             </div>
 
             {/* RIGHT: Summary Sidebar Panel (4 Columns for wider appearance) */}
-            <div className="lg:col-span-4 sticky top-28">
+            <div className="sticky lg:col-span-4 top-28">
               <div
                 className={`p-5 sm:p-6 rounded-2xl border shadow-sm min-h-[400px] flex flex-col justify-between ${
                   isDarkMode
@@ -244,16 +247,16 @@ export default function Cart({ isDarkMode, setIsDarkMode }) {
               >
                 <div>
                   <h2
-                    className={`text-lg font-bold tracking-tight mb-4 ${
+                    className={`text-xl font-bold tracking-tight mb-4 ${
                       isDarkMode ? 'text-white' : 'text-slate-900'
                     }`}
                   >
                     Summary
                   </h2>
 
-                  <div className="space-y-3 text-xs sm:text-sm">
+                  <div className="space-y-3.5 text-sm sm:text-base">
                     {/* Items Total */}
-                    <div className="flex justify-between items-center gap-2">
+                    <div className="flex items-center justify-between gap-2">
                       <span className="font-bold text-slate-600 dark:text-slate-300">
                         Items total
                       </span>
@@ -263,7 +266,7 @@ export default function Cart({ isDarkMode, setIsDarkMode }) {
                     </div>
 
                     {/* Tax */}
-                    <div className="flex justify-between items-center gap-2">
+                    <div className="flex items-center justify-between gap-2">
                       <span className="font-bold text-slate-600 dark:text-slate-300">
                         Tax
                       </span>
@@ -273,7 +276,7 @@ export default function Cart({ isDarkMode, setIsDarkMode }) {
                     </div>
 
                     {/* Shipping Fees */}
-                    <div className="flex justify-between items-center gap-2">
+                    <div className="flex items-center justify-between gap-2">
                       <span className="font-bold text-slate-600 dark:text-slate-300">
                         Shipping
                       </span>
@@ -285,17 +288,17 @@ export default function Cart({ isDarkMode, setIsDarkMode }) {
                     <hr className="my-4 border-slate-200 dark:border-slate-800" />
 
                     {/* Grand Total */}
-                    <div className="flex justify-between items-center pt-1">
+                    <div className="flex items-center justify-between pt-1">
                       <span
-                        className={`text-xs font-black ${
+                        className={`text-sm font-black ${
                           isDarkMode ? 'text-white' : 'text-slate-900'
                         } tracking-wide uppercase`}
                       >
                         TOTAL
                       </span>
                       <span
-                        className={`text-base sm:text-lg font-black ${
-                          isDarkMode ? 'text-sky-400' : 'text-slate-900'
+                        className={`text-lg sm:text-xl font-black ${
+                          isDarkMode ? 'text-orange-400' : 'text-slate-900'
                         }`}
                       >
                         {grandTotal.toLocaleString()} RFW
@@ -305,14 +308,14 @@ export default function Cart({ isDarkMode, setIsDarkMode }) {
                 </div>
 
                 {/* Actions */}
-                <div className="mt-8 flex flex-col gap-3">
-                  <button className="w-full py-3 bg-[#14b8a6] hover:bg-[#0d9488] active:scale-[0.98] text-white font-bold text-xs sm:text-sm rounded-[4px] transition-all shadow-md">
+                <div className="flex flex-col gap-3 mt-8">
+                  <button className="w-full py-3 bg-orange-500 hover:bg-orange-600 active:scale-[0.98] text-white font-bold text-sm sm:text-base rounded-[4px] transition-all shadow-md">
                     Proceed to checkout
                   </button>
 
                   <Link
-                    to="/catalog"
-                    className="w-full py-2.5 text-center border-2 border-[#14b8a6] text-[#14b8a6] hover:bg-[#14b8a6]/10 active:scale-[0.98] font-bold text-xs sm:text-sm rounded-[4px] transition-all"
+                    to="/products/mobile-devices-and-wearables/smartphones"
+                    className="w-full py-2.5 text-center border-2 border-[#1B8A9D] text-[#1B8A9D] hover:bg-active:scale-[0.98] font-bold text-sm sm:text-base rounded-[4px] transition-all dark:border-text-lime-300 dark:text-text-lime-300 dark:hover:bg-teal-400/10"
                   >
                     Continue shopping
                   </Link>

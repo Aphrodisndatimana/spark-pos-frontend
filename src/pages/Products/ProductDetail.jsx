@@ -90,7 +90,7 @@ export default function ProductDetail({ isDarkMode, setIsDarkMode }) {
         <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
       </header>
 
-      <main className="flex-grow w-full px-4 sm:px-6 lg:px-8 py-6 sm:py-10 mx-auto max-w-7xl mt-12 sm:mt-16">
+      <main className="flex-grow w-full px-4 py-6 mx-auto mt-12 sm:px-6 lg:px-8 sm:py-10 max-w-7xl sm:mt-16">
         {/* Breadcrumb Navigation */}
         <nav
           className={`flex items-center flex-wrap gap-2 mb-6 sm:mb-8 text-xs sm:text-sm ${
@@ -114,9 +114,9 @@ export default function ProductDetail({ isDarkMode, setIsDarkMode }) {
           </span>
         </nav>
 
-        <div className="grid grid-cols-1 gap-8 lg:gap-12 lg:grid-cols-2 items-start">
+        <div className="grid items-start grid-cols-1 gap-8 lg:gap-12 lg:grid-cols-2">
           {/* LEFT: Image Gallery */}
-          <div className="flex flex-col-reverse sm:flex-row gap-3 sm:gap-4 w-full">
+          <div className="flex flex-col-reverse w-full gap-3 sm:flex-row sm:gap-4">
             {/* Thumbnail Selectors */}
             <div className="flex flex-row sm:flex-col gap-2 sm:gap-3 overflow-x-auto sm:overflow-y-auto max-h-none sm:max-h-[500px] py-1">
               {product.images.map((img, idx) => (
@@ -168,7 +168,7 @@ export default function ProductDetail({ isDarkMode, setIsDarkMode }) {
 
             {/* Price & Reviews Info */}
             <div className="flex flex-wrap items-center justify-between gap-2 mt-3 sm:mt-4">
-              <span className="text-2xl sm:text-3xl font-extrabold text-sky-500">
+              <span className="text-2xl font-extrabold sm:text-3xl text-sky-500">
                 {product.price.toLocaleString()} {product.currency}
               </span>
 
@@ -226,7 +226,7 @@ export default function ProductDetail({ isDarkMode, setIsDarkMode }) {
             </div>
 
             {/* Quantity Selector & Add to Cart Actions */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6">
+            <div className="flex flex-col gap-3 mb-6 sm:flex-row sm:gap-4">
               {/* Quantity Counter */}
               <div
                 className={`flex items-center justify-between border rounded-xl px-4 py-3 sm:w-36 ${
@@ -237,16 +237,16 @@ export default function ProductDetail({ isDarkMode, setIsDarkMode }) {
               >
                 <button
                   onClick={() => handleQuantityChange('decrease')}
-                  className="px-2 text-xl font-bold hover:text-sky-500 transition-colors"
+                  className="px-2 text-xl font-bold transition-colors hover:text-sky-500"
                 >
                   -
                 </button>
-                <span className="text-base sm:text-lg font-semibold">
+                <span className="text-base font-semibold sm:text-lg">
                   {quantity}
                 </span>
                 <button
                   onClick={() => handleQuantityChange('increase')}
-                  className="px-2 text-xl font-bold hover:text-sky-500 transition-colors"
+                  className="px-2 text-xl font-bold transition-colors hover:text-sky-500"
                 >
                   +
                 </button>
@@ -294,7 +294,7 @@ export default function ProductDetail({ isDarkMode, setIsDarkMode }) {
 
           <div className="py-6">
             {activeTab === 'specs' && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
                 {Object.entries(product.specs).map(([key, value]) => (
                   <div
                     key={key}
@@ -311,7 +311,7 @@ export default function ProductDetail({ isDarkMode, setIsDarkMode }) {
                     >
                       {key}
                     </span>
-                    <span className="font-medium text-xs sm:text-sm text-left xs:text-right">
+                    <span className="text-xs font-medium text-left sm:text-sm xs:text-right">
                       {value}
                     </span>
                   </div>

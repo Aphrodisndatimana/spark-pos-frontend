@@ -27,6 +27,38 @@ export default function Navbar({
   const [activeMobileMenu, setActiveMobileMenu] = useState(null);
   const langMenuRef = useRef(null);
 
+  // Sliding Indicator state & refs
+  const navContainerRef = useRef(null);
+  const homeRef = useRef(null);
+  const productsRef = useRef(null);
+  const resourcesRef = useRef(null);
+
+  const [indicatorStyle, setIndicatorStyle] = useState({
+    left: 0,
+    width: 0,
+    opacity: 0
+  });
+
+  const handleMouseEnterLink = (ref) => {
+    if (ref.current && navContainerRef.current) {
+      const parentRect = navContainerRef.current.getBoundingClientRect();
+      const targetRect = ref.current.getBoundingClientRect();
+
+      setIndicatorStyle({
+        left: targetRect.left - parentRect.left,
+        width: targetRect.width,
+        opacity: 1
+      });
+    }
+  };
+
+  const handleMouseLeaveNavContainer = () => {
+    setIndicatorStyle((prev) => ({
+      ...prev,
+      opacity: 0
+    }));
+  };
+
   const languages = [
     { code: 'en', name: 'English' },
     { code: 'fr', name: 'French' },
@@ -132,10 +164,27 @@ export default function Navbar({
           {/* =========================================================
               DESKTOP CENTER NAVIGATION
           ========================================================== */}
-          <div className="items-center hidden gap-6 font-sans xl:gap-8 lg:flex">
+          <div 
+            ref={navContainerRef}
+            onMouseLeave={handleMouseLeaveNavContainer}
+            className="relative items-center hidden gap-6 font-sans xl:gap-8 lg:flex"
+          >
+            {/* Smooth Hover Line Indicator */}
+            <span
+              className="absolute bottom-0 h-[2px] bg-[#2563eb] transition-all duration-300 ease-out pointer-events-none"
+              style={{
+                left: `${indicatorStyle.left}px`,
+                width: `${indicatorStyle.width}px`,
+                opacity: indicatorStyle.opacity
+              }}
+            />
 
             {/* HOME */}
-            <div className="group">
+            <div 
+              ref={homeRef}
+              onMouseEnter={() => handleMouseEnterLink(homeRef)}
+              className="group"
+            >
               <Link
                 to="/"
                 className={`
@@ -144,8 +193,6 @@ export default function Navbar({
                   flex items-center gap-1.5
                   transition-colors
                   py-6
-                  border-b-2 border-transparent
-                  group-hover:border-[#2563eb]
                   ${
                     isDarkMode
                       ? 'text-gray-100 group-hover:text-[#60a5fa]'
@@ -161,7 +208,11 @@ export default function Navbar({
                 PRODUCTS
             ====================================================== */}
             <div
-              onMouseEnter={() => setIsProductsOpen(true)}
+              ref={productsRef}
+              onMouseEnter={() => {
+                setIsProductsOpen(true);
+                handleMouseEnterLink(productsRef);
+              }}
               onMouseLeave={() => setIsProductsOpen(false)}
               className="relative group"
             >
@@ -173,8 +224,6 @@ export default function Navbar({
                   flex items-center gap-1.5
                   transition-colors
                   py-6
-                  border-b-2 border-transparent
-                  group-hover:border-[#2563eb]
                   ${
                     isDarkMode
                       ? 'text-gray-100 group-hover:text-[#60a5fa]'
@@ -629,7 +678,11 @@ export default function Navbar({
                 RESOURCES
             ====================================================== */}
             <div
-              onMouseEnter={() => setIsResourcesOpen(true)}
+              ref={resourcesRef}
+              onMouseEnter={() => {
+                setIsResourcesOpen(true);
+                handleMouseEnterLink(resourcesRef);
+              }}
               onMouseLeave={() => setIsResourcesOpen(false)}
               className="relative group"
             >
@@ -641,8 +694,6 @@ export default function Navbar({
                   flex items-center gap-1.5
                   transition-colors
                   py-6
-                  border-b-2 border-transparent
-                  group-hover:border-[#2563eb]
                   cursor-pointer
                   ${
                     isDarkMode
@@ -953,9 +1004,10 @@ export default function Navbar({
                 <svg
                   className={`
                     w-4 h-4
-                    text-current
+                    text-black 
                     transition-transform duration-200
                     opacity-80
+                    ${isDarkMode ? "text-white" : "text-black"}
                     ${isLangOpen ? 'rotate-180' : ''}
                   `}
                   fill="none"

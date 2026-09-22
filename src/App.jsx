@@ -23,6 +23,7 @@ import ImeiCheckPage from './pages/Resources/ImeiSerialTrackingPage';
 import ProductCatalog from './pages/Products/ProductCatalog';
 import ProductDetail from './pages/Products/ProductDetail';
 import Cart from './pages/Products/ShoppingCart';
+import Checkout from './pages/Products/Checkout';
 
 function App() {
   // First load defaults to Light Mode (false) unless stored as dark in localStorage
@@ -63,6 +64,7 @@ function App() {
         <Route path="/products/mobile-devices-and-wearables/smartphones" element={<ProductCatalog isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />} />
         <Route path="/products/mobile-devices-and-wearables/smartphones/productdetail/:id" element={<ProductDetail isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode}/>} />
         <Route path="/products/cart" element={<Cart isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode}/>} />
+        <Route path="/products/checkout" element={<Checkout isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode}/>} />
 
         {/* Resources dropdownLink Pages */}
         <Route 

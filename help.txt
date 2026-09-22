@@ -1360,6 +1360,38 @@ bg-gradient-to-r from-blue-700 via-blue-600 to-sky-500
 
 
 
+//Remember to secure your site on proceed to checkout
+
+1. Protect the OTP System Against Abuse
+Max Attempt Limits: Limit OTP verification to 3–5 failed attempts per code. If the user exceeds this, invalidate the OTP immediately. Otherwise, attackers can brute-force the 6-digit code.
+
+Server-Side Expiration: Enforce the 5–10 minute expiration strictly on your server or database, not just in the frontend UI.
+
+Cryptographically Secure Generation: Generate OTPs using a secure random generator (like Node.js crypto.randomInt), not standard math functions like Math.random().
+
+IP & Account Rate Limiting: Apply rate limiting to your /send-otp endpoint based on IP address and phone/email to prevent automated bots from draining your SMS/email provider balance (SMS pumping attacks).
+
+2. Secure Account Creation & Authentication
+Password Hashing: Never store passwords in plain text. Always hash them using a strong, standard algorithm like bcrypt, Argon2, or scrypt before saving them to your database.
+
+Prevent Account Enumeration: Be careful with how your backend responds when checking if an email exists. If an endpoint publicly returns whether an email is registered, attackers can scrape your database to see who uses your app.
+
+Secure Auth Tokens (JWT / Cookies): Store your authentication tokens in httpOnly, Secure, SameSite=Strict cookies rather than localStorage. Tokens stored in localStorage are vulnerable to Cross-Site Scripting (XSS) attacks.
+
+3. Payment & Transaction Security
+Never Process Credit Cards Directly: Use an established payment gateway SDK (like Stripe, PayPal, or Flutterwave). Credit card data should never touch your own server database to remain PCI-DSS compliant.
+
+Verify Payments Server-Side (Webhooks): Do not rely on the frontend returning "success" to finalize an order. Always listen for signed Webhooks sent directly from your payment processor to your backend to confirm that money was actually received.
+
+Validate Prices Server-Side: Never trust the product prices or cart total sent from the frontend. Calculate the total price exclusively on the backend using database prices before requesting payment.
+
+4. General App Security
+HTTPS Everywhere: Ensure your entire site is served over HTTPS to encrypt communication between the browser and your server.
+
+Input Sanitization & Validation: Validate and sanitize all user input (email, shipping address, phone) on the backend to prevent SQL Injection and Cross-Site Scripting (XSS).
+
+
+
 https://demo.yo-kart.com/electronics
 
 
