@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function Footer() {
+function Footer() {
   return (
     <footer className="w-full pt-16 pb-10 font-sans bg-black border-t text-neutral-400 border-neutral-900 selection:bg-neutral-800">
       <div className="grid grid-cols-1 gap-10 px-6 mx-auto mb-12 max-w-7xl lg:px-8 sm:grid-cols-2 md:grid-cols-4 lg:gap-12">
@@ -174,3 +174,5 @@ export default function Footer() {
     </footer>
   );
 }
+
+export default Footer;

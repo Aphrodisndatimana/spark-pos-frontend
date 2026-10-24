@@ -1,243 +1,414 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+
+// --- SVG Icons Component Collection ---
+const Icons = {
+  Dashboard: () => (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+    </svg>
+  ),
+  Branches: () => (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0h4m-4 0V11m0 0l-3 3m3-3l3 3" />
+    </svg>
+  ),
+  Workers: () => (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+    </svg>
+  ),
+  Analytics: () => (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+    </svg>
+  ),
+  Reports: () => (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+    </svg>
+  ),
+  Settings: () => (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+    </svg>
+  ),
+  Feedback: () => (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+    </svg>
+  ),
+  Help: () => (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+  ),
+  Logout: () => (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+    </svg>
+  ),
+  ChevronDown: () => (
+    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+    </svg>
+  ),
+  ChevronUp: () => (
+    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+    </svg>
+  ),
+  Search: () => (
+    <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+    </svg>
+  ),
+  Bell: () => (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 01-6 0v-1m6 0H9" />
+    </svg>
+  ),
+  Cart: () => (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z" />
+    </svg>
+  ),
+  ArrowUp: () => (
+    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+    </svg>
+  ),
+  MenuToggle: () => (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+  ),
+  Close: () => (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  )
+};
+
+const mostPurchasedProducts = [
+  { id: 1, name: "Wireless Bluetooth Earbuds", category: "Electronics", salesCount: 1420, price: "$49.99", stock: "In Stock" },
+  { id: 2, name: "Organic Cotton T-Shirt", category: "Apparel", salesCount: 980, price: "$24.50", stock: "In Stock" },
+  { id: 3, name: "Stainless Steel Water Bottle", category: "Accessories", salesCount: 850, price: "$18.00", stock: "Low Stock" },
+  { id: 4, name: "Smart Fitness Watch", category: "Electronics", salesCount: 620, price: "$129.99", stock: "In Stock" },
+  { id: 5, name: "Ergonomic Office Chair", category: "Furniture", salesCount: 410, price: "$199.00", stock: "Out of Stock" }
+];
 
 export default function ShopOwnerDashboard() {
-  const [activeTab, setActiveTab] = useState('overview');
+  const [activeTab, setActiveTab] = useState("");
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [openDropdowns, setOpenDropdowns] = useState({ Reports: false });
 
-  // Core metrics tailored to a multi-branch electronics store owner
-  const businessMetrics = [
-    { label: "Net Revenue (All Branches)", value: "14,850,200 RWF", change: "+0.4% vs last month", isPositive: true },
-    { label: "Total Inventory Value", value: "85,400,000 RWF", change: "+12% vs last quarter", isPositive: true },
-    { label: "Repair Desk Success Rate", value: "94.2%", change: "Target: 95%", isPositive: true },
-    { label: "Active Low-Stock Alerts", value: "12 Items", change: "Requires Reorder", isPositive: false }
+  const toggleDropdown = (name) => {
+    setOpenDropdowns((prev) => ({ ...prev, [name]: !prev[name] }));
+    setActiveTab(name);
+  };
+
+  const menuGroups = [
+    {
+      title: "Menu",
+      items: [
+        { name: "Dashboard", Icon: Icons.Dashboard },
+        { name: "Branches", Icon: Icons.Branches },
+        {
+          name: "Workers",
+          Icon: Icons.Workers,
+          subItems: ["Staff List", "Schedules", "Roles & Permissions"]
+        }
+      ]
+    },
+    {
+      title: "Features",
+      items: [
+        { name: "Analytics", Icon: Icons.Analytics },
+        {
+          name: "Reports",
+          Icon: Icons.Reports,
+          subItems: [
+            "Sales Reports",
+            "Inventory Reports",
+            "Branch Reports",
+            "Financial Reports",
+            "Repair Reports"
+          ]
+        }
+      ]
+    },
+    {
+      title: "Tools",
+      items: [
+        { name: "Settings", Icon: Icons.Settings }
+      ]
+    },
+    {
+      title: "Generals",
+      items: [
+        { name: "Feedback", Icon: Icons.Feedback },
+        { name: "Get Help", Icon: Icons.Help },
+        { name: "Log out", Icon: Icons.Logout }
+      ]
+    }
   ];
 
   return (
-    <div className="min-h-screen bg-[#0E1111] text-[#A3AED0] font-sans p-6 flex flex-col justify-between">
-      
-      {/* Top Header / Profile Bar */}
-      <header className="flex items-center justify-between mb-6 bg-[#161B1B] p-4 rounded-2xl border border-slate-800/40">
-        <div className="flex items-center gap-2">
-          <span className="text-xs font-semibold bg-[#B5FF3D] text-black px-2.5 py-1 rounded-md uppercase tracking-wide">
-            Owner Mode
-          </span>
-          <h1 className="hidden font-bold text-white text-md sm:block">Kacyiru Electronics HQ</h1>
+    <div className="min-h-screen bg-[#DCDCDC] flex flex-col md:flex-row font-sans text-gray-800">
+      {/* Mobile Top Navigation Header */}
+      <div className="flex items-center justify-between px-4 py-3 bg-white border-b border-gray-200 md:hidden">
+        <div className="flex items-center space-x-2">
+          <div className="bg-[#FF8A00] text-white p-2 rounded-full font-bold">
+            <Icons.Cart />
+          </div>
+          <span className="text-xl font-bold text-gray-900">Selesai</span>
         </div>
-
-        {/* Global Action Bar */}
-        <div className="flex items-center gap-4">
-          <div className="relative hidden md:block">
-            <input 
-              type="text" 
-              placeholder="Search serials, IMEIs, invoices..." 
-              className="bg-[#1E2525] text-xs text-white rounded-xl pl-4 pr-10 py-2 w-64 border border-transparent focus:outline-none focus:border-[#B5FF3D] transition"
-            />
-          </div>
-          
-          {/* Action Ring Utility */}
-          <div className="flex items-center gap-2 text-slate-400">
-            <button className="p-2 hover:bg-[#1E2525] rounded-xl transition text-[#B5FF3D]">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
-            </button>
-          </div>
-
-          {/* User Signpost */}
-          <div className="flex items-center gap-3 pl-2 border-l border-slate-850">
-            <div className="w-8 h-8 rounded-full bg-[#1E2525] border border-[#B5FF3D] flex items-center justify-center font-bold text-xs text-[#B5FF3D]">
-              GH
-            </div>
-          </div>
-        </div>
-      </header>
-
-      {/* Primary Layout Engine */}
-      <div className="grid items-start grid-cols-1 gap-6 xl:grid-cols-5 grow">
-        
-        {/* Left Side Sidebar / Navigation Container */}
-        <aside className="bg-[#161B1B] p-4 rounded-2xl border border-slate-800/40 space-y-1 xl:col-span-1">
-          <p className="text-[10px] uppercase font-bold text-slate-500 tracking-widest px-3 mb-2">Dashboards</p>
-          
-          <button 
-            onClick={() => setActiveTab('overview')}
-            className={`w-full flex items-center gap-3 py-2.5 px-3 rounded-xl text-xs font-semibold transition-all ${activeTab === 'overview' ? 'bg-[#B5FF3D] text-black' : 'text-slate-400 hover:bg-[#1E2525] hover:text-white'}`}
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4zM14 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2v-4z" /></svg>
-            Overview Matrix
-          </button>
-
-          <button 
-            onClick={() => setActiveTab('transfers')}
-            className={`w-full flex items-center gap-3 py-2.5 px-3 rounded-xl text-xs font-semibold transition-all ${activeTab === 'transfers' ? 'bg-[#B5FF3D] text-black' : 'text-slate-400 hover:bg-[#1E2525] hover:text-white'}`}
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" /></svg>
-            Inter-Shop Logic
-          </button>
-
-          <p className="text-[10px] uppercase font-bold text-slate-500 tracking-widest px-3 pt-4 mb-2">Management</p>
-          <button className="w-full flex items-center gap-3 text-slate-400 hover:bg-[#1E2525] hover:text-white py-2.5 px-3 rounded-xl text-xs transition">
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
-            Inventory Vault
-          </button>
-          <button className="w-full flex items-center gap-3 text-slate-400 hover:bg-[#1E2525] hover:text-white py-2.5 px-3 rounded-xl text-xs transition">
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /></svg>
-            Store Configuration
-          </button>
-        </aside>
-
-        {/* Workspace Panels */}
-        <main className="space-y-6 xl:col-span-4">
-          
-          {/* Top Numeric Metric Blocks */}
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {businessMetrics.map((m, idx) => (
-              <div key={idx} className="bg-[#161B1B] p-4 rounded-2xl border border-slate-800/30">
-                <span className="text-[10px] uppercase font-bold tracking-wider text-slate-500 block">{m.label}</span>
-                <p className="mt-1 font-mono text-lg font-bold text-white">{m.value}</p>
-                <span className={`text-[10px] font-semibold block mt-0.5 ${m.isPositive ? 'text-[#B5FF3D]' : 'text-rose-400'}`}>
-                  {m.change}
-                </span>
-              </div>
-            ))}
-          </div>
-
-          {/* DYNAMIC VIEW 1: OVERVIEW COMPLEX */}
-          {activeTab === 'overview' && (
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-              
-              {/* Sales Overview Component with SVG Donut Chart */}
-              <div className="bg-[#161B1B] p-5 rounded-3xl border border-slate-800/40 lg:col-span-2 flex flex-col justify-between">
-                <div>
-                  <h3 className="mb-4 text-sm font-bold text-white">Stock Value Breakdown By Category</h3>
-                  <div className="flex flex-col items-center justify-around gap-8 p-2 sm:flex-row">
-                    {/* Raw SVG Donut Component */}
-                    <div className="relative w-32 h-32">
-                      <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
-                        <circle cx="18" cy="18" r="15.915" fill="none" stroke="#222A2A" strokeWidth="3.5" />
-                        <circle cx="18" cy="18" r="15.915" fill="none" stroke="#B5FF3D" strokeWidth="3.5" strokeDasharray="55 100" />
-                        <circle cx="18" cy="18" r="15.915" fill="none" stroke="#3DFFDF" strokeWidth="3.5" strokeDasharray="25 100" strokeDashoffset="-55" />
-                        <circle cx="18" cy="18" r="15.915" fill="none" stroke="#A855F7" strokeWidth="3.5" strokeDasharray="20 100" strokeDashoffset="-80" />
-                      </svg>
-                      <div className="absolute inset-0 flex flex-col items-center justify-center">
-                        <span className="font-mono font-bold text-white text-md">85.4M</span>
-                        <span className="text-[9px] text-slate-500 tracking-wider">Total RWF</span>
-                      </div>
-                    </div>
-                    
-                    {/* Legend Metrics */}
-                    <div className="space-y-2 text-xs w-full max-w-[200px]">
-                      <div className="flex items-center justify-between"><span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-[#B5FF3D]" />Smartphones</span><span className="font-mono text-white">55%</span></div>
-                      <div className="flex items-center justify-between"><span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-[#3DFFDF]" />Computing</span><span className="font-mono text-white">25%</span></div>
-                      <div className="flex items-center justify-between"><span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-[#A855F7]" />Accessories</span><span className="font-mono text-white">20%</span></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Branch Revenue Flow Tracker */}
-              <div className="bg-[#161B1B] p-5 rounded-3xl border border-slate-800/40 flex flex-col justify-between">
-                <div>
-                  <h3 className="mb-3 text-sm font-bold text-white">Branch Performance</h3>
-                  <div className="space-y-4">
-                    {[
-                      { location: "Kacyiru Main Hub", target: "75%", vol: "8.2M RWF", color: "bg-[#B5FF3D]" },
-                      { location: "Downtown Branch", target: "42%", vol: "4.5M RWF", color: "bg-[#3DFFDF]" },
-                      { location: "CHIC Showroom", target: "20%", vol: "2.1M RWF", color: "bg-purple-500" }
-                    ].map((b, i) => (
-                      <div key={i} className="space-y-1">
-                        <div className="flex justify-between text-xs font-semibold">
-                          <span className="text-slate-300">{b.location}</span>
-                          <span className="font-mono text-white">{b.vol}</span>
-                        </div>
-                        <div className="w-full bg-[#222A2A] h-2 rounded-full overflow-hidden">
-                          <div className={`h-full ${b.color}`} style={{ width: b.target }} />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Outstanding Credit Risk Profiles */}
-              <div className="bg-[#161B1B] p-5 rounded-3xl border border-slate-800/40 lg:col-span-3">
-                <h3 className="mb-3 text-sm font-bold text-white">Critical Lending & Outstanding Balances</h3>
-                <div className="overflow-x-auto rounded-xl">
-                  <table className="w-full text-xs text-left border-collapse">
-                    <thead>
-                      <tr className="bg-[#1E2525] text-slate-400 font-medium">
-                        <th className="p-3">Client / B2B Account</th>
-                        <th className="p-3">Originating Branch</th>
-                        <th className="p-3">Terms Due</th>
-                        <th className="p-3 text-right">Outstanding Value</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-800/30">
-                      <tr className="text-slate-300 hover:bg-[#1C2222]">
-                        <td className="p-3 font-semibold text-white">Musa Tech Supplies</td>
-                        <td className="p-3">Kacyiru Main Hub</td>
-                        <td className="p-3 font-medium text-rose-400">Overdue (5 Days)</td>
-                        <td className="p-3 font-mono text-right text-white">1,450,000 RWF</td>
-                      </tr>
-                      <tr className="text-slate-300 hover:bg-[#1C2222]">
-                        <td className="p-3 font-semibold text-white">Kagame & Sons Retail</td>
-                        <td className="p-3">CHIC Showroom</td>
-                        <td className="p-3 text-[#B5FF3D]">Due in 12 Days</td>
-                        <td className="p-3 font-mono text-right text-white">850,000 RWF</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-            </div>
-          )}
-
-          {/* DYNAMIC VIEW 2: INTER-SHOP STOCK TRANSFERS */}
-          {activeTab === 'transfers' && (
-            <div className="bg-[#161B1B] p-6 rounded-3xl border border-slate-800/40 space-y-6">
-              <div>
-                <h3 className="font-bold text-white text-md">Inter-Shop Stock Transfer Engine</h3>
-                <p className="text-xs text-slate-400">Track and approve high-value electronics assets traveling between branches.</p>
-              </div>
-
-              <div className="overflow-x-auto border rounded-xl border-slate-800/40">
-                <table className="w-full text-xs text-left border-collapse">
-                  <thead>
-                    <tr className="bg-[#1E2525] text-slate-400 font-medium">
-                      <th className="p-3">Item Variant (IMEI/Serial)</th>
-                      <th className="p-3">Route Vector</th>
-                      <th className="p-3">Dispatcher / Requestor</th>
-                      <th className="p-3">Verification Hash</th>
-                      <th className="p-3 text-right">Status State</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-800/30 text-slate-300">
-                    <tr className="hover:bg-[#1C2222]">
-                      <td className="p-3 font-mono font-bold text-white">iPhone 15 Pro (IMEI-90123)</td>
-                      <td className="p-3">Kacyiru ➔ CHIC Showroom</td>
-                      <td className="p-3 text-slate-400">Manager Alpha</td>
-                      <td className="p-3 font-mono">TRF-9022-X</td>
-                      <td className="p-3 text-right"><span className="px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-400 font-bold uppercase text-[9px]">Transit Verification</span></td>
-                    </tr>
-                    <tr className="hover:bg-[#1C2222]">
-                      <td className="p-3 font-mono font-bold text-white">MacBook Pro M3 (SN-LL382)</td>
-                      <td className="p-3">Downtown ➔ Kacyiru HQ</td>
-                      <td className="p-3 text-slate-400">Cashier Center</td>
-                      <td className="p-3 font-mono">TRF-8110-A</td>
-                      <td className="p-3 text-right"><span className="px-2.5 py-1 rounded-full bg-[#B5FF3D]/10 text-[#B5FF3D] font-bold uppercase text-[9px]">Completed</span></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          )}
-
-        </main>
+        <button
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          className="p-2 text-gray-600 rounded-md hover:text-gray-900 focus:outline-none"
+        >
+          {isSidebarOpen ? <Icons.Close /> : <Icons.MenuToggle />}
+        </button>
       </div>
 
-      {/* Audit & Legal Base Footer */}
-      <footer className="flex flex-col justify-between gap-2 pt-4 mt-8 text-xs border-t border-slate-800/60 sm:flex-row text-slate-600">
-        <p>&copy; 2026 ElecPOS Merchant Subsystem. PostgreSQL Session Security Active.</p>
-        <p className="font-mono">Branch Sync Node: KGL-MAIN-01</p>
-      </footer>
+      {/* Mobile Backdrop */}
+      {isSidebarOpen && (
+        <div
+          className="fixed inset-0 z-20 bg-black bg-opacity-40 md:hidden"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
+
+      {/* Sidebar */}
+      <aside
+        className={`fixed md:static inset-y-0 left-0 z-30 w-64 bg-white border-r border-gray-200 transform ${
+          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } md:translate-x-0 transition-transform duration-200 ease-in-out flex flex-col justify-between overflow-y-auto`}
+      >
+        <div className="p-5">
+          {/* Brand Logo Header */}
+          <div className="items-center hidden pb-4 mb-6 space-x-3 border-b border-gray-100 md:flex">
+            <div className="bg-[#FF8A00] text-white p-2 rounded-full">
+              <Icons.Cart />
+            </div>
+            <span className="text-2xl font-bold tracking-tight text-gray-900">Selesai</span>
+          </div>
+
+          {/* Navigation Category Groups */}
+          <nav className="space-y-6">
+            {menuGroups.map((group, groupIdx) => (
+              <div key={groupIdx}>
+                <h3 className="px-3 mb-2 text-[16px] text-black font-medium">
+                  {group.title}
+                </h3>
+                <ul className="space-y-1">
+                  {group.items.map((item) => {
+                    const isDropdownOpen = !!openDropdowns[item.name];
+                    const isActive = activeTab === item.name;
+
+                    if (item.subItems) {
+                      return (
+                        <li key={item.name}>
+                          {/* Parent Button: Orange ONLY if clicked/active */}
+                          <button
+                            onClick={() => toggleDropdown(item.name)}
+                            className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 ${
+                              isActive
+                                ? "bg-[#FF8A00] text-white shadow-sm"
+                                : "text-gray-500 hover:bg-gray-100"
+                            }`}
+                          >
+                            <div className="flex items-center space-x-3">
+                              <item.Icon />
+                              <span>{item.name}</span>
+                            </div>
+                            {isDropdownOpen ? <Icons.ChevronUp /> : <Icons.ChevronDown />}
+                          </button>
+
+                          {/* Expanded Dropdown List: Clean text with orange accent line */}
+                          {isDropdownOpen && (
+                            <ul className="pl-3 mt-1 ml-4 space-y-1 border-l-2 border-orange-400">
+                              {item.subItems.map((subItem) => (
+                                <li key={subItem}>
+                                  <button
+                                    onClick={() => {
+                                      setActiveTab(subItem);
+                                      setIsSidebarOpen(false);
+                                    }}
+                                    className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors ${
+                                      activeTab === subItem
+                                        ? "text-orange-600 bg-orange-50"
+                                        : "text-gray-700 hover:text-black hover:bg-gray-100"
+                                    }`}
+                                  >
+                                    {subItem}
+                                  </button>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </li>
+                      );
+                    }
+
+                    return (
+                      <li key={item.name}>
+                        {/* Standard Button: Orange ONLY when clicked/active */}
+                        <button
+                          onClick={() => {
+                            setActiveTab(item.name);
+                            setIsSidebarOpen(false);
+                          }}
+                          className={`w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm transition-all duration-150 ${
+                            isActive
+                              ? "bg-[#FF8A00] text-white shadow-sm"
+                              : "text-gray-700 hover:bg-gray-100"
+                          }`}
+                        >
+                          <item.Icon />
+                          <span>{item.name}</span>
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            ))}
+          </nav>
+        </div>
+      </aside>
+
+      {/* Main Content Area */}
+      <main className="flex flex-col flex-1 min-w-0">
+        <header className="flex flex-col justify-between gap-4 px-4 py-4 bg-white border-b border-gray-200 md:px-8 md:flex-row md:items-center">
+          <div>
+            <h1 className="text-xl font-bold text-gray-900 md:text-2xl">
+              Welcome back, <span className="text-blue-600">John!</span>
+            </h1>
+            <p className="text-sm text-gray-500">
+              Here's what's happening with your shop today
+            </p>
+          </div>
+
+          <div className="flex items-center space-x-3 md:space-x-5">
+            <div className="relative flex-1 md:w-72">
+              <span className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <Icons.Search />
+              </span>
+              <input
+                type="text"
+                placeholder="Search............................"
+                className="w-full py-2 pl-10 pr-4 text-sm bg-gray-100 border border-transparent rounded-full focus:outline-none focus:ring-2 focus:ring-orange-400"
+              />
+            </div>
+
+            <button className="relative p-1 text-gray-600 hover:text-gray-900">
+              <Icons.Bell />
+              <span className="absolute w-2 h-2 bg-red-500 rounded-full top-1 right-1"></span>
+            </button>
+            <button className="p-1 text-gray-600 hover:text-gray-900">
+              <Icons.Cart />
+            </button>
+
+            <div className="flex items-center pl-3 space-x-2 border-l border-gray-200 cursor-pointer">
+              <img
+                src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=80"
+                alt="John Doe"
+                className="object-cover border border-gray-200 rounded-full w-9 h-9"
+              />
+              <span className="hidden text-sm font-semibold text-gray-700 sm:inline">John Doe</span>
+              <Icons.ChevronDown />
+            </div>
+          </div>
+        </header>
+
+        <div className="p-4 space-y-6 md:p-8">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="flex flex-col justify-between p-6 bg-white border border-gray-100 shadow-sm rounded-xl">
+              <span className="text-sm font-medium text-gray-500">Total Sales</span>
+              <div className="mt-3">
+                <h2 className="text-2xl font-extrabold text-gray-900 md:text-3xl">$4,892.45</h2>
+                <div className="flex items-center text-xs font-semibold text-[#FF8A00] mt-2 space-x-1">
+                  <Icons.ArrowUp />
+                  <span>125.5% <span className="font-normal text-gray-500">from yesterday</span></span>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col justify-between p-6 bg-white border border-gray-100 shadow-sm rounded-xl">
+              <span className="text-sm font-medium text-gray-500">Orders</span>
+              <div className="mt-3">
+                <h2 className="text-2xl font-extrabold text-gray-900 md:text-3xl">128</h2>
+                <div className="flex items-center text-xs font-semibold text-[#FF8A00] mt-2 space-x-1">
+                  <Icons.ArrowUp />
+                  <span>8.5% <span className="font-normal text-gray-500">from yesterday</span></span>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col justify-between p-6 bg-white border border-gray-100 shadow-sm rounded-xl">
+              <span className="text-sm font-medium text-gray-500">Customer</span>
+              <div className="mt-3">
+                <h2 className="text-2xl font-extrabold text-gray-900 md:text-3xl">287</h2>
+                <div className="flex items-center text-xs font-semibold text-[#FF8A00] mt-2 space-x-1">
+                  <Icons.ArrowUp />
+                  <span>17.5% <span className="font-normal text-gray-500">from yesterday</span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="p-6 bg-white border border-gray-100 shadow-sm rounded-2xl">
+            <div className="flex flex-col justify-between gap-2 pb-4 border-b border-gray-100 sm:flex-row sm:items-center">
+              <div>
+                <h3 className="text-lg font-bold text-gray-900">Most Purchased by many users</h3>
+                <p className="text-sm text-gray-500">Top-performing products across all categories</p>
+              </div>
+              <button className="self-start text-sm font-semibold text-orange-500 hover:underline sm:self-auto">
+                View All
+              </button>
+            </div>
+
+            <div className="mt-4 overflow-x-auto">
+              <table className="w-full text-left border-collapse">
+                <thead>
+                  <tr className="text-xs font-semibold text-gray-400 uppercase border-b border-gray-100">
+                    <th className="px-2 pb-3">Product</th>
+                    <th className="px-2 pb-3">Category</th>
+                    <th className="px-2 pb-3">Total Sold</th>
+                    <th className="px-2 pb-3">Price</th>
+                    <th className="px-2 pb-3">Status</th>
+                  </tr>
+                </thead>
+                <tbody className="text-sm divide-y divide-gray-50">
+                  {mostPurchasedProducts.map((product) => (
+                    <tr key={product.id} className="transition-colors hover:bg-gray-50">
+                      <td className="py-3.5 px-2 font-semibold text-gray-800">{product.name}</td>
+                      <td className="py-3.5 px-2 text-gray-500">{product.category}</td>
+                      <td className="py-3.5 px-2 font-medium text-gray-900">{product.salesCount.toLocaleString()} units</td>
+                      <td className="py-3.5 px-2 font-medium text-gray-900">{product.price}</td>
+                      <td className="py-3.5 px-2">
+                        <span
+                          className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                            product.stock === "In Stock"
+                              ? "bg-green-100 text-green-800"
+                              : product.stock === "Low Stock"
+                              ? "bg-yellow-100 text-yellow-800"
+                              : "bg-red-100 text-red-800"
+                          }`}
+                        >
+                          {product.stock}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </main>
     </div>
   );
 }

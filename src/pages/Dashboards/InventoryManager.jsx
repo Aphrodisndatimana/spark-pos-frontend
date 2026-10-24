@@ -1,189 +1,328 @@
 import React, { useState } from 'react';
 
-export default function InventoryManagerDashboard() {
-  const [activeTab, setActiveTab] = useState('dashboard');
+export default function InventoryDashboard() {
+  const [activeMenu, setActiveMenu] = useState('Dashboard');
+  const [openSubmenus, setOpenSubmenus] = useState({
+    Inventory: true,
+    Purchases: false,
+    'Stock Transfers': false
+  });
 
-  // Local inventory analytics blocks
-  const inventoryStats = [
-    { label: "Total Unique Products", value: "5,483 Items", style: "border-slate-200" },
-    { label: "Pending Purchase Orders", value: "2,859 Orders", style: "border-slate-200" },
-    { label: "Total Physical Stock Count", value: "148,920 Units", style: "border-slate-200" },
-    { label: "Critical Out of Stock / Low", value: "38 Variants", style: "bg-orange-50 border-orange-200 text-orange-800" }
+  const toggleSubmenu = (menuKey) => {
+    setOpenSubmenus((prev) => ({
+      ...prev,
+      [menuKey]: !prev[menuKey]
+    }));
+  };
+
+  const handleMenuClick = (id) => {
+    setActiveMenu(id);
+  };
+
+  const menuSections = [
+    {
+      id: 'Inventory',
+      label: 'Inventory',
+      icon: (
+        <svg className="flex-shrink-0 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+        </svg>
+      ),
+      subItems: [
+        { id: 'Products', label: 'Products' },
+        { id: 'Categories', label: 'Categories' },
+        { id: 'Brands', label: 'Brands' },
+        { id: 'Stock List', label: 'Stock List' },
+        { id: 'Low Stock', label: 'Low Stock' },
+        { id: 'Stock Adjustments', label: 'Stock Adjustments' },
+        { id: 'IMEI/Serial Tracking', label: 'IMEI/Serial Tracking' }
+      ]
+    },
+    {
+      id: 'Purchases',
+      label: 'Purchases',
+      icon: (
+        <svg className="flex-shrink-0 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+        </svg>
+      ),
+      subItems: [
+        { id: 'Purchase Orders', label: 'Purchase Orders' },
+        { id: 'Suppliers', label: 'Suppliers' },
+        { id: 'Goods Received', label: 'Goods Received' },
+        { id: 'Purchase Returns', label: 'Purchase Returns' }
+      ]
+    },
+    {
+      id: 'Stock Transfers',
+      label: 'Stock Transfers',
+      icon: (
+        <svg className="flex-shrink-0 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+        </svg>
+      ),
+      subItems: [
+        { id: 'Create Transfer', label: 'Create Transfer' },
+        { id: 'Transfer Requests', label: 'Transfer Requests' },
+        { id: 'Transfer History', label: 'Transfer History' }
+      ]
+    }
   ];
 
   return (
-    <div className="min-h-screen bg-[#F4F7F9] text-slate-700 font-sans p-6 flex flex-col justify-between">
+    <div className="w-screen h-screen bg-[#008162] font-sans flex flex-col md:flex-row overflow-hidden">
       
-      {/* Top Header Section */}
-      <header className="flex flex-col justify-between gap-4 p-5 mb-6 bg-white border shadow-sm sm:flex-row sm:items-center rounded-xl border-slate-100">
+      {/* SIDEBAR */}
+      <aside className="w-full md:w-72 bg-[#008162] text-white flex flex-col justify-between p-4 flex-shrink-0 overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
         <div>
-          <h1 className="text-xl font-bold text-slate-800">Welcome, Nirmal Kumar !</h1>
-          <p className="text-xs text-slate-500">Central Electronics Inventory Control Unit</p>
-        </div>
-
-        {/* Global Stock Search bar */}
-        <div className="flex items-center gap-4">
-          <div className="relative">
-            <input 
-              type="text" 
-              placeholder="Scan Barcode or Search IMEI/Serial..." 
-              className="bg-slate-50 text-xs text-slate-800 rounded-lg pl-4 pr-10 py-2.5 w-72 border border-slate-200 focus:outline-none focus:border-cyan-600 transition"
-            />
-          </div>
-          
-          <div className="flex items-center justify-center w-10 h-10 overflow-hidden text-xs font-bold border-2 rounded-full border-cyan-600 bg-slate-100 text-slate-700">
-            NK
-          </div>
-        </div>
-      </header>
-
-      {/* Main Framework Grid Split */}
-      <div className="grid items-start grid-cols-1 gap-6 lg:grid-cols-4 xl:grid-cols-5 grow">
-        
-        {/* Navigation Control Panel */}
-        <aside className="bg-[#1E3A47] text-slate-300 p-4 rounded-xl shadow-sm space-y-1 lg:col-span-1">
-          <div className="p-2 mb-4 border-b border-slate-700/50">
-            <p className="text-xs font-bold tracking-wide text-white">Stock Management</p>
-          </div>
-          
-          <button 
-            onClick={() => setActiveTab('dashboard')}
-            className={`w-full flex items-center gap-3 py-2.5 px-3 rounded-lg text-xs font-semibold transition-all ${activeTab === 'dashboard' ? 'bg-[#2B5263] text-white shadow-inner' : 'hover:bg-[#254655] hover:text-white'}`}
-          >
-            <svg className="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4zM14 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2v-4z" /></svg>
-            Dashboard Matrix
-          </button>
-
-          <button 
-            onClick={() => setActiveTab('tracking')}
-            className={`w-full flex items-center gap-3 py-2.5 px-3 rounded-lg text-xs font-semibold transition-all ${activeTab === 'tracking' ? 'bg-[#2B5263] text-white shadow-inner' : 'hover:bg-[#254655] hover:text-white'}`}
-          >
-            <svg className="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" /></svg>
-            IMEI & Serial Registers
-          </button>
-
-          <div className="p-2 pt-4 mt-4 border-t border-slate-700/50">
-            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Logs</p>
-          </div>
-          
-          <button className="w-full flex items-center gap-3 py-2.5 px-3 rounded-lg text-xs font-semibold hover:bg-[#254655] hover:text-white transition">
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" /></svg>
-            Stock Movement History
-          </button>
-        </aside>
-
-        {/* Primary Workspace Panel */}
-        <main className="space-y-6 lg:col-span-3 xl:col-span-4">
-          
-          {/* Top Quick Overview Information Cards */}
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            {inventoryStats.map((stat, idx) => (
-              <div key={idx} className={`bg-white p-4 rounded-xl border shadow-sm ${stat.style}`}>
-                <span className="block text-xs font-semibold text-slate-400">{stat.label}</span>
-                <p className="mt-1 font-mono text-xl font-bold text-slate-800">{stat.value}</p>
-              </div>
-            ))}
+          {/* Header */}
+          <div className="flex items-center gap-3 px-3 py-4 mb-2">
+            <div className="w-9 h-9 bg-white text-[#008162] rounded-full flex items-center justify-center font-bold shadow-md p-1.5 flex-shrink-0">
+              <svg className="w-full h-full fill-current" viewBox="0 0 24 24">
+                <path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12zm-7-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+              </svg>
+            </div>
+            <span className="flex items-center gap-1 text-lg font-bold tracking-tight text-white whitespace-nowrap">
+              Sentinel<span className="font-normal text-emerald-200">Inventory</span>
+            </span>
           </div>
 
-          {/* TAB 1: DASHBOARD MATRIX */}
-          {activeTab === 'dashboard' && (
-            <div className="grid grid-cols-1 gap-6 xl:grid-cols-3">
-              
-              {/* Left Side Chart Panel Mix */}
-              <div className="p-5 space-y-6 bg-white border shadow-sm rounded-xl border-slate-200 xl:col-span-2">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-sm font-bold text-slate-800">Inventory Allocation Mix</h3>
-                  <span className="text-xs font-medium text-slate-400">Monthly Update</span>
-                </div>
-                
-                <div className="flex flex-col items-center justify-around gap-4 sm:flex-row">
-                  {/* Embedded Custom SVG Pie Chart to replace external charting tools */}
-                  <div className="relative w-28 h-28">
-                    <svg className="w-full h-full transform -rotate-90" viewBox="0 0 32 32">
-                      <circle cx="16" cy="16" r="14" fill="none" stroke="#E2E8F0" strokeWidth="4" />
-                      <circle cx="16" cy="16" r="14" fill="none" stroke="#477890" strokeWidth="4" strokeDasharray="68 100" />
-                      <circle cx="16" cy="16" r="14" fill="none" stroke="#90A8B3" strokeWidth="4" strokeDasharray="32 100" strokeDashoffset="-68" />
+          {/* Navigation Menu */}
+          <nav className="space-y-1.5">
+            {/* Main Dashboard Link */}
+            <button
+              onClick={() => handleMenuClick('Dashboard')}
+              className={`w-full flex items-center gap-3 px-4 py-4 rounded-xl text-sm font-medium transition-all whitespace-nowrap ${
+                activeMenu === 'Dashboard'
+                  ? 'bg-white text-[#008162] shadow-md font-bold'
+                  : 'text-emerald-100 hover:bg-[#007055]'
+              }`}
+            >
+              <svg className="flex-shrink-0 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+              </svg>
+              <span>Dashboard Overview</span>
+            </button>
+
+            {menuSections.map((section) => {
+              const isOpen = openSubmenus[section.id];
+              const isSectionActive = activeMenu === section.id;
+
+              return (
+                <div key={section.id} className="w-full">
+                  {/* Category Header */}
+                  <button
+                    onClick={() => toggleSubmenu(section.id)}
+                    className={`w-full flex items-center justify-between px-4 py-4 rounded-xl text-sm font-medium transition-all whitespace-nowrap ${
+                      isSectionActive
+                        ? 'bg-white text-[#008162] shadow-md font-bold'
+                        : 'text-emerald-100 hover:bg-[#007055]'
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      {section.icon}
+                      <span>{section.label}</span>
+                    </div>
+                    <svg
+                      className={`w-4 h-4 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                     </svg>
-                  </div>
-                  <div className="space-y-2 text-xs">
-                    <div className="flex items-center gap-2"><span className="w-3 h-3 rounded bg-[#477890]" /><span>Available Units (68%)</span></div>
-                    <div className="flex items-center gap-2"><span className="w-3 h-3 rounded bg-[#90A8B3]" /><span>Sold / Dispatched Units (32%)</span></div>
-                  </div>
+                  </button>
+
+                  {/* Submenu Dropdown List */}
+                  {isOpen && (
+                    <div className="pl-3 my-1 mt-1 ml-4 space-y-1 border-l-2 border-emerald-400/50">
+                      {section.subItems.map((sub) => (
+                        <button
+                          key={sub.id}
+                          onClick={() => handleMenuClick(sub.id)}
+                          className={`w-full text-left px-3 py-2.5 text-xs rounded-lg transition-colors whitespace-nowrap ${
+                            activeMenu === sub.id
+                              ? 'bg-emerald-800 text-white font-semibold'
+                              : 'text-emerald-100 hover:text-white hover:bg-[#007055]'
+                          }`}
+                        >
+                          {sub.label}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </nav>
+        </div>
+
+        {/* Footer Support & Logout */}
+        <div className="mt-6 space-y-3">
+          <div className="pt-2 border-t border-emerald-700/60">
+            <button
+              onClick={() => handleMenuClick('Logout')}
+              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-medium transition-all whitespace-nowrap ${
+                activeMenu === 'Logout'
+                  ? 'bg-white text-[#008162] font-bold shadow-md'
+                  : 'text-emerald-200 hover:bg-[#007055]'
+              }`}
+            >
+              <svg className="flex-shrink-0 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+              </svg>
+              <span>Logout</span>
+            </button>
+          </div>
+
+          <div className="bg-[#006e53] rounded-xl p-3 relative text-center text-white border border-emerald-600/40">
+            <p className="text-xs font-semibold text-emerald-100">Warehouse Support</p>
+            <p className="text-[10px] text-emerald-300 mt-0.5 cursor-pointer hover:underline">Contact System Admin</p>
+          </div>
+        </div>
+      </aside>
+
+      {/* MAIN CONTENT AREA */}
+      <main className="flex flex-col justify-between flex-1 p-6 overflow-y-auto bg-white md:p-8">
+        <div>
+          {/* Top Bar */}
+          <div className="flex flex-col items-start justify-between gap-4 pb-6 border-b border-gray-100 lg:flex-row lg:items-center">
+            <div>
+              <h1 className="text-xl font-bold tracking-tight text-slate-900">
+                Current View: <span className="text-blue-600">{activeMenu}</span>
+              </h1>
+              <p className="text-sm font-normal text-slate-400 mt-0.5">
+                Central Warehouse & Stock Control Station
+              </p>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-between w-full gap-4 lg:w-auto lg:justify-end">
+              <div className="relative flex-1 sm:flex-initial sm:w-72">
+                <span className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-slate-400">
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </span>
+                <input
+                  type="text"
+                  placeholder="Search SKU, Serial No, or Purchase Order..."
+                  className="w-full bg-[#F3F4F7] text-slate-600 text-xs rounded-full pl-10 pr-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500/30 transition placeholder-slate-400"
+                />
+              </div>
+
+              <div className="flex items-center gap-4">
+                <button className="relative p-2 transition text-slate-600 hover:text-slate-800">
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 01-6 0v-1m6 0H9" />
+                  </svg>
+                  <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full ring-2 ring-white"></span>
+                </button>
+
+                <div className="h-7 w-[1px] bg-slate-200"></div>
+
+                <div className="flex items-center gap-3 cursor-pointer group">
+                  <img
+                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80"
+                    alt="Manager Profile"
+                    className="object-cover border rounded-full shadow-sm w-9 h-9 border-slate-200"
+                  />
+                  <span className="text-sm font-semibold transition text-slate-800 group-hover:text-blue-600">
+                    Inventory Lead
+                  </span>
                 </div>
               </div>
-
-              {/* Top Stores by Asset Sales */}
-              <div className="flex flex-col justify-between p-5 bg-white border shadow-sm rounded-xl border-slate-200">
-                <div>
-                  <h3 className="mb-4 text-sm font-bold text-slate-800">Top Branches by Inventory Volume</h3>
-                  <div className="space-y-3">
-                    {[
-                      { name: "Kacyiru Store Hub", percentage: "85%", count: "42k units" },
-                      { name: "Downtown Showroom", percentage: "62%", count: "28k units" },
-                      { name: "CHIC Storage Depot", percentage: "45%", count: "19k units" }
-                    ].map((branch, i) => (
-                      <div key={i} className="space-y-1">
-                        <div className="flex justify-between text-xs font-medium">
-                          <span className="text-slate-600">{branch.name}</span>
-                          <span className="font-mono text-slate-400">{branch.count}</span>
-                        </div>
-                        <div className="w-full h-2 overflow-hidden rounded-full bg-slate-100">
-                          <div className="h-full bg-[#477890]" style={{ width: branch.percentage }} />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
             </div>
-          )}
+          </div>
 
-          {/* TAB 2: IMEI & SERIAL REGISTERS */}
-          {activeTab === 'tracking' && (
-            <div className="p-5 space-y-4 bg-white border shadow-sm rounded-xl border-slate-200">
-              <div>
-                <h3 className="text-sm font-bold text-slate-800">High-Value Device Traceability Matrix</h3>
-                <p className="text-xs text-slate-500">Live operational mapping of components requiring strict registration compliance.</p>
-              </div>
-
-              <div className="overflow-x-auto border rounded-lg border-slate-200">
-                <table className="w-full text-xs text-left border-collapse">
-                  <thead>
-                    <tr className="font-semibold border-b bg-slate-50 text-slate-500 border-slate-200">
-                      <th className="p-3">Model Reference</th>
-                      <th className="p-3">Tracking Hash (IMEI / SN)</th>
-                      <th className="p-3">Current Node Vault</th>
-                      <th className="p-3 text-right">Status State</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-100 text-slate-600">
-                    <tr className="hover:bg-slate-50/80">
-                      <td className="p-3 font-semibold text-slate-800">Samsung Galaxy S24 Ultra</td>
-                      <td className="p-3 font-mono">IMEI-358921109481102</td>
-                      <td className="p-3 text-slate-500">Kacyiru Warehouse Bin-A3</td>
-                      <td className="p-3 text-right"><span className="px-2 py-0.5 rounded text-[10px] font-bold bg-green-50 text-green-700 border border-green-200">In Stock</span></td>
-                    </tr>
-                    <tr className="hover:bg-slate-50/80">
-                      <td className="p-3 font-semibold text-slate-800">Apple MacBook Pro 14" M3</td>
-                      <td className="p-3 font-mono">SN-C02FX481Q05D</td>
-                      <td className="p-3 text-slate-500">Downtown Retail Counter</td>
-                      <td className="p-3 text-right"><span className="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200">Transferred</span></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+          {/* Quick Metrics */}
+          <div className="grid grid-cols-2 gap-4 my-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="p-5 bg-white border border-gray-100 shadow-sm rounded-xl">
+              <span className="text-xs font-bold text-gray-400 uppercase">Total Items</span>
+              <p className="mt-1 text-2xl font-extrabold text-gray-800">12,480</p>
+              <span className="text-[10px] text-emerald-600 font-medium">142 Categories</span>
             </div>
-          )}
 
-        </main>
-      </div>
+            <div className="p-5 bg-white border border-gray-100 shadow-sm rounded-xl">
+              <span className="text-xs font-bold text-gray-400 uppercase">Low Stock Alert</span>
+              <p className="mt-1 text-2xl font-extrabold text-red-500">18 Items</p>
+              <span className="text-[10px] text-red-500 font-medium">Reorder required</span>
+            </div>
 
-      {/* Ground Footer Infrastructure Logs */}
-      <footer className="flex justify-between pt-4 mt-8 text-xs border-t border-slate-200 text-slate-400">
-        <p>&copy; 2026 Central Inventory Platform. Data tracking verified with transaction logs in PostgreSQL.</p>
-        <p className="font-mono">Node ID: INV-MAIN-KGL</p>
-      </footer>
+            <div className="p-5 bg-white border border-gray-100 shadow-sm rounded-xl">
+              <span className="text-xs font-bold text-gray-400 uppercase">Pending POs</span>
+              <p className="mt-1 text-2xl font-extrabold text-amber-500">6 Orders</p>
+              <span className="text-[10px] text-amber-600 font-medium">Awaiting delivery</span>
+            </div>
+
+            <div className="p-5 bg-white border border-gray-100 shadow-sm rounded-xl">
+              <span className="text-xs font-bold text-gray-400 uppercase">Active Transfers</span>
+              <p className="mt-1 text-2xl font-extrabold text-blue-600">4 In Transit</p>
+              <span className="text-[10px] text-blue-600 font-medium">Branch to branch</span>
+            </div>
+          </div>
+
+          {/* Recent Inventory Table */}
+          <div className="p-5 my-6 bg-white border border-gray-100 shadow-sm rounded-2xl">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-base font-bold text-gray-800">Low Stock & Reorder Watchlist</h3>
+              <button className="text-xs text-[#008162] font-semibold hover:underline">View All Low Stock</button>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full text-xs text-left">
+                <thead>
+                  <tr className="text-gray-400 border-b border-gray-100">
+                    <th className="pb-3">SKU</th>
+                    <th className="pb-3">Product</th>
+                    <th className="pb-3">Brand</th>
+                    <th className="pb-3">In Stock</th>
+                    <th className="pb-3">Min Threshold</th>
+                    <th className="pb-3 text-right">Status</th>
+                  </tr>
+                </thead>
+                <tbody className="text-gray-600 divide-y divide-gray-50">
+                  <tr>
+                    <td className="py-3 font-medium text-gray-800">SKU-9921</td>
+                    <td>MacBook Air M2 256GB</td>
+                    <td>Apple</td>
+                    <td className="font-bold text-red-600">2 units</td>
+                    <td>10 units</td>
+                    <td className="text-right">
+                      <span className="bg-red-50 text-red-600 px-2 py-1 rounded font-semibold text-[10px]">Critical</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 font-medium text-gray-800">SKU-4412</td>
+                    <td>Samsung Galaxy S24 Ultra</td>
+                    <td>Samsung</td>
+                    <td className="font-bold text-amber-600">5 units</td>
+                    <td>15 units</td>
+                    <td className="text-right">
+                      <span className="bg-amber-50 text-amber-600 px-2 py-1 rounded font-semibold text-[10px]">Low</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 font-medium text-gray-800">SKU-8823</td>
+                    <td>Logitech MX Master 3S</td>
+                    <td>Logitech</td>
+                    <td className="font-bold text-amber-600">4 units</td>
+                    <td>12 units</td>
+                    <td className="text-right">
+                      <span className="bg-amber-50 text-amber-600 px-2 py-1 rounded font-semibold text-[10px]">Low</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="pt-6 border-t border-gray-100 mt-6 flex flex-col sm:flex-row justify-between text-[11px] text-gray-400 gap-2">
+          <span>Sentinel Inventory Management System © 2026</span>
+          <span>Central Stock Node #01</span>
+        </div>
+      </main>
     </div>
   );
 }

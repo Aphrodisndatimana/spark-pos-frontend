@@ -11,8 +11,6 @@ import ShopOwnerDashboard from './pages/Dashboards/ShopOwner';
 import BranchManagerDashboard from './pages/Dashboards/BranchManager';
 import SellerDashboard from './pages/Dashboards/Seller';
 import RepairTechDashboard from './pages/Dashboards/RepairTech';
-import CustomerPortal from './pages/CustomerPortalPage';
-import PageNotFound from './pages/404Page';
 import InterShopTransfersPage from './pages/Resources/InterShopTransfersPage';
 import WarrantyManagerPage from './pages/Resources/WarrantyManagerPage';
 import AboutUs from './pages/AboutPage';
@@ -24,6 +22,9 @@ import ProductCatalog from './pages/Products/ProductCatalog';
 import ProductDetail from './pages/Products/ProductDetail';
 import Cart from './pages/Products/ShoppingCart';
 import Checkout from './pages/Products/Checkout';
+import InventoryDashboard from './pages/Dashboards/InventoryManager';
+import AccountantDashboard from './pages/Dashboards/Accountant';
+import PageNotFound from './pages/404Page';
 
 function App() {
   // First load defaults to Light Mode (false) unless stored as dark in localStorage
@@ -54,12 +55,13 @@ function App() {
         <Route path="/partners" element={<Partner isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />} />
 
         {/* Dashboards Pages */}
-        <Route path="/super-admin-dashboard" element={<SuperAdminDashboard isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />} />
-        <Route path="/shop-owner-dashboard" element={<ShopOwnerDashboard isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />} />
-        <Route path="/branch-manager-dashboard" element={<BranchManagerDashboard isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />} />
-        <Route path="/seller-dashboard" element={<SellerDashboard isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />} />
-        <Route path="/repair-tech-dashboard" element={<RepairTechDashboard isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />} />
-
+        <Route path="/dashboard/super-admin" element={<SuperAdminDashboard isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />} />
+        <Route path="/dashboard/shop-owner" element={<ShopOwnerDashboard isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />} />
+        <Route path="/dashboard/branch-manager" element={<BranchManagerDashboard isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />} />
+        <Route path="/dashboard/seller" element={<SellerDashboard isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />} />
+        <Route path="/dashboard/repair-tech" element={<RepairTechDashboard isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />} />
+        <Route path="/dashboard/inventory-manager" element={<InventoryDashboard />} />
+        <Route path="/dashboard/accountant" element={<AccountantDashboard />} />
         {/* Products dropdownLink Pages */}
         <Route path="/products/mobile-devices-and-wearables/smartphones" element={<ProductCatalog isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />} />
         <Route path="/products/mobile-devices-and-wearables/smartphones/productdetail/:id" element={<ProductDetail isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode}/>} />
