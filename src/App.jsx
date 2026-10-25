@@ -25,6 +25,7 @@ import Checkout from './pages/Products/Checkout';
 import InventoryDashboard from './pages/Dashboards/InventoryManager';
 import AccountantDashboard from './pages/Dashboards/Accountant';
 import PageNotFound from './pages/404Page';
+import TestSuperAdminDashboard from './pages/Dashboards/Test';
 
 function App() {
   // First load defaults to Light Mode (false) unless stored as dark in localStorage
@@ -62,6 +63,8 @@ function App() {
         <Route path="/dashboard/repair-tech" element={<RepairTechDashboard isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />} />
         <Route path="/dashboard/inventory-manager" element={<InventoryDashboard />} />
         <Route path="/dashboard/accountant" element={<AccountantDashboard />} />
+        <Route path="/dashboard/test" element={<TestSuperAdminDashboard />} />
+
         {/* Products dropdownLink Pages */}
         <Route path="/products/mobile-devices-and-wearables/smartphones" element={<ProductCatalog isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />} />
         <Route path="/products/mobile-devices-and-wearables/smartphones/productdetail/:id" element={<ProductDetail isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode}/>} />

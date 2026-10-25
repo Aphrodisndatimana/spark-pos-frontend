@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function RegisterPage() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [accountType,setAccountType] = useState("");
 
   const slidesData = [
     {
@@ -83,7 +84,9 @@ export default function RegisterPage() {
             <Link to="/login" className="font-medium text-blue-400 hover:underline">Login</Link>
           </p>
 
-          <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
+          <form onSubmit={(e) => {
+            e.preventDefault()
+            }} className="space-y-4">
             
             {/* 1. NAME FIELD */}
             <div className="relative flex items-center">
@@ -134,6 +137,7 @@ export default function RegisterPage() {
             <div className="relative flex items-center">
               <select
                 className="w-full px-4 py-3 bg-[#1e1e1e] text-white border border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-[#252525] transition text-base pr-12 appearance-none cursor-pointer text-gray-400 focus:text-white"
+                onChange={(e) => setAccountType(e.target.value)}
                 required
                 defaultValue=""
               >
@@ -149,6 +153,55 @@ export default function RegisterPage() {
                 </svg>
               </span>
             </div>
+
+            {/* show required inputs for shop owner */}
+
+            {accountType === "shop_owner" ? (
+              <>
+               <div className="relative flex items-center">
+              <input
+                type="text"
+                placeholder="Shop Name"
+                className="w-full px-4 py-3 bg-[#1e1e1e] text-white border border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-[#252525] transition text-base pr-12 placeholder-gray-500"
+                required
+              />
+              <span className="absolute text-gray-400 -translate-y-1/2 pointer-events-none right-4 top-1/2">
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11m16-11v11M8 14v3m8-3v3" />
+            </svg>
+              </span>
+            </div>
+
+            <div className="relative flex items-center">
+              <input
+                type="text"
+                placeholder="Shop Location"
+                className="w-full px-4 py-3 bg-[#1e1e1e] text-white border border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-[#252525] transition text-base pr-12 placeholder-gray-500"
+                required
+              />
+              <span className="absolute text-gray-400 -translate-y-1/2 pointer-events-none right-4 top-1/2">
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              </span>
+            </div>
+
+            <div className="relative flex items-center">
+              <input
+                type="tel"
+                placeholder="Phone Number"
+                className="w-full px-4 py-3 bg-[#1e1e1e] text-white border border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-[#252525] transition text-base pr-12 placeholder-gray-500"
+                required
+              />
+              <span className="absolute text-gray-400 -translate-y-1/2 pointer-events-none right-4 top-1/2">
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+            </span>
+            </div>
+            </>
+            ) : null }
 
             {/* TERMS & CONDITIONS CHECKBOX */}
             <div className="flex items-center pt-2 space-x-2 select-none">
